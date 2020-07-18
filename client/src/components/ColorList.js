@@ -3,13 +3,20 @@ import { axiosWithAuth } from "../util/axiosWithAuth";
 
 const initialColor = {
   color: "",
-  code: { hex: "" }
+  code: { hex: "" },
 };
+const iNew = {
+  color: "",
+  code: { hex: "" },
+  id: 0
+}
 
 const ColorList = ({ colors, updateColors, getColors }) => {
   // console.log(colors);
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
+  const [newColor, setNewColor] = useState(iNew);
+  let newID = parseInt(colors.length);
 
   const editColor = color => {
     setEditing(true);
@@ -40,11 +47,27 @@ const ColorList = ({ colors, updateColors, getColors }) => {
     axiosWithAuth()
      .delete(`/api/colors/${id}`, colorToEdit)
      .then(res => {
-       console.log(res);
+      //  console.log(res);
        updateColors(colors);
        getColors();
      })
   };
+
+  const addColor = e => {
+    e.preventDefault();
+
+    // console.log(newID);
+    setNewColor({ ...newColor, id: newID })
+    console.log(newColor);
+
+
+    axiosWithAuth()
+      .post("/api/colors", newColor)
+      .then(res => {
+        console.log(res);
+        getColors();
+      })
+  }
 
   return (
     <div className="colors-wrap">
@@ -100,7 +123,37 @@ const ColorList = ({ colors, updateColors, getColors }) => {
         </form>
       )}
       <div className="spacer" />
+
       {/* stretch - build another form here to add a color */}
+
+      <div>Add a Color
+        <form onSubmit = {addColor}>
+          <legend>Add Color</legend>
+          <label>
+            color name:
+            <input
+              onChange={e =>
+                setNewColor({ ...newColor, color: e.target.value })
+              }
+              value={newColor.color}
+            />
+          </label>
+          <label>
+            hex code:
+            <input
+              onChange={e =>
+                setNewColor({
+                  ...newColor,
+                  code: { hex: e.target.value }
+                })
+              }
+              value={newColor.code.hex}
+            />
+          </label>
+          <button>add</button>
+        </form>
+      </div>
+      
     </div>
   );
 };
