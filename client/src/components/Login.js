@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { axiosWithAuth } from "../util/axiosWithAuth";
 import { useHistory } from "react-router-dom";
 
@@ -6,7 +7,7 @@ import { useHistory } from "react-router-dom";
 const Login = () => {
   // make a post request to retrieve a token from the api
   // when you have handled the token, navigate to the BubblePage route
-  const cred = {username: "", password: ""}
+  const cred = {username: "Lambda School", password: "i<3Lambd4"}
   const [state, setState] = useState(cred);
   const { push } = useHistory();
 
@@ -23,7 +24,7 @@ const Login = () => {
     e.preventDefault();
     // make a post request to the login endpoint on the server
     axiosWithAuth()
-      .post("http://localhost:5000/api/login", state)
+      .post("/api/login", state)
       .then(res => {
         console.log("POST response: ",res);
         localStorage.setItem("token", res.data.payload);
