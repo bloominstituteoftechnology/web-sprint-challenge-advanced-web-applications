@@ -32,11 +32,11 @@ const ColorList = ({ colors, updateColors, getColors }) => {
     // console.log(id);
     axiosWithAuth()
      .put(`/api/colors/${id}`, colorToEdit)
-     .then(res => {
-      //  console.log(res);
-       updateColors(colors);
+     .then(() => {
        getColors();
+       setEditing(false);
      })
+     .catch(err => console.log(err))
   };
 
   const deleteColor = color => {
@@ -46,11 +46,11 @@ const ColorList = ({ colors, updateColors, getColors }) => {
     // console.log(id);
     axiosWithAuth()
      .delete(`/api/colors/${id}`, colorToEdit)
-     .then(res => {
-      //  console.log(res);
-       updateColors(colors);
+     .then(() => {
+       setEditing(false);
        getColors();
      })
+     .catch(err => console.log(err))
   };
 
   const addColor = e => {
@@ -63,10 +63,11 @@ const ColorList = ({ colors, updateColors, getColors }) => {
 
     axiosWithAuth()
       .post("/api/colors", newColor)
-      .then(res => {
-        console.log(res);
+      .then(() => {
+        setNewColor(iNew);
         getColors();
       })
+      .catch(err => console.log(err))
   }
 
   return (
