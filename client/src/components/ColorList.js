@@ -12,7 +12,7 @@ const iNew = {
 }
 
 const ColorList = ({ colors, updateColors, getColors }) => {
-  // console.log(colors);
+  
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
   const [newColor, setNewColor] = useState(iNew);
@@ -28,8 +28,9 @@ const ColorList = ({ colors, updateColors, getColors }) => {
     // Make a put request to save your updated color
     // think about where will you get the id from...
     // where is it saved right now?
+
     let id = colorToEdit.id;
-    // console.log(id);
+    
     axiosWithAuth()
      .put(`/api/colors/${id}`, colorToEdit)
      .then(() => {
