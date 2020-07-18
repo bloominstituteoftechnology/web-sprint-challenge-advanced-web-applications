@@ -25,7 +25,6 @@ const ColorList = ({ colors, updateColors, bubbleFormation, setBubbleFormation }
     axiosWithAuth()
       .put(`/colors/${colorToEdit.id}`, colorToEdit)
       .then((res) => {
-        console.log(bubbleFormation)
         setBubbleFormation(!bubbleFormation);
       })
       .catch((err) => {
