@@ -50,7 +50,7 @@ You are expected to be able to answer questions in these areas. Your responses c
 - [x] **RUN** npm start to get your API up and running on http://localhost:5000. This is the URL you're going to need to use within your React app in order to make AJAX requests for data.
 - [x] **LOOK** at your client directory and notice it's just a plain ol' React App that we've built using create-react-app.
       cd into client and run npm install to retrieve the client side dependencies.
-- [ ] **RUN** npm start to fire up your React application.
+- [x] **RUN** npm start to fire up your React application.
 
 ### Task 2: Project Requirements
 
