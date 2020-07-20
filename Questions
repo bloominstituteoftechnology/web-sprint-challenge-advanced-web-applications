@@ -1,0 +1,18 @@
+Explain what a token is used for.
+          
+    Used to authenticate a server request from the client
+
+What steps can you take in your web apps to keep your data secure?
+	
+    Use a secure host
+	Keep software up to Date
+	Test Test Test
+	Validate
+	
+Describe how web servers work.
+	
+    A web server processes incoming network requests over HTTP.web servers store, process and deliver web pages to clients.
+
+Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
+	
+    .get,.put,.post,.delete
