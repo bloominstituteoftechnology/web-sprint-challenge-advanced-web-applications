@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 const Login = () => {
   const [state, setState] = useState({
-    credential: { username: "", password: "" },
+    credentials: { username: "", password: "" },
   });
   const handleChange = (e) => {
     setState({
@@ -20,7 +20,7 @@ const Login = () => {
       .post("http://localhost:5000/api/login", state.credentials)
       .then((res) => {
         console.log(res);
-        localStorage.setItem("token", res.data.payload);
+        localStorage.setItem("token", res.data);
       })
       .catch((err) => console.log({ err }));
   };
@@ -31,18 +31,18 @@ const Login = () => {
       <h1>Welcome to the Bubble App!</h1>
       <p>Build a login page here</p>
       <div>
-        <form onSubmit={Login.loggedin}>
+        <form onSubmit={loggedin}>
           <input
             type="text"
             name="username"
-            value={state.username}
+            value={state.credentials.username}
             onChange={handleChange}
             placeholder="User Name"
           />
           <input
             type="password"
             name="password"
-            value={state.password}
+            value={state.credentials.password}
             onChange={handleChange}
             placeholder="password"
           />

@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Route,
-  Link,
+  //Link,
   Switch,
-  Redirect,
+  //Redirect,
 } from "react-router-dom";
 
 import Login from "./components/Login";
@@ -19,7 +19,7 @@ function App({ component: Component, ...rest }) {
         <Switch>
           <PvtRoute exact path="/protected" component={BubblePage} />
           <Route exact path="/" component={Login} />
-          <Route path="/login" component={Login} />
+          {/* <Route path="/login" component={Login} /> */}
           {/* <Route component={Login} /> */}
         </Switch>
         {/* 

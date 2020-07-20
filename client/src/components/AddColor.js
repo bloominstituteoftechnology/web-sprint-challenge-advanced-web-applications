@@ -9,7 +9,7 @@ export const User = () => {
   });
 
   const handleChange = (e) => {
-    this.setState({
+    setColor({
       ...this.state,
       [e.target.name]: e.target.value,
     });
@@ -20,7 +20,7 @@ export const User = () => {
     AxiosCall()
       .post("/colors", color)
       .then((res) => {
-        this.setColor([...color], res.data);
+        setColor([...color], res.data);
         console.log(res.data);
       })
       .catch((err) => console.log({ err }));
