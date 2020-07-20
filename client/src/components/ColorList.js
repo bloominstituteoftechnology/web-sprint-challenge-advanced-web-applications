@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { axiosWithAuth } from "../utilities/axiosWithAuth";
+
 const initialColor = {
   color: "",
   code: { hex: "" }
@@ -15,6 +16,8 @@ const ColorList = ({ colors, updateColors }) => {
     setEditing(true);
     setColorToEdit(color);
   };
+
+
   const saveEdit = e => {
     e.preventDefault();
     // Make a put request to save your updated color
@@ -31,6 +34,7 @@ const ColorList = ({ colors, updateColors }) => {
     })
     .catch(error => console.log(error))
   };
+
   const deleteColor = color => {
     // make a delete request to delete this color
     axiosWithAuth().delete(`http://localhost:5000/api/colors/${color.id}`)
@@ -105,7 +109,7 @@ const ColorList = ({ colors, updateColors }) => {
         </form>
       )}
 
-      <form onSubmit={submitNewColor}>
+<form onSubmit={submitNewColor}>
         <label htmlFor='color'>Color: </label>
         <input type='text' name='color' id='color' value={newColor.color} onChange={(event) => {
           setNewColor({
@@ -122,8 +126,9 @@ const ColorList = ({ colors, updateColors }) => {
         }} />
         <button type='submit'>Add your own color!</button>
       </form>
+
       <div className="spacer" />
-     </div>
+    </div>
   );
 };
 export default ColorList;
