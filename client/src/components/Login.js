@@ -15,12 +15,14 @@ const Login = () => {
 
   const loggedin = (e) => {
     e.preventDefault();
-
+    console.log("dk I amd loggedIn and I have been invoked");
+    console.log(state.credentials);
     axios
       .post("http://localhost:5000/api/login", state.credentials)
       .then((res) => {
         console.log(res);
-        localStorage.setItem("token", res.data);
+        localStorage.setItem("token", res.data.payload);
+        console.log(res.data);
       })
       .catch((err) => console.log({ err }));
   };
