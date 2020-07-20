@@ -15,14 +15,12 @@ const Login = () => {
 
   const loggedin = (e) => {
     e.preventDefault();
-    // make a post request to the login endpoint on the server
+
     axios
       .post("http://localhost:5000/api/login", state.credentials)
       .then((res) => {
         console.log(res);
         localStorage.setItem("token", res.data.payload);
-        // redirect the user to the app's main logged in page
-        // this.props.history.push("/protected");
       })
       .catch((err) => console.log({ err }));
   };
