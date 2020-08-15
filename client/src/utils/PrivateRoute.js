@@ -15,3 +15,5 @@ const PrivateRoute = ({ component: Component, ...restOfProps }) => {
         />
     )
 }
+
+export default PrivateRoute;
