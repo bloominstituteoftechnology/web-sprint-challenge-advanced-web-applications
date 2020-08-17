@@ -23,6 +23,7 @@ console.log(login)
     .then(res => {
         console.log(res);
         window.localStorage.setItem("token", res.data.payload)
+        props.history.push("/bubbles")
     })
 }    
 
