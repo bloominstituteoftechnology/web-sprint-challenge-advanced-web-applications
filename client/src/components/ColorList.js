@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { axiosAuth } from "../components/utils/axiosAuth";
 
 const initialColor = {
   color: "",
@@ -10,6 +11,7 @@ const ColorList = ({ colors, updateColors }) => {
   console.log(colors);
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
+  const [add, setAdd] = useState(false)
 
   const editColor = color => {
     setEditing(true);
@@ -21,10 +23,29 @@ const ColorList = ({ colors, updateColors }) => {
     // Make a put request to save your updated color
     // think about where will you get the id from...
     // where is is saved right now?
+    editing ?
+      axiosAuth().put(`/colors/${colorToEdit.id}`, colorToEdit)
+        .then(res => {
+          console.log(res)
+          updateColors(colors.map(col => col.id === colorToEdit.id ? colorToEdit : col))
+          setEditing(false)
+        })
+      :
+      axiosAuth().post(`/colors`, colorToEdit)
+        .then(res => {
+          updateColors([...colors, colorToEdit])
+          setColorToEdit(initialColor)
+          setAdd(false)
+        })
   };
 
   const deleteColor = color => {
     // make a delete request to delete this color
+    axiosAuth().delete(`/colors/${color.id}`)
+      .then(res => {
+        console.log(res)
+        updateColors(colors.filter(col => col.id !== color.id))
+      })
   };
 
   return (
@@ -35,11 +56,11 @@ const ColorList = ({ colors, updateColors }) => {
           <li key={color.color} onClick={() => editColor(color)}>
             <span>
               <span className="delete" onClick={e => {
-                    e.stopPropagation();
-                    deleteColor(color)
-                  }
-                }>
-                  x
+                e.stopPropagation();
+                deleteColor(color)
+              }
+              }>
+                x
               </span>{" "}
               {color.color}
             </span>
@@ -50,9 +71,9 @@ const ColorList = ({ colors, updateColors }) => {
           </li>
         ))}
       </ul>
-      {editing && (
+      {(editing || add) && (
         <form onSubmit={saveEdit}>
-          <legend>edit color</legend>
+          <legend>{editing ? 'edit' : 'add'} color</legend>
           <label>
             color name:
             <input
@@ -76,12 +97,18 @@ const ColorList = ({ colors, updateColors }) => {
           </label>
           <div className="button-row">
             <button type="submit">save</button>
-            <button onClick={() => setEditing(false)}>cancel</button>
+            <button onClick={() => { setEditing(false); setAdd(false) }}>cancel</button>
           </div>
         </form>
       )}
+      {!add && <button onClick={e => {
+        setAdd(true)
+        setColorToEdit(initialColor)
+      }}>Add Color</button>}
       <div className="spacer" />
-      {/* stretch - build another form here to add a color */}
+      {/* stretch - build another form here to add a color 
+      */}
+
     </div>
   );
 };
