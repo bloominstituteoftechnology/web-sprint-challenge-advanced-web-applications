@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axiosAuth from "../utils/axiosAuth";
 
 const initialColor = {
   color: "",
   code: { hex: "" }
 };
 
-const ColorList = ({ colors, updateColors }) => {
-  console.log(colors);
+const ColorList = ({ colors, updateColors, setTrigger }) => {
+  // console.log(colors);
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
 
@@ -18,12 +18,22 @@ const ColorList = ({ colors, updateColors }) => {
 
   const saveEdit = e => {
     e.preventDefault();
+    axiosAuth()
+      .put(`/colors/${colorToEdit.id}`, colorToEdit)
+      .then(res => console.log('saveEdit res:',res.data),setTrigger(true))
+      .catch(err => console.log('saveEdit err:',err))
     // Make a put request to save your updated color
     // think about where will you get the id from...
     // where is is saved right now?
   };
 
   const deleteColor = color => {
+
+    axiosAuth()
+      .delete(`/colors/${colorToEdit.id}`)
+      .then(res=>console.log('celeteColor res',res), setTrigger(true))
+      .catch(err=>{console.log('deleteColor err:',err)})
+
     // make a delete request to delete this color
   };
 
