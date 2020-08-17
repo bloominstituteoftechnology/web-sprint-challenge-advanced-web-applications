@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from 'axios'
 
 const Login = () => {
   // make a post request to retrieve a token from the api
@@ -19,6 +20,12 @@ const Login = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    axios
+    .post("http://localhost:5000/api/login", login)
+    .then(res => {
+      console.log(res);
+      window.localStorage.setItem('token', res.data.payload)
+    })
   }
 
   return (
