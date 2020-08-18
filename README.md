@@ -89,6 +89,7 @@ After finishing your required elements, you can push your work further. These go
 
 * [ ] Build out another form to add a new color to your color list
 * [ ] Build a custom hook called `useApi` that you can use to make all of your API calls
+* [ ] Add more tests to give you further confidence in the code you're shipping
 
 ## Submission format
 
