@@ -47,9 +47,7 @@ const ColorList = ({ colors, updateColors }) => {
     .delete(`/api/colors/${color.id}`)
     .then(res => {
       updateColors([
-        ...colors.fiter(deadColor => 
-          deadColor.id !== res.data
-        )
+        ...colors.fiter(deadColor => deadColor.id !== color.id)
       ])
     })
     .catch(err => {

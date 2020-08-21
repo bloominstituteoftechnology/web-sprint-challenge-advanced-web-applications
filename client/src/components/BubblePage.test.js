@@ -2,22 +2,27 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import BubblePage from "./BubblePage";
 
-import { fetchColorsApi as mockFetchColorsApi, fetchColorsApi } from "../api/fetchColorsApi"
+import { fetchColorsApi as mockFetchColorsApi } from "../api/fetchColorsApi"
 
 jest.mock("../api/fetchColorsApi")
 
 const colorList = {
-
   data: 
   [
     {
-      color: "red",
-      code: { hex: "#ab2222" },
+        color: "aliceblue",
+        code: {
+          hex: "#f0f8ff"
+        },
+        id: 1
       },
 
       {
-        color: "blue",
-        code: { hex: "#ab2222" },
+        color: "red",
+        code: {
+          hex: "#f0f8ff"
+        },
+        id: 2
       },
   ]
 }
@@ -26,7 +31,6 @@ const colorList = {
 test("Fetches data and renders the bubbles", async () => {
   // Finish this test
   // can render BubblePage
-  console.log(fetchColorsApi)
 
   mockFetchColorsApi.mockResolvedValueOnce(colorList)
 
@@ -39,5 +43,5 @@ test("Fetches data and renders the bubbles", async () => {
   
   expect(colorArray).toHaveLength(2)
   console.log(colorArray)
-  
+
 });

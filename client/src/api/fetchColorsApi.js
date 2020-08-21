@@ -1,9 +1,9 @@
 import axiosWithAuth from "../utils/axiosWithAuth"
 
 export const fetchColorsApi = () => {
-    return axiosWithAuth
+    return axiosWithAuth()
     .get(
-        ("/api/colors")
+        "/api/colors"
     )
     .then(res => {
         console.log(res.data)
@@ -11,5 +11,6 @@ export const fetchColorsApi = () => {
     })
     .catch(err => {
         console.error("api error")
+        return err
     })
 }
