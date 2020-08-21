@@ -1,14 +1,15 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import BubblePage from "./BubblePage";
-import Bubbles from './Bubbles';
-import ColorList from './ColorList';
+
 
 import {fetchColors as mockFetchColors} from '../hooks/fetchColors'
 
 jest.mock('../hooks/fetchColors')
 
-const colors = [
+const mockData = {
+  data: [
+  
   {
     color: "aliceblue",
     code: {
@@ -86,15 +87,16 @@ const colors = [
     },
     id: 11
   }
-];
+]}
 
 test("Fetches data and renders the bubbles", async () => {
   // Finish this test
   //setup for when "fetchColors" will eventually be called
-  mockFetchColors.mockResolvedValueOnce(colors)
-  screen.debug()
-  //render BubblePage
-  render(<BubblePage />)
-  screen.debug()
+  mockFetchColors.mockResolvedValueOnce(mockData)
 
+  const { debug, getByText } = render(<BubblePage />)
+  screen.debug()
+ await waitFor(() => {
+   expect(getByText('aliceblue')).toBeInTheDocument()
+ })
 });
