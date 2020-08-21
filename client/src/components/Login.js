@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from 'react-router-dom'; 
 
-import { axiosWithAuth } from '../utils/axiosWithAuth'; 
+import { axiosWithAuth } from '../utils/axiosWithAuth';  
 
 const initialState = {
   username: "", 
