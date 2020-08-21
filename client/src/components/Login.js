@@ -17,10 +17,10 @@ const Login = props => {
   const handleSubmit = e => {
     e.preventDefault();
       axiosWithAuth()
-        .post("http://localhost:5000/api/login", form)
-        .then( res => {
+        .post("/api/login", form)
+        .then((res) => {
           localStorage.setItem("token", res.data.payload);
-          props.history.push("bubbles");
+          props.history.push("/bubbles");
         })
         .catch(err => console.log(err));
   };
@@ -41,7 +41,7 @@ const Login = props => {
             
             <input
             name="password"
-            type="password"
+            type="text"
             placeholder="Enter Password"
             onChange={changeHandler} 
             />
