@@ -5,6 +5,7 @@ export function fetchApi(){
     axiosWithAuth()
     .get('/api/colors')
     .then((res) => {
+        console.log(res)
         return res
     })
     .catch((err) => console.dir(err))
