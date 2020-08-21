@@ -79,7 +79,7 @@ Build a login form to authenticate your users.
   * **[DELETE]** to `/api/colors/123`: removes the color using the `id` passed as part of the URL (123 in example).
 
 #### Stage 3 Testing
-- [ ] Finish the test in `BubblePage.test.js` to test that your app is fetching the bubble data from the API
+- [X] Finish the test in `BubblePage.test.js` to test that your app is fetching the bubble data from the API
 
 In your solution, it is essential that you follow best practices and produce clean and professional results. You will be scored on your adherence to proper code style and good organization. Schedule time to review, refine, and assess your work and perform basic professional polishing including spell-checking and grammar-checking on your work. It is better to submit a challenge that meets MVP than one that attempts too much and does not.
 
