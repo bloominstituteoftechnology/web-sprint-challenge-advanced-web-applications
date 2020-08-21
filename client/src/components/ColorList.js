@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
 import axiosWithAuth from "../utils/axiosWithAuth";
 
 const initialColor = {
