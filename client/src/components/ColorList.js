@@ -11,7 +11,7 @@ const ColorList = ({ colors, updateColors }) => {
   console.log(colors[4]);
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
-  // const [ form, setForm ] = useState({ color: "", hex: "", id: ""})
+  const [ form, setForm ] = useState({ color: "", hex: "", id: ""})
 
     useEffect(() => {
     fetchApi().then(res => {
@@ -29,6 +29,8 @@ const ColorList = ({ colors, updateColors }) => {
 
   const saveEdit = e => {
     e.preventDefault();
+    
+    
     // Make a put request to save your updated color
     // think about where will you get the id from...
     // where is is saved right now?
@@ -115,6 +117,7 @@ const ColorList = ({ colors, updateColors }) => {
       )}
       <div className="spacer" />
       {/* stretch - build another form here to add a color */}
+      
     </div>
     );
   };
