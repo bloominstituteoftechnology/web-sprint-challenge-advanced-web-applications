@@ -1,4 +1,4 @@
-# Advanced Web Applications Sprint Challenge
+`# Advanced Web Applications Sprint Challenge
 
 **Read these instructions carefully. Understand exactly what is expected _before_ starting this Sprint Challenge.**
 
@@ -28,7 +28,13 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. Explain what a token is used for.
+
+A token is server issued code based on valid authentication that allows users to browse the site through that token being present on their specific requests.
+
 2. What steps can you take in your web apps to keep your data secure?
+
+
+
 3. Describe how web servers work.
 4. Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
 
