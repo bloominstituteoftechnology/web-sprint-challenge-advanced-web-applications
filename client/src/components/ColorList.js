@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import axiosWithAuth from "../utils/axiosWithAuth";
 
 const initialColor = {
@@ -12,7 +11,7 @@ const ColorList = ({ colors, updateColors }) => {
   console.log(colors);
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
-  const { id } = useParams();
+  // const id = useParams()
 
   const editColor = color => {
     setEditing(true);
@@ -25,8 +24,9 @@ const ColorList = ({ colors, updateColors }) => {
     // think about where will you get the id from...
     // where is is saved right now?
     axiosWithAuth()
-    .put(`/api/colors/${id}`, colorToEdit)
-    .then( res => {
+    .put(`/api/colors/:${colorToEdit.id}`, colorToEdit)
+    .then(res => {
+      console.log(res.data)
       updateColors([
         ...colors.map(color => {
           if ( color.id === colorToEdit.id ) {
@@ -37,11 +37,26 @@ const ColorList = ({ colors, updateColors }) => {
         })
       ])
     })
-   
+   .catch(err => {
+     console.error("Error in edit.")
+   })
   };
 
   const deleteColor = color => {
     // make a delete request to delete this color
+    axiosWithAuth()
+    .delete(`/api/colors/${color.id}`)
+    .then(res => {
+      updateColors([
+        ...colors.fiter(deadColor => 
+          deadColor.id !== res.data
+        )
+      ])
+    })
+    .catch(err => {
+      console.error("Error in delete.")
+    })
+    console.log(colors)
   };
 
   return (
