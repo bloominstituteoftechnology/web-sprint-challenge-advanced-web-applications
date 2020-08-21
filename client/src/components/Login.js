@@ -3,10 +3,10 @@ import { useHistory } from 'react-router-dom';
 
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
-
+//***CHAYCE CLEAR THESE VALUES OUT BEFORE YOU PR! */
 const initialCredentials = {
-  username: '',
-  password: '',
+  username: 'Lambda School',
+  password: 'i<3Lambd4',
 }
 const Login = () => {
   // make a post request to retrieve a token from the api
