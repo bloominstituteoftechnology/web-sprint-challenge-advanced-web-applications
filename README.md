@@ -33,10 +33,15 @@ A token is server issued code based on valid authentication that allows users to
 
 2. What steps can you take in your web apps to keep your data secure?
 
-
+Create a secure authentication process that creates a token that only the server and client shares so that no one can access private information between the two.
 
 3. Describe how web servers work.
+
+Web servers are computers that interact with other computers and users that send and receive data. 
+
 4. Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
+
+Ajax and axios methods can be used to receive, post, update and delete data in an API.
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade. 
 
