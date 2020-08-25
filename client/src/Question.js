@@ -8,4 +8,4 @@
 //Web servers store data for web sites and programs that are retrieved by URLs.
 
 // 4. Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
-//POST, GET, PUT, DELETE
+//POST(CREATE), GET(READ), PUT(UPDATE), DELETE(DELETE)
