@@ -1,14 +1,63 @@
-import React from "react";
+import React from 'react'
+import axios from 'axios'
 
-const Login = () => {
-  // make a post request to retrieve a token from the api
-  // when you have handled the token, navigate to the BubblePage route
-  return (
-    <>
-      <h1>Welcome to the Bubble App!</h1>
-      <p>Build a login page here</p>
-    </>
-  );
-};
 
-export default Login;
+class Login extends React.Component {
+    state = {
+        credentials: {
+            username: "",
+            password: ""
+        }
+    }
+
+    handleChange = event => {
+        this.setState({
+            credentials: {
+                ...this.state.credentials,
+                [event.target.name]: event.target.value
+            }
+        })
+    }
+
+    login = event => {
+        event.preventDefault();
+        axios
+            .post("http://localhost:5000/api/login", this.state.credentials)
+            .then((res) => {
+                localStorage.setItem("token", res.data.payload);
+                this.props.history.push("/colors")
+                console.log("api data login working", res)
+            })
+            .catch((err) => console.log("notworking",err))
+    }
+
+    render() {
+        return (
+            <div>
+                <form onSubmit={this.login}>
+                        <input
+                            type="text"
+                            name="username"
+                            placeholder="username"
+                            value={this.state.credentials.username}
+                            onChange={this.handleChange}
+                        />
+                        <input
+                            type="text"
+                            name="password"
+                            placeholder="password"
+                            value={this.state.credentials.password}
+                            onChange={this.handleChange}
+                        />
+                        <input
+                            type="submit"
+                        />
+                </form>
+            </div>
+        )
+    }
+
+
+}
+
+export default Login
