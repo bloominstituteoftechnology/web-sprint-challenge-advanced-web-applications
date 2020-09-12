@@ -9,19 +9,20 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Link to="/login">Login</Link>
-        <Route exact path="/login" component={Login} />
+      <Link to="/login">Login</Link>
+        <Link to="/protected">Friends List</Link>
+        
         {/* 
           Build a PrivateRoute component that will 
           display BubblePage when you're authenticated 
         */
       
         }
-        <switch>
-          <PrivateRoute exact path="/Protected" component={BubblePage}/>
+        <Switch>
+          <PrivateRoute exact path="/protected" Component={BubblePage}/>
           <Route path="/login" component={Login}/>
           <Route component={Login}/>
-        </switch>
+        </Switch>
       </div>
     </Router>
   );

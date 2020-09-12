@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 
-const Login = props => {
+const Login = (props) => {
 
     const [formState, setFormState] = useState({
         isLoading: false,
@@ -18,9 +18,12 @@ const Login = props => {
         console.log("logging in");
         axios
             .post("http://localhost:5000/api/login", formState.credentials)
-            .then(res => { localStorage.setItem("token", res.data.payload);
+            .then(res => 
+             { console.log("Login",res.data.payload)
+               localStorage.setItem("token", res.data.payload);
             props.history.push('/protected');
-        })
+        }
+        )
             .catch(err => console.log("login api error:", err))
     };
 
