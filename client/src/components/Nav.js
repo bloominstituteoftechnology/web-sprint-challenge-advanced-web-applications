@@ -16,7 +16,7 @@ function Navigation() {
   const history = useHistory()
   const handleLogout = () => {
     dispatch(logoutUser())
-    history.push('/login')
+    history.push('/')
   }
 
   return (
@@ -49,7 +49,7 @@ function Navigation() {
             </NavDropdown.Item>
             <NavDropdown.Item href='#action/3.3'>Something</NavDropdown.Item>
             <NavDropdown.Divider />
-            <NavDropdown.Item href='#action/3.4'>
+            <NavDropdown.Item>
               <p onClick={handleLogout}>LOGOUT</p>
             </NavDropdown.Item>
           </NavDropdown>

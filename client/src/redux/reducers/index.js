@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux'
-// import {userReducer} from './userReducer'
+import {colorsReducer} from './colorsReducer'
 import {authReducer} from './authReducer'
 
 export const rootReducer = combineReducers({
-  //   user: userReducer,
+  colors: colorsReducer,
   auth: authReducer,
 })

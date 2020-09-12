@@ -35,7 +35,7 @@ export const getLoginToken = (data, props) => {
       .then((res) => {
         localStorage.setItem('token', res.data.payload)
         dispatch(login(res.data.payload))
-        props.push('/')
+        props.push('/bubbles')
       })
       .catch((error) => dispatch(loginError(error.message)))
   }
