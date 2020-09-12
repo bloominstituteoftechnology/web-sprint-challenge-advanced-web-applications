@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
 html,
 body,
@@ -11,7 +11,7 @@ body,
 }
 
 .App {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   text-align: center;
   display: flex;
 
@@ -61,7 +61,7 @@ body,
 }
 
 form {
-  margin-top: 60px;
+  // margin-top: 60px;
   display: flex;
   flex-direction: column;
 
@@ -76,7 +76,7 @@ form {
   label {
     display: flex;
     justify-content: space-between;
-    padding: 4px 36px 4px 40px;
+    // padding: 4px 36px 4px 40px;
   }
 
   input {
