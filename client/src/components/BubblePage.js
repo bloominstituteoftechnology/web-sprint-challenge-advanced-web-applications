@@ -25,7 +25,7 @@ const BubblePage = () => {
     .catch((err) => {
       console.log("BubblePage Get Axios Not Working", err)
     })
-  })
+  },[])
 
 
   return (
