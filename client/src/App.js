@@ -5,6 +5,7 @@ import Login from "./components/Login";
 import "./styles.scss";
 import PrivateRoute from "./components/PrivateRoute";
 import BubblePage from "./components/BubblePage";
+import ColorList from "./components/ColorList";
 
 
 
@@ -15,7 +16,8 @@ function App() {
         <Switch>
           <Route exact path="/" component={Login} />
         
-            <PrivateRoute exact path='/api/colors' component={BubblePage}/>
+            <PrivateRoute exact path='/api/colors/' component={BubblePage}/>
+            <PrivateRoute exact path='/api/colors/:id' component={ColorList, BubblePage}/>
         </Switch>
       </div>
     </Router>
