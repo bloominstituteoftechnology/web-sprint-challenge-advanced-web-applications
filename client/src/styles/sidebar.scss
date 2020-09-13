@@ -1,9 +1,15 @@
 .sidebar {
   // box-shadow: 10px 10px 28px -13px rgba(0,0,0,0.75);
   //   height: calc(100vh - 96px);
+  padding: 0;
+  margin: 0;
   padding-bottom: 10px;
 }
 
 // -webkit-box-shadow: 10px 10px 28px -13px rgba(0,0,0,0.75);
 // -moz-box-shadow: 10px 10px 28px -13px rgba(0,0,0,0.75);
 // box-shadow: 10px 10px 28px -13px rgba(0,0,0,0.75);
+
+.row {
+  background: solid red;
+}

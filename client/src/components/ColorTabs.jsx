@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Toast from 'react-bootstrap/Toast'
 import Col from 'react-bootstrap/Col'
 import Modal from 'react-bootstrap/Modal'
@@ -7,14 +7,25 @@ import Row from 'react-bootstrap/Row'
 import '../styles/colorTabs.scss'
 import Form from 'react-bootstrap/Form'
 import {ChromePicker} from 'react-color'
+import * as actions from '../redux/actions/colorsActions'
+import {AiOutlineHeart, AiFillHeart} from 'react-icons/ai'
+import {useSelector, useDispatch} from 'react-redux'
+import {colorsReducer} from '../redux/reducers/colorsReducer'
 
 function ColorTabs({color}) {
   const [editColor, setEditColor] = useState(color.code.hex)
   const [colorName, setColorName] = useState(color.color)
+  // const [favoriteStatus, setFavoriteStatus] = useState(favorite)
+
+  const dispatch = useDispatch()
 
   const [showA, setShowA] = useState(true)
+  const favorite = useSelector((state) => state.favorite)
 
-  const toggleShowA = () => setShowA(!showA)
+  // const toggleShowA = () => setShowA(!showA)
+  const toggleShowA = () => {
+    dispatch(actions.deleteColorApi(color.id))
+  }
 
   const [show, setShow] = useState(false)
 
@@ -34,7 +45,25 @@ function ColorTabs({color}) {
     console.log('handleChangeComplete Done')
   }
 
-  console.log('new', editColor)
+  const handleSaveChanges = () => {
+    console.log('edit', color.id)
+    const test = {
+      color: colorName,
+      code: {
+        hex: editColor,
+      },
+      id: color.id,
+    }
+    dispatch(actions.updateColorApi(test))
+    setShow(false)
+  }
+
+  const handleFavoriteChanges = () => {
+    dispatch(actions.toggleFavoriteColor(color.id))
+    // setFavoriteStatus(!favoriteStatus)
+  }
+
+  useEffect(() => {}, [color])
   return (
     <div
       style={{
@@ -53,7 +82,9 @@ function ColorTabs({color}) {
         <Toast.Header>
           <img src='holder.js/20x20?text=%20' className='rounded mr-2' alt='' />
           <strong className='mr-auto'>{color.color}</strong>
-          <small>11 mins ago</small>
+          <small onClick={handleFavoriteChanges} style={{color: 'red'}}>
+            {color.favorite ? <AiFillHeart /> : <AiOutlineHeart />}{' '}
+          </small>
         </Toast.Header>
         <Toast.Body onClick={editModal}>{editColor}</Toast.Body>
       </Toast>
@@ -96,7 +127,7 @@ function ColorTabs({color}) {
           <Button variant='secondary' onClick={handleClose}>
             Close
           </Button>
-          <Button variant='primary' onClick={handleClose}>
+          <Button variant='primary' onClick={handleSaveChanges}>
             Save Changes
           </Button>
         </Modal.Footer>

@@ -5,21 +5,20 @@ import Login from './components/Login'
 import Bubbles from './components/BubblePage'
 import Colors from './components/Colors'
 import Navigation from './components/Nav'
+import AddColor from './components/AddColor'
 // import './styles/styles.scss'
 
 function App() {
   return (
     <>
       <Navigation />
-      <Switch>
-        <Route exact path='/' component={Login} />
 
+      <Switch>
         <PrivateRoute path='/colors' component={Colors} />
-        {/* <PrivateRoute path='/bubbles' component={Bubbles} /> */}
-        {/* 
-          Build a PrivateRoute component that will 
-          display BubblePage when you're authenticated 
-        */}
+        <PrivateRoute path='/addcolor' component={AddColor} />
+
+        <Route exact path='/' component={Login} />
+        {/* <Route exact path='*' component={<h1>404</h1>} /> */}
       </Switch>
     </>
   )

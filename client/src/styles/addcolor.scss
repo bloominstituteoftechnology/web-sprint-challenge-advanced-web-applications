@@ -1,0 +1,29 @@
+.addcolor-card {
+  height: calc(100vh - 96px);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.addcolor {
+  height: calc(100vh - 96px);
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.addcolor-card-body {
+}
+
+.addcolor-box {
+  width: 60%;
+  height: 50%;
+  border-radius: 80px;
+  box-shadow: 17px 13px 28px -10px rgba(0, 0, 0, 0.75);
+}
+
+.add-color-title {
+  color: #8f8f8f;
+}
+
+.add-form {
+  background-color: transparent;
+}
