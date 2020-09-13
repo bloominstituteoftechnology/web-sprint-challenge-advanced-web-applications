@@ -16,8 +16,16 @@ function App() {
         <Switch>
           <Route exact path="/" component={Login} />
         
-            <PrivateRoute exact path='/api/colors/' component={BubblePage}/>
-            <PrivateRoute exact path='/api/colors/:id' component={ColorList, BubblePage}/>
+            <PrivateRoute 
+            exact 
+            path='/api/colors/' 
+            render={(props) => (<BubblePage {...props} ColorList={ColorList} BubblePage={BubblePage}/>)}
+            component={BubblePage}/>
+
+            <PrivateRoute 
+            exact 
+            path='/api/colors/:id' 
+            component={ColorList, BubblePage}/>
         </Switch>
       </div>
     </Router>
