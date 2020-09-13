@@ -28,9 +28,20 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. Explain what a token is used for.
+    It is used to validate that you signed in.
+
 2. What steps can you take in your web apps to keep your data secure?
+    Using a token or using a special kind of cookie that validates your unique login.
+
 3. Describe how web servers work.
+    You have your computer that sends out a call to the Web Server for data and it sends it back to you. If the data is encrypted it asks you to give some sort login when you pass that the server will give you a token that it thens to authenticate your ability to look at other private or protected information.
+
 4. Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
+    Post() goes with Create
+    Get() goes with Read
+    Put() goes with Update
+    Delete() goes with Delete
+
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade. 
 

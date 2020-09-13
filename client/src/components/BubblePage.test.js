@@ -2,6 +2,7 @@ import React from "react";
 import { getByAltText, render, waitFor } from "@testing-library/react";
 import fetchColors  from '../api/fetchColors';
 import BubblePage from "./BubblePage";
+import ColorList from "./ColorList";
 
 jest.mock('../api/fetchColors');
 
@@ -20,13 +21,10 @@ test("Fetches data and renders the bubbles", async () => {
     },
     id: 2
   }])
-  const {getByText} = render(<BubblePage/>)
+  const {getByText, getByTestId} = render(<BubblePage/>)
   expect(getByText('bubbles')).toBeInTheDocument();
-
-  await waitFor(() => {
-    expect(getByText(/aliceblue/i).tBeVisible());
-  })
-
+  expect(getByTestId('bubbles')).toBeInTheDocument();
+ 
 
 
 });
