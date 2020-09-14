@@ -16,7 +16,6 @@ function SideBar() {
     setSideBarColor(colors)
   }, [sideBarColor])
 
-  console.log('colors from sidebar', colors)
   return (
     <>
       <div className='sidebar'>

@@ -16,6 +16,7 @@ function App() {
       <Switch>
         <PrivateRoute path='/colors' component={Colors} />
         <PrivateRoute path='/addcolor' component={AddColor} />
+        <PrivateRoute path='/bubbles' component={Bubbles} />
 
         <Route exact path='/' component={Login} />
         {/* <Route exact path='*' component={<h1>404</h1>} /> */}

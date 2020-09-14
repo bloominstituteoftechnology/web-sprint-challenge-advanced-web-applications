@@ -7,7 +7,6 @@ const initialColor = {
 }
 
 const ColorList = ({colors, updateColors}) => {
-  console.log(colors)
   const [editing, setEditing] = useState(false)
   const [colorToEdit, setColorToEdit] = useState(initialColor)
 
@@ -33,7 +32,7 @@ const ColorList = ({colors, updateColors}) => {
       <ul>
         {colors.map((color) => (
           <li key={color.color} onClick={() => editColor(color)}>
-            <span>
+            <span data-testid='sidebarColor'>
               <span
                 className='delete'
                 onClick={(e) => {

@@ -3,6 +3,7 @@ import {apiAuth} from '../utils/auth'
 import Bubbles from './Bubbles'
 import CardColors from './CardColors'
 import ColorList from './ColorList'
+import '../styles/styles.scss'
 
 const BubblePage = () => {
   const [colorList, setColorList] = useState([])
@@ -13,15 +14,20 @@ const BubblePage = () => {
       .then((res) => setColorList(res.data))
   }, [])
 
-  console.log('colors', colorList)
+  if (!colorList) {
+    return <span data-testid='loading'>loading</span>
+  }
+
   return (
     <>
-      <ColorList colors={colorList} updateColors={setColorList} />
-      {/* <Bubbles colors={colorList} /> */}
-
-      {colorList.map((color) => (
-        <CardColors key={color.id} colors={color} />
-      ))}
+      <div className='App'>
+        <ColorList
+          data-testid='colorList'
+          colors={colorList}
+          updateColors={setColorList}
+        />
+        <Bubbles data-testid='bubbles' colors={colorList} />
+      </div>
     </>
   )
 }

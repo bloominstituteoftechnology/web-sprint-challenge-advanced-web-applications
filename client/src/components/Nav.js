@@ -25,7 +25,7 @@ function Navigation() {
   return (
     <div>
       <Navbar bg='light' expand='lg'>
-        <Navbar.Brand href='#home' className='mr-4'>
+        <Navbar.Brand href='/' className='mr-4'>
           <img src={Logo} alt='logo' className='nav-logo' />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
@@ -39,7 +39,12 @@ function Navigation() {
               Colors
             </NavLink>
 
-            <NavLink to={'/addcolor'}>Add Color</NavLink>
+            <NavLink to={'/addcolor'} className='mr-4'>
+              Add Color
+            </NavLink>
+            <NavLink to={'/bubbles'} className='mr-4'>
+              Bubbles
+            </NavLink>
           </Nav>
 
           <Form inline>

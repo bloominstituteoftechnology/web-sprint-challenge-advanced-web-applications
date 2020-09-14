@@ -9,12 +9,14 @@ import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import {useDispatch} from 'react-redux'
 import * as actions from '../redux/actions/colorsActions'
+import {useHistory} from 'react-router-dom'
 
 function AddColor() {
   const [editColor, setEditColor] = useState('')
   const [colorName, setColorName] = useState('')
 
   const dispatch = useDispatch()
+  const history = useHistory()
 
   const handleColorChange = (e) => {
     setEditColor(e.hex)
@@ -39,6 +41,7 @@ function AddColor() {
       favorite: false,
     }
     dispatch(actions.addNewColorApi(newColor))
+    history.push('/colors')
   }
   return (
     <>
