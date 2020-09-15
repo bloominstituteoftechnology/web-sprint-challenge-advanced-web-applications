@@ -24,10 +24,6 @@ const Login = props => {
       })
   }
 
-
-
-
-
   return (
     <>
       <h1>Welcome To The Greatest Bubble App There Ever Was!</h1>
@@ -43,7 +39,7 @@ const Login = props => {
           name="password"
           value={credentials.password}
           onChange={handleChange} />
-        <button>Login</button>
+        <button>Login Now!</button>
       </form>
     </>
   );
