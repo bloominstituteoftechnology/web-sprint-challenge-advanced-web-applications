@@ -20,7 +20,7 @@ const BubblePage = () => {
       .catch(error => {
         console.log(error);
       })
-  })
+  }, [])
 
   return (
     <>
