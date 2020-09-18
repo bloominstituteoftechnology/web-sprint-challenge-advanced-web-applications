@@ -25,7 +25,10 @@ const ColorList = ({ colors, updateColors }) => {
     // Make a put request to save your updated color
     // think about where will you get the id from...
     // where is is saved right now?
-    
+    axios.put(`http://localhost:5000/api/colors/${id}`, updateColors)
+      .then(response => {
+        console.log(response);
+      })
   };
 
   const deleteColor = color => {

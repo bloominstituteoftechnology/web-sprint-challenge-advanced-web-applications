@@ -15,6 +15,7 @@ const BubblePage = () => {
       .then(response => {
         console.log(response.data)
         localStorage.setItem("token", response.config.headers.Authorization)
+        setColorList(response.data);
       })
       .catch(error => {
         console.log(error);

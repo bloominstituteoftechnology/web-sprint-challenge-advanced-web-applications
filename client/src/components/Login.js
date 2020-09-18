@@ -18,7 +18,6 @@ const Login = () => {
     event.preventDefault()
     axiosWithAuth().post("/api/login", loginValues)
       .then(response => {
-        console.log(response)
         localStorage.setItem("token", response.config.headers.Authorization)
         history.push("/protected")
       })
