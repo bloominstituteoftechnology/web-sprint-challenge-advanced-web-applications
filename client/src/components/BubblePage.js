@@ -13,7 +13,7 @@ const BubblePage = () => {
   useEffect(() => {
     axiosWithAuth().get("/api/colors")
       .then(response => {
-        console.log(response)
+        console.log(response.data)
         localStorage.setItem("token", response.config.headers.Authorization)
       })
       .catch(error => {

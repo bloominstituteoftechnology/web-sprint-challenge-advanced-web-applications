@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useHistory, useParams } from "react-router-dom";
 
 const initialColor = {
   color: "",
@@ -10,6 +11,9 @@ const ColorList = ({ colors, updateColors }) => {
   console.log(colors);
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
+  const { id } = useParams();
+  const history = useHistory();
+  console.log(editing, colorToEdit, id)
 
   const editColor = color => {
     setEditing(true);
@@ -21,6 +25,7 @@ const ColorList = ({ colors, updateColors }) => {
     // Make a put request to save your updated color
     // think about where will you get the id from...
     // where is is saved right now?
+    
   };
 
   const deleteColor = color => {
