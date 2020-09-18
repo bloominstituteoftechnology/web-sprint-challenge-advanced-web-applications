@@ -1,6 +1,7 @@
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
 import BubblePage from "./BubblePage";
+import ColorList from "./ColorList";
 import { GetColors as mockGetColors } from "../utils/GetColors";
 
 //create mock *before* setting up test
@@ -22,7 +23,7 @@ test("Fetches data and renders the bubbles", async () => {
     data: mockData,
   });
   // Finish this test
-  const { getAllByTestId } = render(<BubblePage />);
+  const { getAllByTestId } = render(<ColorList colors={mockData} />);
 
   await waitFor(() => expect(getAllByTestId(/color/i)).toHaveLength(9));
 });
