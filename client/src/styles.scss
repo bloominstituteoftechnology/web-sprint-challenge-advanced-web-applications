@@ -20,6 +20,14 @@ body,
   }
 }
 
+.login {
+  width: 100%;
+  button {
+    width: 25%;
+    margin: 0 35%;
+  }
+}
+
 .spacer {
   height: 100%;
 }
@@ -75,12 +83,12 @@ form {
 
   label {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding: 4px 36px 4px 40px;
   }
 
   input {
-    width: 100px;
+    width: 150px;
   }
 }
 
