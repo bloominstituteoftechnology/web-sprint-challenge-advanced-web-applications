@@ -31,7 +31,7 @@ test("Fetches data and renders the bubbles", async () => {
   }) 
   const { debug, queryByText, getByText} = render(<BubblePage />)
   await wait( async () => {
-    await getByText('aliceblue')
+  await getByText('aliceblue')
   })
   await expect(queryByText(/aliceblue/i)).toBeInTheDocument()
   await expect(queryByText(/#f0f8ff/i)).toBeInTheDocument()
