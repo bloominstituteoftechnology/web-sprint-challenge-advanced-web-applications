@@ -12,7 +12,8 @@ const ColorList = ({ colors, updateColors }) => {
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
 
-  const { push } = useHistory();
+  // const { push } = useHistory();
+
   const editColor = (color) => {
     setEditing(true);
     setColorToEdit(color);
@@ -28,7 +29,7 @@ const ColorList = ({ colors, updateColors }) => {
       .put(`http://localhost:5000/api/colors/${colorToEdit.id}`, colorToEdit)
       .then((res) => {
         console.log("res from put", res);
-        push("/colors");
+        // push("/colors");
       })
       .catch((err) => {
         console.log("err from put", err);
@@ -49,7 +50,11 @@ const ColorList = ({ colors, updateColors }) => {
       <p>colors</p>
       <ul>
         {colors.map((color) => (
-          <li key={color.color} onClick={() => editColor(color)}>
+          <li
+            data-testid="colors"
+            key={color.color}
+            onClick={() => editColor(color)}
+          >
             <span>
               <span
                 className="delete"
