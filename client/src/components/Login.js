@@ -3,8 +3,8 @@ import { axiosWithAuth } from "../api/axiosWithAuth";
 import { useHistory } from "react-router";
 
 const Login = () => {
+  const history = useHistory()
   //setting up state
-  const history = useHistory();
     const [form,setForm] = useState({
         username:"",
         password:""
@@ -44,6 +44,7 @@ const Login = () => {
             name = "username"
             placeholder = "username"
             value = {form.username}
+            data-testid="username"
             onChange = {handleChanges}
              />
             </label>
@@ -54,10 +55,11 @@ const Login = () => {
             name = "password"
             placeholder = "password"
             value = {form.password}
+            data-testid="password"
             onChange = {handleChanges}
              />
             </label>
-            <button>Log in</button>
+            <button data-testid= "submit">Log in</button>
         </form>
     </>
   );

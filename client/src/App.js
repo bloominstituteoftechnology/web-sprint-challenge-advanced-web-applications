@@ -11,7 +11,7 @@ function App() {
       <div className="App">
       <h1>Bubbles App!</h1>
          <Link to = "/login"> Login </Link>
-         <Link to = "/bubbles"> bubbles</Link>
+         <Link to = "/bubbles"> Look at bubbles</Link>
       <Switch>
       <Route exact path = "/login" component = {Login} />
       <PrivateRoute exact path = "/bubbles" component = {BubblePage} />
