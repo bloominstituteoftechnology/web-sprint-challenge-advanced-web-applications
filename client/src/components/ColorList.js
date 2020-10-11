@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { axiosWithAuth } from "../api/axiosWithAuth";
 
 const initialColor = {
   color: "",
@@ -11,20 +11,48 @@ const ColorList = ({ colors, updateColors }) => {
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
 
+  //setting up the edit color function onclick takes. no clue why that isn't throwing an error
   const editColor = color => {
     setEditing(true);
     setColorToEdit(color);
   };
-
+  //setting up a function to re-call color data after making changes 
+  const reColor = () => {
+    axiosWithAuth().get('/colors')
+          .then(res => {
+            updateColors(res.data);
+          })
+          .catch(err => {
+            console.error(err);
+          })
+  }
   const saveEdit = e => {
     e.preventDefault();
     // Make a put request to save your updated color
     // think about where will you get the id from...
     // where is is saved right now?
-  };
+    axiosWithAuth()
+    .put(`/colors/${colorToEdit.id}`, colorToEdit )
+    .then((res) => {
+        console.log(res)
+        reColor()
+      })
+      .catch(err => {
+        console.error(err)
+      })
+}
 
   const deleteColor = color => {
     // make a delete request to delete this color
+    axiosWithAuth()
+          .delete(`/colors/${color.id}`)
+          .then((res) => {
+            console.log(res);
+            reColor()
+        })
+        .catch(err => {
+          console.error(err);
+        })
   };
 
   return (
