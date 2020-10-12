@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Route,Redirect } from "react-router-dom";
 
 const isUserAuthenticated = () =>{
@@ -6,17 +6,20 @@ const isUserAuthenticated = () =>{
 };
 
 
-const PrivateRoute = ({ component: Component, ...props }) =>{
-    return(
-        <Route
-        {...props}
-        render={() =>{
-            if(isUserAuthenticated()){
-                return <Component />
-            }
-            return <Redirect to= "/api/login" />;
+const PrivateRoute = ({ component: Component, ...rest }) => {
+    const token = window.localStorage.getItem("token");
+  
+    return (
+      <Route
+        {...rest}
+        render={(props) => {
+          if (token) {
+            return <Component {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
         }}
-        />
-    )
-}
+      />
+    );
+  };
 export default PrivateRoute;

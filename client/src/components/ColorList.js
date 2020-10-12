@@ -11,6 +11,7 @@ const ColorList = ({ colors, updateColors }) => {
   console.log(colors);
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
+  const [newColor, setNewColor] = useState(initialColor);
 
   const editColor = color => {
     setEditing(true);
@@ -23,9 +24,14 @@ const ColorList = ({ colors, updateColors }) => {
     // think about where will you get the id from...
     // where is is saved right now?
     axiosWithAuth()
-    .put(`/colorlists/${props.colorlist.id}`, colorToEdit)
+    .put(`api/colors/${colorToEdit.id}`, colorToEdit)
     .then((res) =>{
-      console.log(res)
+      setEditing(false);
+        updateColors(
+          colors.map(color => {
+            return color.id === colorToEdit.id ? res.data : color;
+          })
+        )
     })
     .catch((err) =>{
       console.log(err.message);
@@ -39,14 +45,19 @@ const ColorList = ({ colors, updateColors }) => {
   const deleteColor = color => {
     // make a delete request to delete this color
     axiosWithAuth()
-      .delete(`/colorlists/${props.colorlist.id}`)
-      .then((res) =>{
-        props.setColorList(res.data);
+      .delete(`api/colors/123${color.id}`)
+      .then((res) => {
+        updateColors(
+          colors.filter((colorItem) => {
+            return colorItem.id !== color.id;
+          })
+        )
       })
       .catch((err) =>{
         console.log(err.message);
       })
-  };
+    
+    }
 
   return (
     <div className="colors-wrap">

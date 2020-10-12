@@ -1,18 +1,20 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch,Link } from "react-router-dom";
 
 import Login from "./components/Login";
 import "./styles.scss";
 import PrivateRoute from "./components/PrivateRoute";
-import ColorList from "./components/ColorList";
+import BubblePage from "./components/BubblePage";
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Route exact path="/" component={Login} />
+        {/* <Link to="bubblepage">Bubbles</Link> */}
+        <Link to="login">Login</Link>
        <Switch>
-         <PrivateRoute exact path="/colorlist" component={ColorList} />
+         <PrivateRoute exact path="/bubblepage" component={BubblePage} />
          <Route component={Login} />
        </Switch>
       </div>
