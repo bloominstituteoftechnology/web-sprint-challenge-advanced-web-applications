@@ -1,24 +1,20 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen,wait, getByText } from "@testing-library/react";
 import BubblePage from "./BubblePage";
+import Login from "./Login"
 import { axiosWithAuth as mockAxios } from "../api/axiosWithAuth"
 
-const mockColor = {
-  code: {
-    hex: '#7fffd4'
-  },
-  color: 'aqua',
-  id: 1
-}
+console.log("kh: Bubblepage.test.js:mockaxios")
 test("Fetches data and renders the bubbles", async () => {
-  // Finish this test
-  mockAxios.mockResolvedValueOnce( mockColor );
-  const {getByTestId} = render(<BubblePage />)
+  const token = "ahuBHejkJJiMDhmODZhZi0zaeLTQ4ZfeaseOGZgesai1jZWYgrTA07i73Gebhu98"
+  localStorage.setItem('token', token);
+  const {getByText} = render(<BubblePage />)
 
   await wait (() => {
-    getByTestId(/color/i);
+    getByText(/blanchedalmond/i);
   });
-  const color = screen.getByTestId(/color/i);
+  const color = screen.getByText(/blanchedalmond/i);
+
   expect(color).toBeInTheDocument();
 
 });

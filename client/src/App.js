@@ -12,8 +12,12 @@ function App() {
       <div className="App">
         <Route exact path="/" component={Login} />
         {/* <Link to="bubblepage">Bubbles</Link> */}
+        <div className="nav">
         <Link to="login">Login</Link>
+        </div>
        <Switch>
+       
+
          <PrivateRoute exact path="/bubblepage" component={BubblePage} />
          <Route component={Login} />
        </Switch>

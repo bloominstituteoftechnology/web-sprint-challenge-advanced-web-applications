@@ -36,6 +36,8 @@ const Login = () => {
   }
   return (
     <div className= "login-form">
+          <h1>Bubbles</h1>
+
       <form onSubmit={login}>
         <label>Username:</label>
         <input

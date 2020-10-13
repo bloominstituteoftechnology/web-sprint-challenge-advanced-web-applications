@@ -6,7 +6,6 @@
     "@potion/element": "^1.0.0-next.0",
     "@potion/layout": "^1.0.0-next.0",
     "@testing-library/jest-dom": "^5.11.3",
-    "@testing-library/react": "^10.4.8",
     "@testing-library/user-event": "^12.1.1",
     "axios": "^0.19.2",
     "jest-environment-jsdom-sixteen": "^1.0.3",
@@ -14,7 +13,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.0"
+    "react-scripts": "^3.4.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -36,5 +35,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/react": "^10.4.9"
   }
 }
