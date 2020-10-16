@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import {axiosWithAuth} from './utils/axiosWithAuth'
 import { useParams, useHistory} from 'react-router-dom'
 //import AddColor from './AddColor'
 
@@ -20,15 +21,17 @@ const ColorList = ({ colors, updateColors }) => {
   };
 
   const saveEdit = e => {
-    e.preventDefault();
-    axios
-    .put(`http://localhost:5000/api/colors/${id}`, colors )
-    .then((res) => {
-colors()
+    axiosWithAuth()
+    .put(`http://localhost:5000/api/colors/${colorToEdit.id}`, colorToEdit)
+    .then(res => {
+      setEditing(false);
+      updateColors(
+        colors.map(color => {
+          return color.id === colorToEdit.id ? res.data : color;
+        })
+      )
     })
-    .catch((err) => {
-      console.error(err);
-    });
+    .catch(err => console.log(err));
     // Make a put request to save your updated color
     // think about where will you get the id from...
     // where is is saved right now?
@@ -36,17 +39,13 @@ colors()
   };
 
   const deleteColor = (color) => {
-    axios
-    .delete(`http://localhost:5000/api/colors/${id}`)
-    .then((res) => {
-      color(id)
+    axiosWithAuth()
+    .delete(`http://localhost:5000/api/colors/${color.id}`)
+    .then(res => {
+      updateColors(colors.filter(color => color.id !== res.data))
     })
-    .catch((err) => {
-      console.log(err)
-    })
-    // make a delete request to delete this color
-    //API to delete: `/api/colors/{id}`
-  };
+    .catch(err => console.log(err))
+};
 
   return (
     <div className="colors-wrap">
