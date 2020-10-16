@@ -1,5 +1,7 @@
 import React from "react";
 import LoginForm from "./LoginForm";
+import BubblePage from "./BubblePage";
+import PrivateRoute from "./PrivateRoute";
 
 const Login = () => {
   // make a post request to retrieve a token from the api

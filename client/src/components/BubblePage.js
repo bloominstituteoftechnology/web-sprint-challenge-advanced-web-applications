@@ -10,6 +10,7 @@ const BubblePage = () => {
   // set that data to the colorList state property
 
   componentDidMount() {
+    
   this.fetchColors(this.state.colorList);
   console.log("App: Component is mounted.");
   }
