@@ -15,7 +15,7 @@ const Login = (props) => {
     axios
       .post('http://localhost:5000/api/login',cred)
       .then(res => {
-        console.log('Login success: ', res.data.payload);
+        console.log('Login successful');
         localStorage.setItem("token",res.data.payload);
         setLoggedIn(true);
         push('/bubbles');
