@@ -7,20 +7,20 @@ const initialColor = {
   code: { hex: "" }
 };
 
-const ColorList = ({ colors, updateColors }) => {
+const ColorList = ({ colors, updateColors, editing, setEditing }) => {
   console.log(colors);
-  const [editing, setEditing] = useState(false);
+  // const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
 
-  const editColor = color => {
+  const editColor = color => { //good
     setEditing(true);
     setColorToEdit(color);
   };
 
-  const saveEdit = e => {
+  const saveEdit = e => { 
     e.preventDefault();
     axiosWithAuth()
-        .put(`/api/colors/${colorToEdit.id}`, colorToEdit)  // How can we update the animal information?
+        .put(`/api/colors/${colorToEdit.id}`, colorToEdit)  
         .then(res =>{
             // console.log(res.data)
             setEditing(false)
@@ -35,7 +35,7 @@ const ColorList = ({ colors, updateColors }) => {
     axiosWithAuth()
     .delete(`/api/colors/${colorToEdit.id}`, colorToEdit)
     .then(res => {
-        colorToEdit(colors.filter(item=> item.id !== color.id))
+        updateColors(colors.filter(item=> item.id !== color.id))
         setEditing(false)
     })
     .catch(err => console.log(err.response))
