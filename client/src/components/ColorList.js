@@ -1,54 +1,108 @@
 import React, { useState } from "react";
+import axios from "axios";
 import axiosWithAuth from "../utils/axiosWithAuth";
+import { history, useHistory } from "react-router-dom";
 
-const Login = (props) => {
-  const [login, setLogin] = useState({
-    username: "",
-    password: "",
-  });
-  const handleChange = (e) => {
-    setLogin({ ...login, [e.target.name]: e.target.value });
+const initialColor = {
+  color: "",
+  code: { hex: "" },
+};
+
+const ColorList = ({ colors, updateColors, edit, updateEdit }) => {
+  const [colorToEdit, setColorToEdit] = useState(initialColor);
+
+  const history = useHistory();
+
+  const editColor = (color) => {
+    console.log("editing", color);
+    updateEdit(true);
+    setColorToEdit(color);
   };
 
-  const handleSubmit = (e) => {
+  const saveEdit = (e) => {
     e.preventDefault();
+    console.log(colorToEdit);
     axiosWithAuth()
-      .post("/api/login", login)
+      .put(`/api/colors/${colorToEdit.id}`, colorToEdit)
       .then((res) => {
-        console.log(res);
-        localStorage.setItem("token", res.data.payload);
-        props.history.push("/bubblepage");
+        console.log(res.data);
+        updateColors([...colors, res.data]);
+        updateEdit(false);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => console.log(err));
   };
-  // make a post request to retrieve a token from the api
-  // when you have handled the token, navigate to the BubblePage route
+
+  const deleteColor = (color) => {
+    console.log("delete", color);
+    axiosWithAuth()
+      .delete(`/api/colors/${color.id}`)
+      .then((res) => {
+        updateEdit(true);
+        console.log(res);
+        updateEdit(false);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
-    <>
-      <div>
-        <h1>Welcome to the Bubble App!</h1>
-        <form onSubmit={handleSubmit}>
-          <input
-            name="username"
-            type="text"
-            value={props.username}
-            onChange={handleChange}
-            placeholder="Username"
-          />
-          <input
-            name="password"
-            type="password"
-            value={props.password}
-            onChange={handleChange}
-            placeholder="Password"
-          />
-          <button>Submit</button>
+    <div className="colors-wrap">
+      <p>colors</p>
+      <ul>
+        {colors.map((color) => (
+          <li key={color.color} onClick={() => editColor(color)}>
+            <span>
+              <span
+                className="delete"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  deleteColor(color);
+                }}
+              >
+                x
+              </span>{" "}
+              {color.color}
+            </span>
+            <div
+              className="color-box"
+              style={{ backgroundColor: color.code.hex }}
+            />
+          </li>
+        ))}
+      </ul>
+      {edit && (
+        <form onSubmit={saveEdit}>
+          <legend>edit color</legend>
+          <label>
+            color name:
+            <input
+              onChange={(e) =>
+                setColorToEdit({ ...colorToEdit, color: e.target.value })
+              }
+              value={colorToEdit.color}
+            />
+          </label>
+          <label>
+            hex code:
+            <input
+              onChange={(e) =>
+                setColorToEdit({
+                  ...colorToEdit,
+                  code: { hex: e.target.value },
+                })
+              }
+              value={colorToEdit.code.hex}
+            />
+          </label>
+          <div className="button-row">
+            <button type="submit">save</button>
+            <button onClick={() => updateEdit(false)}>cancel</button>
+          </div>
         </form>
-      </div>
-    </>
+      )}
+      <div className="spacer" />
+      {/* stretch - build another form here to add a color */}
+    </div>
   );
 };
 
-export default Login;
+export default ColorList;
