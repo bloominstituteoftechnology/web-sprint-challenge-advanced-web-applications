@@ -1,46 +1,36 @@
 import React, { useState } from "react";
-import axios from "axios";
 import axiosWithAuth from "../utils/axiosWithAuth";
-import { history, useHistory } from "react-router-dom";
 
 const initialColor = {
   color: "",
   code: { hex: "" },
 };
 
-const ColorList = ({ colors, updateColors, edit, updateEdit }) => {
+const ColorList = ({ colors, updateColors, editing, setEditing }) => {
+  console.log(colors);
+
   const [colorToEdit, setColorToEdit] = useState(initialColor);
 
-  const history = useHistory();
-
   const editColor = (color) => {
-    console.log("editing", color);
-    updateEdit(true);
+    setEditing(true);
     setColorToEdit(color);
   };
 
   const saveEdit = (e) => {
     e.preventDefault();
-    console.log(colorToEdit);
     axiosWithAuth()
       .put(`/api/colors/${colorToEdit.id}`, colorToEdit)
       .then((res) => {
-        console.log(res.data);
-        updateColors([...colors, res.data]);
-        updateEdit(false);
+        console.log("click", res);
+        setEditing(false);
       })
       .catch((err) => console.log(err));
   };
 
   const deleteColor = (color) => {
-    console.log("delete", color);
     axiosWithAuth()
-      .delete(`/api/colors/${color.id}`)
-      .then((res) => {
-        updateEdit(true);
-        console.log(res);
-        updateEdit(false);
-      })
+      .delete(`/api/colors/${colorToEdit.id}`, colorToEdit)
+      .then(setEditing(false))
       .catch((err) => console.log(err));
   };
 
@@ -69,7 +59,7 @@ const ColorList = ({ colors, updateColors, edit, updateEdit }) => {
           </li>
         ))}
       </ul>
-      {edit && (
+      {editing && (
         <form onSubmit={saveEdit}>
           <legend>edit color</legend>
           <label>
@@ -95,7 +85,7 @@ const ColorList = ({ colors, updateColors, edit, updateEdit }) => {
           </label>
           <div className="button-row">
             <button type="submit">save</button>
-            <button onClick={() => updateEdit(false)}>cancel</button>
+            <button onClick={() => setEditing(false)}>cancel</button>
           </div>
         </form>
       )}

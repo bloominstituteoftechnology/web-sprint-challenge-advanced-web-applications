@@ -2,65 +2,47 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axiosWithAuth from "../utils/axiosWithAuth";
 
-const initialState = {
-  credentials: { username: "Lambda School", password: "i<3Lambd4" },
-  errors: "",
-};
-
 const Login = () => {
-  const [state, setState] = useState(initialState);
+  const [login, setLogin] = useState({
+    username: "Lambda School",
+    password: "i<3Lambd4",
+  });
 
   const history = useHistory();
 
-  const handleChange = (e) => {
-    setState({
-      ...state,
-      credentials: { ...state.credentials, [e.target.name]: e.target.value },
-    });
-  };
-
-  const login = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     axiosWithAuth()
-      .post("/api/login", state.credentials)
+      .post("/api/login", login)
       .then((res) => {
-        console.log(res);
-        window.localStorage.setItem("token", res.data.payload);
+        localStorage.setItem("token", res.data.payload);
         history.push("/bubblepage");
       })
-      .catch((err) => {
-        setState({ ...state, errors: err.response.data.error });
-      });
+      .catch((err) => console.log(err));
   };
 
-  // make a post request to retrieve a token from the api
-  // when you have handled the token, navigate to the BubblePage route
+  const handleChange = (e) => {
+    setLogin({ ...login, [e.target.name]: e.target.value });
+  };
+
   return (
     <>
-      <div>
-        <h1>Welcome to the Bubble App!</h1>
-      </div>
-      <br />
-      <div>
-        <form onSubmit={login}>
-          <input
-            type="text"
-            name="username"
-            value={state.username}
-            placeholder="username"
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            name="password"
-            value={state.password}
-            placeholder="password"
-            onChange={handleChange}
-          />
-          <input type="submit" />
-        </form>
-        <p>{state.errors}</p>
-      </div>
+      <h1>Welcome to the Bubble App!</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="username"
+          value={login.username}
+          onChange={handleChange}
+        />
+        <input
+          type="password"
+          name="password"
+          value={login.password}
+          onChange={handleChange}
+        />
+        <button>Log In</button>
+      </form>
     </>
   );
 };
