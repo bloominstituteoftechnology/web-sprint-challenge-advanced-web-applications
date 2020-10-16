@@ -22,7 +22,7 @@ class LoginForm extends React.Component {
         e.preventDefault();
 
         axios
-        .post(('api/login'), this.state.credentials)
+        .post(('/api/login'), this.state.credentials)
         .then(res => {
             localStorage.setItem('token', res.data.token);
         })
