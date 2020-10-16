@@ -25,12 +25,27 @@ const ColorList = ({ colors, updateColors }) => {
       .put(`/colors/${colorToEdit.id}`, colorToEdit)
       .then(res => {
         console.log('ColorList: saveEdit: DT: ', res);
+
+        updateColors([
+          ...colors,
+          res.data
+        ]);
       })
       .catch(err => console.error('ColorList: saveEdit: DT: Error: ', err));
   };
 
   const deleteColor = color => {
     // make a delete request to delete this color
+    axiosWithAuth()
+      .delete(`/colors/${color.id}`)
+      .then(res => {
+        console.log('ColorList: deleteColor: DT: ', res);
+
+        updateColors(colors.filter(c => {
+          return c.id !== color.id;
+        }))
+      })
+      .catch(err => console.error('ColorList: deleteColor: DT: Error: ', err));
   };
 
   return (
