@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React/*, { useState }*/ from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Login from "./components/Login";
@@ -10,7 +10,7 @@ import "./styles.scss";
 
 function App() {
 
-  const [loggedIn, setLoggedIn] = useState(false);
+  // const [loggedIn, setLoggedIn] = useState(false);
 
   return (
     <Router>
@@ -21,7 +21,7 @@ function App() {
           render={(props)=>(
             <Login 
               {...props} 
-              setLoggedIn={setLoggedIn}
+              // setLoggedIn={setLoggedIn}
             />
           )}
         />

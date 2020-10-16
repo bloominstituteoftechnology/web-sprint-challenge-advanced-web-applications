@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
 const Login = (props) => {
-  const { setLoggedIn } = props;
+  // const { setLoggedIn } = props;
   const { push } = useHistory();
   const initialValues={
     username:"",
@@ -17,7 +17,7 @@ const Login = (props) => {
       .then(res => {
         console.log('Login successful');
         localStorage.setItem("token",res.data.payload);
-        setLoggedIn(true);
+        // setLoggedIn(true);
         push('/bubbles');
       })
       .catch(err=>{
