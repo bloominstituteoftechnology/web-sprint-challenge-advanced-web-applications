@@ -15,7 +15,7 @@ const BubblePage = () => {
       .then(res => {
         console.log('BubblePage: useEffect: DT: ', res);
 
-        setColorList()
+        setColorList(res.data);
       })
       .catch(err => console.error('BubblePage: useEffect: DT: Error: ', err));
   }, [])

@@ -29,7 +29,7 @@ const Login = () => {
       .then(res => {
         console.log('Login: useEffect: DT: ', res);
 
-        localStorage.setItem('auth-token', res.payload);
+        localStorage.setItem('auth-token', res.data.payload);
 
         push('/bubble');
       })
