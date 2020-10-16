@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
-const Login = () => {
-
+const Login = (props) => {
+  const { setLoggedIn } = props;
+  const { push } = useHistory();
   const initialValues={
     username:"",
     password:""
@@ -15,6 +17,8 @@ const Login = () => {
       .then(res => {
         console.log('Login success: ', res.data.payload);
         localStorage.setItem("token",res.data.payload);
+        setLoggedIn(true);
+        push('/bubbles');
       })
       .catch(err=>{
         console.log('Login error: ', err);
