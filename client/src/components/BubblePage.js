@@ -5,6 +5,7 @@ import {axiosWithAuth} from './axiosWithAuth'
 
 import Bubbles from "./Bubbles";
 import ColorList from "./ColorList";
+import {authColors} from './authColors';
 
 const BubblePage = () => {
   const [colorList, setColorList] = useState([]);
@@ -14,16 +15,31 @@ const BubblePage = () => {
 
   const getColors=()=>{
     console.log("Updating...");
-    axiosWithAuth()
-      .get('http://localhost:5000/api/colors')
+    authColors()
       .then(res=>{
         setColorList(res.data);
         console.log('Color list successful');
       })
       .catch(err=>{
         console.log("Error getting colors: ", err)
-      })
+        return err;
+      });
+
   }
+
+
+  // const getColors=()=>{
+  //   console.log("Updating...");
+  //   axiosWithAuth()
+  //     .get('http://localhost:5000/api/colors')
+  //     .then(res=>{
+  //       setColorList(res.data);
+  //       console.log('Color list successful');
+  //     })
+  //     .catch(err=>{
+  //       console.log("Error getting colors: ", err)
+  //     })
+  // }
   useEffect(()=>{
     console.log("Loading colors...");
     getColors();
