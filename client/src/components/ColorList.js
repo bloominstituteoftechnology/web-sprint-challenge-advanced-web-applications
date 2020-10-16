@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useParams, useHistory} from 'react-router-dom'
+//import AddColor from './AddColor'
 
 const initialColor = {
   color: "",
@@ -7,9 +9,10 @@ const initialColor = {
 };
 
 const ColorList = ({ colors, updateColors }) => {
-  console.log(colors);
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
+  const { id } = useParams()
+  const history = useHistory()
 
   const editColor = color => {
     setEditing(true);
@@ -18,13 +21,31 @@ const ColorList = ({ colors, updateColors }) => {
 
   const saveEdit = e => {
     e.preventDefault();
+    axios
+    .put(`http://localhost:5000/api/colors/${id}`, colors )
+    .then((res) => {
+colors()
+    })
+    .catch((err) => {
+      console.error(err);
+    });
     // Make a put request to save your updated color
     // think about where will you get the id from...
     // where is is saved right now?
+    //Put req API: `/api/colors/{id}
   };
 
-  const deleteColor = color => {
+  const deleteColor = (color) => {
+    axios
+    .delete(`http://localhost:5000/api/colors/${id}`)
+    .then((res) => {
+      color(id)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
     // make a delete request to delete this color
+    //API to delete: `/api/colors/{id}`
   };
 
   return (
@@ -81,6 +102,7 @@ const ColorList = ({ colors, updateColors }) => {
         </form>
       )}
       <div className="spacer" />
+      {/* <AddColor /> */}
       {/* stretch - build another form here to add a color */}
     </div>
   );
