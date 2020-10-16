@@ -29,11 +29,11 @@ const Login = () => {
       .then(res => {
         console.log('Login: useEffect: DT: ', res);
 
-        localStorage.setItem('auth-token', res.data);
+        localStorage.setItem('auth-token', res.payload);
 
         push('/bubble');
       })
-      .catch(err => console.error('Login: useEffect: DT: ', err));
+      .catch(err => console.error('Login: useEffect: DT: Error: ', err));
   };
 
   return (
