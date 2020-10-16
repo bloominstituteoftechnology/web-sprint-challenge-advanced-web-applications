@@ -16,5 +16,9 @@ test("Fetches data and renders the bubbles", async () => {
 
   render(<BubblePage/>);
 
-  
+  const bubbles = screen.getByTestId('bubbles');
+
+  await waitFor(() => {
+    expect(bubbles).toBeTruthy();
+  });
 });

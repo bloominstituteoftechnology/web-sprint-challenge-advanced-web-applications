@@ -1,6 +1,6 @@
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
-export const fetchColors = (url) => {
+export const fetchColors = () => {
     return axiosWithAuth()
       .get('/colors')
       .then(res => {
@@ -8,5 +8,19 @@ export const fetchColors = (url) => {
 
         return res;
       })
+      .catch(err => err);
+};
+
+export const saveEditedColor = (color) => {
+    return axiosWithAuth()
+      .put(`/colors/${color.id}`, color)
+      .then(res => res)
+      .catch(err => err);
+};
+
+export const deleteAColor = (color) => {
+    return axiosWithAuth()
+      .delete(`/colors/${color.id}`)
+      .then(res => res)
       .catch(err => err);
 };
