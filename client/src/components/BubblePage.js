@@ -13,7 +13,7 @@ const BubblePage = () => {
 
 
   const getColors=()=>{
-    console.log("Color list requested");
+    console.log("Updating...");
     axiosWithAuth()
       .get('http://localhost:5000/api/colors')
       .then(res=>{
@@ -25,6 +25,7 @@ const BubblePage = () => {
       })
   }
   useEffect(()=>{
+    console.log("Loading colors...");
     getColors();
   },[]);
   return (
