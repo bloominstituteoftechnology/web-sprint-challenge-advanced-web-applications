@@ -7,7 +7,7 @@ import { fetchColors as mockFetchColors } from {BubblePage};
 test("Fetches data and renders the bubbles", () => {
   // Finish this test
 
-jest.mock('./fetchColors');
+jest.mock('fetchColors');
     describe("Test App", ()=>{
         test("renders without errors", ()=>{
             render(<App />);
@@ -28,6 +28,21 @@ test('fetches colors', async () => {
 
 };
   });
-  
-  mockFetchColors.mockResolvedValueOnce(newColors);
-    };
+
+mockFetchColors.mockResolvedValueOnce(newColors);
+
+//renders bubbles tests 
+
+describe('Getting Bubbles Tests', ()=>{
+    test('renders without errors', ()=>{
+        render(<Bubbles bubbles={[]}/>)
+    });
+const { rerender } = render(<Bubbles bubbles={[]}/>);
+        expect(screen.queryAllByText('bubbles')).toStrictEqual([]);
+
+        rerender(<Bubbles bubbles={newBubbles}/>);
+
+        expect(screen.queryAllByText('bubbles')).toHaveLength(2);
+    });
+});
+};
