@@ -1,89 +1,54 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axiosWithAuth from "../utils/axiosWithAuth";
 
-const initialColor = {
-  color: "",
-  code: { hex: "" }
-};
-
-const ColorList = ({ colors, updateColors }) => {
-  console.log(colors);
-  const [editing, setEditing] = useState(false);
-  const [colorToEdit, setColorToEdit] = useState(initialColor);
-
-  const editColor = color => {
-    setEditing(true);
-    setColorToEdit(color);
+const Login = (props) => {
+  const [login, setLogin] = useState({
+    username: "",
+    password: "",
+  });
+  const handleChange = (e) => {
+    setLogin({ ...login, [e.target.name]: e.target.value });
   };
 
-  const saveEdit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    // Make a put request to save your updated color
-    // think about where will you get the id from...
-    // where is is saved right now?
+    axiosWithAuth()
+      .post("/api/login", login)
+      .then((res) => {
+        console.log(res);
+        localStorage.setItem("token", res.data.payload);
+        props.history.push("/bubblepage");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
-
-  const deleteColor = color => {
-    // make a delete request to delete this color
-  };
-
+  // make a post request to retrieve a token from the api
+  // when you have handled the token, navigate to the BubblePage route
   return (
-    <div className="colors-wrap">
-      <p>colors</p>
-      <ul>
-        {colors.map(color => (
-          <li key={color.color} onClick={() => editColor(color)}>
-            <span>
-              <span className="delete" onClick={e => {
-                    e.stopPropagation();
-                    deleteColor(color)
-                  }
-                }>
-                  x
-              </span>{" "}
-              {color.color}
-            </span>
-            <div
-              className="color-box"
-              style={{ backgroundColor: color.code.hex }}
-            />
-          </li>
-        ))}
-      </ul>
-      {editing && (
-        <form onSubmit={saveEdit}>
-          <legend>edit color</legend>
-          <label>
-            color name:
-            <input
-              onChange={e =>
-                setColorToEdit({ ...colorToEdit, color: e.target.value })
-              }
-              value={colorToEdit.color}
-            />
-          </label>
-          <label>
-            hex code:
-            <input
-              onChange={e =>
-                setColorToEdit({
-                  ...colorToEdit,
-                  code: { hex: e.target.value }
-                })
-              }
-              value={colorToEdit.code.hex}
-            />
-          </label>
-          <div className="button-row">
-            <button type="submit">save</button>
-            <button onClick={() => setEditing(false)}>cancel</button>
-          </div>
+    <>
+      <div>
+        <h1>Welcome to the Bubble App!</h1>
+        <form onSubmit={handleSubmit}>
+          <input
+            name="username"
+            type="text"
+            value={props.username}
+            onChange={handleChange}
+            placeholder="Username"
+          />
+          <input
+            name="password"
+            type="password"
+            value={props.password}
+            onChange={handleChange}
+            placeholder="Password"
+          />
+          <button>Submit</button>
         </form>
-      )}
-      <div className="spacer" />
-      {/* stretch - build another form here to add a color */}
-    </div>
+      </div>
+    </>
   );
 };
 
-export default ColorList;
+export default Login;
