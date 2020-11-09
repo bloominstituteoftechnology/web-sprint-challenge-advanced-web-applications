@@ -11,7 +11,7 @@ const Login = () => {
      event.preventDefault()
 
      axiosWithAuth()
-      .post('http://localhost:5000/api/login', data) // send the data object
+      .post('/api/login', data) // send the data object
       .then(result => {
         console.log(result.data)
         localStorage.setItem('payload', result.data.payload) // stores token in localStorage so that it persists
