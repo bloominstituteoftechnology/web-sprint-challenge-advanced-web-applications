@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-
 import { useHistory } from 'react-router-dom';
 import axiosWithAuth from "../utils/axiosWithAuth";
 
-// username: 'Lambda School', password: 'i<3Lambd4'
+// username: '', password: ''
 const initialValues = {
-  credentials: {username: '', password: ''}
+  credentials: {username: 'Lambda School', password: 'i<3Lambd4'}
 }
 
 const Login = () => {
@@ -26,7 +25,6 @@ const handleChange = (e) => {
 
 const submitForm = (e) => {
   e.preventDefault();
-  
     axiosWithAuth()
     .post('/login', formValues.credentials)
       .then(res => {
@@ -34,7 +32,6 @@ const submitForm = (e) => {
         push("/bubblepage");
       })
       .catch(err => console.log(err));
-
 };
 
   

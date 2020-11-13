@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FetchColors } from "../api/fetchColors";
+import { FetchColors } from "../api/FetchColors";
 import Bubbles from "./Bubbles";
 import ColorList from "./ColorList";
 

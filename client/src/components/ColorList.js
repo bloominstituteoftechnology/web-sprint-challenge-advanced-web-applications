@@ -23,13 +23,20 @@ const ColorList = ({ colors, updateColors }) => {
     axiosWithAuth()
       .put(`/colors/${colorToEdit.id}`, colorToEdit)
       .then(res => {
-        let newColors = [...colors];
-        newColors.splice(
-          colors.findIndex(color => color.id === colorToEdit.id),
-          1,
-          res.data
+        console.log(res);
+        updateColors(
+          colors.map(color => {
+            return color.id === colorToEdit.id ? res.data : color;
+          })
         )
-        updateColors(newColors);
+        // first try lol
+        // let newColors = [...colors];
+        // newColors.splice(
+        //   colors.findIndex(color => color.id === colorToEdit.id),
+        //   1,
+        //   res.data
+        // )
+        // updateColors(newColors);
         setEditing(false);
       })
       .catch(err=> console.log(err)); 
