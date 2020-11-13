@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
-import axios from 'axios';
+import React, { useState } from "react";
+
 import { useHistory } from 'react-router-dom';
+import axiosWithAuth from "../utils/axiosWithAuth";
 
 // username: 'Lambda School', password: 'i<3Lambd4'
 const initialValues = {
@@ -13,21 +14,7 @@ const Login = () => {
 const [formValues, setFormValues] = useState(initialValues);
 const { push } = useHistory();
 
-const submitForm = (e) => {
-  e.preventDefault();
-  useEffect(()=> {
-    axios
-    .get('http://localhost:5000/api/login', formValues.credentials)
-      .then(res => {
-        localStorage.setItem("token", res.data.payload);
-        push("/colors");
-      })
-      .catch(err => console.log(err));
-    
-  }, []);
-};
-
-  const handleChange = (e) => {
+const handleChange = (e) => {
     setFormValues({
       credentials: {
         ...formValues.credentials,
@@ -35,6 +22,22 @@ const submitForm = (e) => {
       }
     });
   };
+
+
+const submitForm = (e) => {
+  e.preventDefault();
+  
+    axiosWithAuth()
+    .post('/login', formValues.credentials)
+      .then(res => {
+        localStorage.setItem("token", res.data.payload);
+        push("/bubblepage");
+      })
+      .catch(err => console.log(err));
+
+};
+
+  
 
   return (
     <>
@@ -44,17 +47,17 @@ const submitForm = (e) => {
         type="text"
         name="username"
         onChange={handleChange}
-        value={formValues.username}
+        value={formValues.credentials.username}
         placeholder="username"
         />
         <input
         type="password"
         name="password"
         onChange={handleChange}
-        value={formValues.password}
+        value={formValues.credentials.password}
         placeholder="password"
         />
-        <button onClick={()=>push("/bubblepage")}>Log In</button>
+        <button>Log In</button>
       </form>
     </>
   );
