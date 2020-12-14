@@ -1,6 +1,11 @@
 import React, {useState} from "react";
+import axiosWithAuth from "../utils/AxiosWithAuth";
 
-const Login = () => {
+
+
+
+const Login = (props) => {
+
 
 const [form, setForm] = useState({
   username: "",
@@ -8,7 +13,7 @@ const [form, setForm] = useState({
 })
 
 
-let onChange = (e) => {
+let handleChange = (e) => {
   e.preventDefault()
   setForm({
     ...form,
@@ -16,25 +21,39 @@ let onChange = (e) => {
   })
 }
 
+const signIn = (e) => {
+  e.preventDefault()
+  axiosWithAuth.post("/api/login", form)
+  .then(res => {
+    console.log(res)
+    window.localStorage.setItem('token', res.data.payload)
+    props.history.push('/protected')
+  })
+  .catch(err => {
+    console.error(err.response)
+  })
+
+}
+
 
 
 
   return (
     <div>
-      <form>
+      <form onSubmit={signIn}>
         <input
         name="username"
         type="text"
         placeholder="Username"
         value={form.username}
-        onChange= {onChange}
+        onChange= {handleChange}
         />
         <input
-        name="username"
+        name="password"
         type="text"
         placeholder="Password"
         value={form.Password}
-        onChange= {onChange}
+        onChange= {handleChange}
         />
         <button>Login!</button>
       </form>
