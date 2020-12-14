@@ -14,7 +14,7 @@ function App() {
         <Link to="/login">Login</Link>
         </li>
         <li>
-        <Link to="/colors">Bubble Page</Link>
+        <Link to="/protected">Bubble Page</Link>
         </li>
         </ul>
 
