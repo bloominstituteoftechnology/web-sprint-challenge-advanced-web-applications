@@ -28,9 +28,16 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. Explain what a token is used for.
+It is used to authenticate a user and allow them access to a particaul part of your app.
+
 2. What steps can you take in your web apps to keep your data secure?
+Have tokens display on the back end so that way they are no avaialbe to anyone who is not supposed to see them
+
 3. Describe how web servers work.
+Whenever a browser needs a file that is hosted on a web server, the browser requests the file via HTTP. When the request reaches the correct (hardware) web server, the (software) HTTP server accepts the request, finds the requested document, and sends it back to the browser, also through HTTP
+
 4. Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
+PUT, POST,GET, & DELETE. 
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade. 
 
