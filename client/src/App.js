@@ -9,9 +9,14 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <ul>
+          <li>
         <Link to="/login">Login</Link>
+        </li>
+        <li>
         <Link to="/colors">Bubble Page</Link>
-
+        </li>
+        </ul>
 
         <Switch>
         <Route exact path="/login" component={Login} />

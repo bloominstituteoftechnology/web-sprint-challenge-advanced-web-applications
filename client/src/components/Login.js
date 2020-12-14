@@ -23,7 +23,7 @@ let handleChange = (e) => {
 
 const signIn = (e) => {
   e.preventDefault()
-  axiosWithAuth.post("/api/login", form)
+  axiosWithAuth().post("/api/login", form)
   .then(res => {
     console.log(res)
     window.localStorage.setItem('token', res.data.payload)
