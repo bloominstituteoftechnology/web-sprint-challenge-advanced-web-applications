@@ -14,11 +14,11 @@ const Login = (props) => {
   const login = (e) => {
     e.preventDefault();
     axios
-      .post("/api/login", info)
+      .post("http://localhost:5000/api/login", info)
       .then((res) => {
         console.log(res);
         localStorage.setItem("token", res.data.payload);
-        props.history.push("/private");
+        props.history.push("/bubblepage");
       })
       .catch((err) => {
         if (err.response) {

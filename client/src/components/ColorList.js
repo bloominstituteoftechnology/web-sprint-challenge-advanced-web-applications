@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory, useParams } from "react-router-dom";
+import axiosWithAuth from "../api/axiosWithAuth";
 
 const initialColor = {
   color: "",
@@ -13,6 +14,14 @@ const ColorList = ({ colors, updateColors }) => {
   const [colorToEdit, setColorToEdit] = useState(initialColor);
   const params = useParams();
   const { push } = useHistory();
+  const auth = axiosWithAuth();
+
+  // const fetchColor = (id) => {
+  //   auth
+  //     .get(`/api/movies/${id}`)
+  //     .then((res) => updateColors(res.data))
+  //     .catch((err) => console.log(err.response));
+  // };
 
   const editColor = (color) => {
     setEditing(true);
@@ -21,6 +30,12 @@ const ColorList = ({ colors, updateColors }) => {
 
   const saveEdit = (e) => {
     e.preventDefault();
+    auth
+      .put(`/api/colors/${id}`, colors)
+      .then(() => {
+        updateColors();
+      })
+      .catch();
     // Make a put request to save your updated color
     // think about where will you get the id from...
     // where is is saved right now?
@@ -28,13 +43,13 @@ const ColorList = ({ colors, updateColors }) => {
 
   const deleteColor = (color) => {
     // make a delete request to delete this color
-    // axios
-    //   .delete(`http://localhost:5000/api/colors/${params.id}`)
-    //   .then(() => {
-    //     setMovieList(movieList.filter((item) => item.id !== movie.id));
-    //     push("/");
-    //   })
-    //   .catch((err) => console.log(err.response));
+    auth
+      .delete(`/api/colors/${params.id}`)
+      .then(() => {
+        updateColors(colors.filter((item) => item.id !== colors.id));
+        push("/");
+      })
+      .catch((err) => console.log(err.response));
   };
 
   return (
