@@ -24,7 +24,9 @@ const ColorList = ({ colors, updateColors }) => {
     .put(`/colors/${id}`, colorToEdit)
     .then(res => {
       updateColors(colors.map(color =>
-      color.id === res.data.id ? res.data : color))
+      color.id === res.data.id ? 
+      res.data :
+       color))
     })
     .catch(err => console.log('ERROR: ', err))
     // Make a put request to save your updated color
