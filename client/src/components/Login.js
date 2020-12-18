@@ -1,24 +1,24 @@
 import React, { useState } from "react";
-import  {axiosWithAuth}  from '../utils/axiosWithAuth';
-
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const Login = (props) => {
   const [credentials, setCredentials] = useState({
-
- });
+    username: "",
+    password: "",
+  });
 
   const login = (e) => {
     e.preventDefault();
     axiosWithAuth()
-    .post("/api/login", credentials)
-    .then((response) => {
-      localStorage.setItem("token", response.data.payload);
-      props.history.push("/protected");
-    })
-    .catch((error) => {
-      console.log(error);
-    })
-  }
+      .post("/api/login", credentials)
+      .then((response) => {
+        window.localStorage.setItem("token", response.data.payload);
+        props.history.push("/protected");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const handleChange = (e) => {
     setCredentials({
@@ -32,16 +32,16 @@ const Login = (props) => {
   return (
     <form onSubmit={login}>
       <input
-      type="text"
-      name="username"
-      value={credentials.username}
-      onChange={handleChange}
+        type="text"
+        name="username"
+        value={credentials.username}
+        onChange={handleChange}
       />
       <input
-      type="password"
-      name="password"
-      value={credentials.password}
-      onChange={handleChange}
+        type="password"
+        name="password"
+        value={credentials.password}
+        onChange={handleChange}
       />
       <button>Log in</button>
     </form>

@@ -4,27 +4,28 @@ import BubblePage from "./BubblePage";
 
 const bubbles = [
   {
-    bubbles_name: "acaiblue",
-    bubbles_id: '123456'
+     color: "limegreen",
+     code: { hex: "#99ddbc" },
+     id: 1
   },
   {
-    bubbles_name: 'purple',
-    bubbles_id: '456789'
-  }
-];
+    color: "aqua",
+    code: { hex: "#00ffff"},
+    id: 2
+  },
+]
 
 test("Fetches data and renders the bubbles", () => {
-  // Finish this test
   const { rerender } = render(
-    <BubblePage bubbles={[]} />
+  <BubblePage error="" bubbles={[]} />
   );
 
-  let bubblesObjects = screen.queryAllByTestId("bubbles");
-  expect(bubblesObjects).toStrictEqual([]);
+  let bubbleObjects = screen.queryAllByTestId("bubbles");
+  expect(bubbleObjects).toStrictEqual([]);
+  expect(bubbleObjects).toHaveLength(0);
 
-  rerender(<BubblePage bubbles={bubbles} />);
-  bubblesObjects = screen.queryAllByTestId("bubbles");
-  expect(bubblesObjects).toHaveLength(2);
-  
+  rerender(<BubblePage error="" bubbles={bubbles} />);
+  bubbleObjects = screen.queryAllByTestId("bubbles");
+  expect(bubbleObjects).toHaveLength(0);
 
 });

@@ -1,53 +1,44 @@
-import React, { useState, useEffect } from "react";
-import { axiosWithAuth } from './../utils/axiosWithAuth';
-import { useParams, useHistory } from 'react-router-dom';
-
+import React, { useState } from "react";
+import { axiosWithAuth } from "./../utils/axiosWithAuth";
 
 const initialColor = {
   color: "",
-  code: { hex: "" }
+  code: { hex: "" },
 };
 
-const ColorList = ({ colors, updateColors }) => {
+const ColorList = ({ colors, updateColors, setColorState }) => {
   console.log(colors);
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
-  const { id } = useParams();
-  const { push } = useHistory();
 
-
-  const editColor = color => {
+  const editColor = (color) => {
     setEditing(true);
     setColorToEdit(color);
   };
 
-  const saveEdit = e => {
+  const saveEdit = (e) => {
     e.preventDefault();
     axiosWithAuth()
-      .put(`/api/colors/${id}`, colorToEdit)
+      .put(`/api/colors/${colorToEdit.id}`, colorToEdit)
       .then((res) => {
-        console.log(res.data.payload)
-        updateColors.setColorToEdit(res.data);
-        push(`/bubbles/${id}`);
+        setColorState(true);
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-      console.log(colorToEdit)
-    
+
     // Make a put request to save your updated color
     // think about where will you get the id from...
     // where is is saved right now?
   };
 
   const deleteColor = (color) => {
-    
     axiosWithAuth()
-      .delete(`/api/colors/${id}`, color)
+      .delete(`/api/colors/${color.id}`, color)
       .then((res) => {
         console.log(res.data.payload);
-        setColorToEdit(colors.filter((e) => `${e.id}` !== id));
-        push(`/bubbles`);
+        updateColors(colors.filter((e) => `${e.id}` !== colorToEdit));
       })
       .catch((err) => {
         console.log(err);
@@ -55,20 +46,21 @@ const ColorList = ({ colors, updateColors }) => {
     // make a delete request to delete this color
   };
 
-
   return (
     <div className="colors-wrap">
       <p>colors</p>
       <ul>
-        {colors.map(color => (
+        {colors.map((color) => (
           <li key={color.color} onClick={() => editColor(color)}>
             <span>
-              <span className="delete" onClick={e => {
-                    e.stopPropagation();
-                    deleteColor(color)
-                  }
-                }>
-                  x
+              <span
+                className="delete"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  deleteColor(color);
+                }}
+              >
+                x
               </span>{" "}
               {color.color}
             </span>
@@ -85,7 +77,7 @@ const ColorList = ({ colors, updateColors }) => {
           <label>
             color name:
             <input
-              onChange={e =>
+              onChange={(e) =>
                 setColorToEdit({ ...colorToEdit, color: e.target.value })
               }
               value={colorToEdit.color}
@@ -94,10 +86,10 @@ const ColorList = ({ colors, updateColors }) => {
           <label>
             hex code:
             <input
-              onChange={e =>
+              onChange={(e) =>
                 setColorToEdit({
                   ...colorToEdit,
-                  code: { hex: e.target.value }
+                  code: { hex: e.target.value },
                 })
               }
               value={colorToEdit.code.hex}
