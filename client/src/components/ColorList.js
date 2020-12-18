@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+import { axiosWithAuth } from '../utlis/axiosWithAuth';
+import { useHistory } from 'react-router-dom';
+
 const initialColor = {
   color: "",
   code: { hex: "" }
@@ -21,10 +24,29 @@ const ColorList = ({ colors, updateColors }) => {
     // Make a put request to save your updated color
     // think about where will you get the id from...
     // where is is saved right now?
+
+    axiosWithAuth()
+      .put(`http://localhost:5000/api/colors/${colorToEdit.id}`, colorToEdit)
+      .then(response => {
+        setEditing(false);
+        updateColors(
+          colors.map(color => {
+            return color.id === colorToEdit.id ? response.data : color;
+          })
+        );
+      })
+      .catch(error => console.error(error));
   };
 
   const deleteColor = color => {
     // make a delete request to delete this color
+
+    axiosWithAuth()
+      .delete(`http://localhost:5000/api/colors/${color.id}`)
+      .then(response => {
+        updateColors(colors.filter(color => color.id !== response.data))
+      })
+      .catch(error => console.error(error))
   };
 
   return (
@@ -32,7 +54,7 @@ const ColorList = ({ colors, updateColors }) => {
       <p>colors</p>
       <ul>
         {colors.map(color => (
-          <li key={color.color} onClick={() => editColor(color)}>
+          <li key={color.color} onClick={() => editColor(color)} data-testid='color'>
             <span>
               <span className="delete" onClick={e => {
                     e.stopPropagation();
