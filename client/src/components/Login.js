@@ -7,7 +7,7 @@ const initialState = {
   password: ''
 }
 
-const Login = () => {
+const Login = props => {
   const [formValues, setFormValues] = useState(initialState)
   const push = useHistory()
   // make a post request to retrieve a token from the api
@@ -23,10 +23,10 @@ const handleUpdate = e => {
 const handleSubmit = e => {
   e.preventDefault()
   axiosWithAuth()
-    .get('/login', formValues)
+    .post('/login', formValues)
     .then(res => {
       localStorage.setItem('token', res.data.payload)
-      push('/bubble-page')
+      props.history.push('/bubble-page')
     })
     .catch(err => console.log('ERROR: ', err))
 }
