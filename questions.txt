@@ -7,7 +7,7 @@ Implementing authentication and authorization systems if need be.
 
 
 3. Describe how web servers work.
-A web server is a computer and the code that runs it, each connected in a chain to pass requests until the target computer is reached and the client's request is served.
+Web servers work by passing HTTP requests along until the target is reached and the client's request is answered and then sent back across the wire to the client to be processed/rendered/whatever.
 
 
 
