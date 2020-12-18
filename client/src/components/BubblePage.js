@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 import Bubbles from "./Bubbles";
 import ColorList from "./ColorList";
@@ -15,18 +16,20 @@ class BubblePage extends React.Component {
   }
   // fetch your colors data from the server when the component mounts
   // set that data to the colorList state property
+  setColorList = updatedColors => {
+    this.setState({
+      ...this.state,
+      colorList: updatedColors
+    })
+  }
 
   componentDidMount() {
     this.setState({
       ...this.state,
       isLoading: true
     })
-    axios
-      .get(`http://localhost:5000/api/colors`, {
-        headers: {
-          authorization: localStorage.getItem('token')
-        }
-      })
+    axiosWithAuth()
+      .get(`/colors`)
       .then(res => {
         this.setState({
           ...this.state,
@@ -45,10 +48,9 @@ class BubblePage extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <>
-        <ColorList colors={this.state.colorList} updateColors={this.setState} />
+        <ColorList colors={this.state.colorList} updateColors={this.setColorList} />
         <Bubbles colors={this.state.colorList} />
       </>
     );
