@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
+import {useParams} from 'react-router-dom';
+import {axiosWithAuth} from '../utils/axiosWithAuth';
 
 const initialColor = {
   color: "",
@@ -7,20 +8,36 @@ const initialColor = {
 };
 
 const ColorList = ({ colors, updateColors }) => {
-  console.log(colors);
+ 
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
+  const { id } = useParams();
 
   const editColor = color => {
     setEditing(true);
     setColorToEdit(color);
+
   };
+
 
   const saveEdit = e => {
     e.preventDefault();
+    console.log(e.target.color)
     // Make a put request to save your updated color
     // think about where will you get the id from...
     // where is is saved right now?
+    const editedColor = {color: colorToEdit.color, code: {hex: colorToEdit.code.hex}, id: colorToEdit.id}
+    axiosWithAuth()
+    .put(`/api/colors/${id}`, colorToEdit)
+    .then((res) => {
+      console.log(colorToEdit)
+      updateColors([
+        ...colors, 
+         res.data
+      ])
+    })
+    .catch((err) => console.log(err))
+    
   };
 
   const deleteColor = color => {
@@ -36,7 +53,7 @@ const ColorList = ({ colors, updateColors }) => {
             <span>
               <span className="delete" onClick={e => {
                     e.stopPropagation();
-                    deleteColor(color)
+                    deleteColor(color.id)
                   }
                 }>
                   x
@@ -57,7 +74,7 @@ const ColorList = ({ colors, updateColors }) => {
             color name:
             <input
               onChange={e =>
-                setColorToEdit({ ...colorToEdit, color: e.target.value })
+                setColorToEdit({ ...colorToEdit, color: e.target.value})
               }
               value={colorToEdit.color}
             />
