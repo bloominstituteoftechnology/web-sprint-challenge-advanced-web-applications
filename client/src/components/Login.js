@@ -23,7 +23,7 @@ const Login = () => {
     event.preventDefault();
 
     axiosWithAuth()
-      .post('/api/login', login)
+      .post('/login', login)
       .then(response => {
         localStorage.setItem('token', response.data.payload);
         history.push('/bubble-page');
