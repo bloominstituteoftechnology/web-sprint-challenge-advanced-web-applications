@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useHistory } from 'react-router-dom'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 
 const initialState = {
@@ -9,7 +8,6 @@ const initialState = {
 
 const Login = props => {
   const [formValues, setFormValues] = useState(initialState)
-  const push = useHistory()
   // make a post request to retrieve a token from the api
   // when you have handled the token, navigate to the BubblePage route
 
