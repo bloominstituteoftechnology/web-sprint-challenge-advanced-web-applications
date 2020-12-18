@@ -90,7 +90,7 @@ test("Fetches data and renders the bubbles", () => {
   );
 
   const colorList = queryAllByTestId(/color/i);
-  expect(colorList).toHaveLencth(0);
+  expect(colorList).toHaveLength(0);
   rerender(<BubblePage colors={colorsData} />);
-  
+
 });
