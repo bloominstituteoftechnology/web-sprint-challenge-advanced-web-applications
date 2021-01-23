@@ -52,7 +52,6 @@ export default function Login(props) {
     username: "",
     password: "",
   });
-  
   console.log(credentials);
 
   const classes = useStyles();
