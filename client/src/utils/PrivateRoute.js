@@ -16,3 +16,5 @@ const PrivateRoute = ({ component: Comment, ...rest }) => {
     />
   );
 };
+
+export default PrivateRoute;
