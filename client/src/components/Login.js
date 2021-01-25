@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import { useHistory } from "react-router-dom";
 
 class Login extends React.Component {
   // make a post request to retrieve a token from the api
@@ -37,19 +36,19 @@ class Login extends React.Component {
     return (
       <>
         <h1>Welcome to the Bubble App!</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <input
             name="username"
             type="text"
-            value={login.username}
-            onChange={handleChanges}
+            value={this.state.login.username}
+            onChange={this.handleChanges}
             placeholder="username"
           />
           <input
             name="password"
             type="password"
-            value={login.password}
-            onChange={handleChanges}
+            value={this.state.login.password}
+            onChange={this.handleChanges}
             placeholder="password"
           />
           <button type="submit">Login</button>
