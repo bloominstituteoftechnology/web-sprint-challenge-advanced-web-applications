@@ -11,7 +11,8 @@ const ColorList = ({ colors, updateColors }) => {
   console.log(colors);
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
-  const history = useHistory();
+  const [colorAdd, setColorAdd] = useState(initialColor);
+  const { history } = useHistory();
 
   const editColor = (color) => {
     setEditing(true);
@@ -26,10 +27,10 @@ const ColorList = ({ colors, updateColors }) => {
     axiosWithAuth()
       .put(`/api/colors/${colorToEdit.id}`, colorToEdit)
       .then((res) => {
-        updateColors([...colors, res.data]);
-        history.push("/bubbles/reload");
+        console.log(`Save Edit ${res}`);
+        history(0);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(`Save Edit - Error ${err.response}`));
   };
 
   const deleteColor = (color) => {
@@ -37,9 +38,10 @@ const ColorList = ({ colors, updateColors }) => {
     axiosWithAuth()
       .delete(`/api/colors/${color.id}`)
       .then((res) => {
-        history.push("/bubbles/reload");
+        console.log(`Delete Color: ${res}`);
+        history(0);
       })
-      .catch((err) => console.log(err.response));
+      .catch((err) => console.log(`Delete Color - Error ${err.response}`));
   };
 
   return (

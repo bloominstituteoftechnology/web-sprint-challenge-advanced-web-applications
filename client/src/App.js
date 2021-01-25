@@ -16,17 +16,18 @@ function App() {
   return (
     <Router>
       <nav>
-        <p>
-          <Link to="login">Login</Link>
-        </p>
-        <p>
-          <Link to="/bubbles">Bubbles</Link>
-        </p>
+        <ul>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+          <li>
+            <Link to="/bubbles">Bubbles</Link>
+          </li>
+        </ul>
       </nav>
       <Switch>
         <PrivateRoute exact path="/bubbles" components={BubblePage} />
-        <Redirect exact from="/bubbles/reload" to="/bubbles" />
-        <Route exact path="/" components={Login} />
+        <Route path="/login" component={Login} />
         <Route component={Login} />
       </Switch>
     </Router>
