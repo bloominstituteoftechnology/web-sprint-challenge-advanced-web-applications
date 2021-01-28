@@ -42,6 +42,7 @@ class Login extends React.Component {
             placeholder="1"
             value={this.state.credentials.username}
             onChange={this.handleChange}
+            id="username"
           />
           <input
             type="password"
@@ -49,6 +50,7 @@ class Login extends React.Component {
             placeholder="2"
             value={this.state.credentials.password}
             onChange={this.handleChange}
+            id="password"
           />
           <button>Log in</button>
         </form>

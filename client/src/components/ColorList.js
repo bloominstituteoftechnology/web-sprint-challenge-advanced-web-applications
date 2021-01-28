@@ -9,11 +9,9 @@ const initialColor = {
 };
 
 const ColorList = ({ colors, updateColors }) => {
-  console.log(colors);
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
   const [colorToAdd, setColorToAdd] = useState(initialColor);
-  const { go } = useHistory();
 
   const editColor = color => {
     setEditing(true);
@@ -28,8 +26,9 @@ const ColorList = ({ colors, updateColors }) => {
         axiosWithAuth()
       .put(`/api/colors/${colorToEdit.id}`, colorToEdit)
       .then(res => {
-        console.log(res);
-        go(0);
+        axiosWithAuth().get('/api/colors').then(res => {        const colorsArray = res.data;
+          updateColors(colorsArray);}).catch(err => console.log(err));
+
       })
       .catch(err => console.log(err));
   };
@@ -39,8 +38,8 @@ const ColorList = ({ colors, updateColors }) => {
     axiosWithAuth()
       .delete(`/api/colors/${color.id}`)
       .then(res => {
-        console.log(res);
-                go(0);
+        axiosWithAuth().get('/api/colors').then(res => {        const colorsArray = res.data;
+          updateColors(colorsArray);}).catch(err => console.log(err));
       })
       .catch(err => console.log(err));
   };
@@ -49,8 +48,8 @@ const ColorList = ({ colors, updateColors }) => {
     e.preventDefault();
     axiosWithAuth().post('/api/colors', colorToAdd)
     .then(res => {
-      console.log(res);
-      go(0);
+      axiosWithAuth().get('/api/colors').then(res => {        const colorsArray = res.data;
+        updateColors(colorsArray);}).catch(err => console.log(err));
     })
     .catch(err => console.log(err));
   };
