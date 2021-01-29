@@ -1,9 +1,17 @@
 import React from 'react';
 
 const EditMenu = ({colorToEdit, saveEdit, setColorToEdit, setEditing}) => {
-    return(<form onSubmit={saveEdit}>
+
+
+
+    return(
+    
+    <form onSubmit={saveEdit} onClick={console.log('clicked')}>
+
         <legend>edit color</legend>
+
         <label htmlFor="colorName">color name:</label>
+
         <input
           name="colorName"
           id="colorName"
@@ -14,6 +22,7 @@ const EditMenu = ({colorToEdit, saveEdit, setColorToEdit, setEditing}) => {
         />
       
         <label htmlFor="hex">hex code:</label>
+
         <input
           name="hex"
           id="hex"
@@ -27,9 +36,13 @@ const EditMenu = ({colorToEdit, saveEdit, setColorToEdit, setEditing}) => {
         />
       
         <div className="button-row">
+
           <button type="submit">save</button>
+
           <button onClick={() => setEditing(false)}>cancel</button>
+
         </div>
+        
     </form>);
 }
 
