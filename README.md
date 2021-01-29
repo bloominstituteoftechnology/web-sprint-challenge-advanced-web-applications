@@ -29,14 +29,14 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 
 ### Task 1: Project Set Up
 
-- [ ] Create a forked copy of this project
-- [ ] Clone your OWN version of the repository (Not Lambda's by mistake!)
-- [ ] Create a new branch: git checkout -b `<firstName-lastName>`.
-- [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
-- [ ] Push commits: git push origin `<firstName-lastName>`
- - [ ] **LOOK** at the files in your root directory and notice it' is just a plain ol' React App that we've built using create-react-app.
- - [ ] **RUN** npm install install your dependences
- - [ ] **RUN** npm start to fire up your React application.
+- [x] Create a forked copy of this project
+- [x] Clone your OWN version of the repository (Not Lambda's by mistake!)
+- [x] Create a new branch: git checkout -b `<firstName-lastName>`.
+- [x] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
+- [x] Push commits: git push origin `<firstName-lastName>`
+ - [x] **LOOK** at the files in your root directory and notice it' is just a plain ol' React App that we've built using create-react-app.
+ - [x] **RUN** npm install install your dependences
+ - [x] **RUN** npm start to fire up your React application.
 
  **Setting up the CodeGrade webhook**
 Go [here](./CodeGrade-webhook.md) to setup the CodeGrade webhook before you begin.
