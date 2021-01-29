@@ -1,35 +1,55 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import EditMenu from './EditMenu';
-// import axios from 'axios'; 
+import {axiosWithAuth} from '../helpers/axiosWithAuth';
+import { useParams } from 'react-router-dom'; 
 
 const initialColor = {
   color: "",
   code: { hex: "" }
 };
 
-const ColorList = ({ colors, updateColors }) => {
+const ColorList = ({ colors, setColorList }) => {
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
-
   const editColor = color => {
     setEditing(true);
     setColorToEdit(color);
   };
 
   const saveEdit = e => {
-    // e.preventDefault();
-
+    e.preventDefault();
+    axiosWithAuth()
+    .put(`http://localhost:5000/api/colors/${colorToEdit.id}`, colorToEdit)
+    .then(res => {
+      setColorList(
+        colors.map((color) => {
+          if (color.id === res.data.id) {
+            return res.data;
+          } else {
+            return color;
+          }
+        })
+      );
+    // go somewhere else
+    })
+    .catch(err => {
+      console.log('error from saveEdit', err)
+    })
   };
 
   const deleteColor = color => {
-    // DELETE request to http://localhost:5000/api/colors/123, using dynamic id at the end 
-    //preventDefault? 
-    // axios.delete('http://localhost:5000/api/colors/${id}')
-    // .then(res => {
-    //   console.log(res.data)
-      // setColo
-    // })
-  };
+      axiosWithAuth()
+      .delete(`http://localhost:5000/api/colors/${colorToEdit.id}`)
+      .then(res => {
+        setColorList(colors.filter((color => color.id !== res.data)));
+        })
+      .catch(err => {
+        console.log('error from deleteColor', err)
+      })
+}
+  //need to update your react application, filter
+  // pass setter function where API call is, rebuild bubbles data
+  // LOOK AT END OF WALK THROUGH from last night!
 
   return (
     <div className="colors-wrap">

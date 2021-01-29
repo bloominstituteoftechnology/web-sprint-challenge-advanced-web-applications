@@ -24,7 +24,7 @@ axiosWithAuth()
 
   return (
     <>
-      <ColorList colors={colorList} updateColors={setColorList} />
+      <ColorList colors={colorList} setColorList={setColorList} />
       <Bubbles colors={colorList} />
     </>
   );

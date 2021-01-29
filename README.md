@@ -29,14 +29,14 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 
 ### Task 1: Project Set Up
 
-- [ ] Create a forked copy of this project
-- [ ] Clone your OWN version of the repository (Not Lambda's by mistake!)
-- [ ] Create a new branch: git checkout -b `<firstName-lastName>`.
-- [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
-- [ ] Push commits: git push origin `<firstName-lastName>`
- - [ ] **LOOK** at the files in your root directory and notice it' is just a plain ol' React App that we've built using create-react-app.
- - [ ] **RUN** npm install install your dependences
- - [ ] **RUN** npm start to fire up your React application.
+- [x] Create a forked copy of this project
+- [x] Clone your OWN version of the repository (Not Lambda's by mistake!)
+- [x] Create a new branch: git checkout -b `<firstName-lastName>`.
+- [x] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
+- [x] Push commits: git push origin `<firstName-lastName>`
+ - [x] **LOOK** at the files in your root directory and notice it' is just a plain ol' React App that we've built using create-react-app.
+ - [x] **RUN** npm install install your dependences
+ - [x] **RUN** npm start to fire up your React application.
 
  **Setting up the CodeGrade webhook**
 Go [here](./CodeGrade-webhook.md) to setup the CodeGrade webhook before you begin.
@@ -48,16 +48,16 @@ Your finished project must include all of the following requirements.
 #### Stage 1 - Authentication
 Build a login form to authenticate your users.
 
-- [ ] Construct an AXIOS request to retrieve a token from the server. You'll use this token to interact with the API
-- [ ] Save the token to localStorage
-- [ ] Build a `axiosWithAuth` module to create an instance of axios with the authentication header
-- [ ] Build a `PrivateRoute` component and use it to protect a route that renders the `BubblesPage` component
+- [x] Construct an AXIOS request to retrieve a token from the server. You'll use this token to interact with the API
+- [x] Save the token to localStorage
+- [x] Build a `axiosWithAuth` module to create an instance of axios with the authentication header
+- [x] Build a `PrivateRoute` component and use it to protect a route that renders the `BubblesPage` component
 
 #### Stage 2 - Consuming the API
 
 - [x] When `BubblePages` renders, make a GET request to fetch the color data for your bubbles. (issue with network)
-- [ ] In `ColorList.js`, complete the `saveEdit` and `deleteColor` functions to make AJAX requests to the API to edit/delete data
-- [ ] Watch and enjoy as your app responds to updates in the data. Check out `Bubbles.js` to see how this is built.
+- [x] In `ColorList.js`, complete the `saveEdit` and `deleteColor` functions to make AJAX requests to the API to edit/delete data
+- [x] Watch and enjoy as your app responds to updates in the data. Check out `Bubbles.js` to see how this is built.
 
 #### API Documentation
 
