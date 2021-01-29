@@ -21,26 +21,24 @@ const ColorList = ({ colors, updateColors }) => {
 	const saveEdit = (e) => {
 		e.preventDefault();
 		axiosWithAuth()
-			.put(`colors/${id}`, colorToEdit)
+			.put(`/colors/${id}`, colorToEdit)
 			.then((res) => {
 				updateColors(
-					colors.filter((color) =>
-						color.id === res.data.id ? res.data : color
-					)
+					colors.map((color) => (color.id === res.data.id ? res.data : color))
 				);
 			})
 			.catch((err) => console.log("ERROR: ", err));
 	};
 
 	const deleteColor = (color) => {
+		const colorId = 0;
 		axiosWithAuth()
 			.delete(`/colors/${id}`)
 			.then((res) => {
-				updateColors(
-					colors.filter((color) => {
-						return color.id !== res.data;
-					})
+				const newColors = colors.filter(
+					(color) => Number(color.id) !== Number(res.data)
 				);
+				updateColors(newColors);
 			})
 			.catch((err) => console.log("ERROR:", err));
 	};
