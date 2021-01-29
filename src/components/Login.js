@@ -25,9 +25,12 @@ const Login = (props) => {
       })
       .catch((err)=>{
         console.log(err)
+        if(err){
+          return(<h1>Username or Password not valid</h1>)
+        }
       })
   }
-  console.log(formData)
+  // console.log(formData)
 
 
   return (
@@ -36,8 +39,8 @@ const Login = (props) => {
         Welcome to the Bubble App!
         <p>Login here</p>
         <form >
-          <input placeholder="username" type='text' value={formData.username} name='username' onChange={handleChange}/>
-          <input type='password'value={formData.password} name='password'onChange={handleChange}/>
+          <input lable="username" placeholder="username" type='text' value={formData.username} name='username' onChange={handleChange}/>
+          <input lable="password" type='password'value={formData.password} name='password'onChange={handleChange}/>
         </form>
         <button onClick={handleFormSubmit}>login</button>
       </h1>
