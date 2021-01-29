@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import axios from "axios";
+import EditMenu from './EditMenu';
+import axiosWithAuth from '../helpers/axiosWithAuth';
+import { useHistory } from "react-router-dom";
 
 const initialColor = {
   color: "",
@@ -7,8 +9,12 @@ const initialColor = {
 };
 
 const ColorList = ({ colors, updateColors }) => {
+
+  console.log('Byeee', colors)
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
+
+  const { push } = useHistory();
 
   const editColor = color => {
     setEditing(true);
@@ -17,10 +23,24 @@ const ColorList = ({ colors, updateColors }) => {
 
   const saveEdit = e => {
     e.preventDefault();
-
+    axiosWithAuth().put(`/colors/${colorToEdit.id}`, colorToEdit)
+    .then((res) =>{
+      push('/')
+    })
+    .catch((err) =>{
+      console.log(err);
+    })
   };
 
   const deleteColor = color => {
+    axiosWithAuth().delete(`/colors/${color.id}`, color)
+    .then((res) =>{
+      updateColors(res.data);
+      push('/protected')
+    })
+    .catch((err) =>{
+      console.log(err);
+    })
   };
 
   return (
