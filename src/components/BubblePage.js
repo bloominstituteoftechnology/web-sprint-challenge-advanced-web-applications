@@ -13,9 +13,9 @@ useEffect(()=> {
   //set colorlist to state 
   //catch errors
 axiosWithAuth()
-.get('/colors')
+.get('http://localhost:5000/api')
 .then(res => {
-  console.log(res.data)
+  setColorList(res.data)
 })
 .catch(err => {
   console.log('useEffect', err)

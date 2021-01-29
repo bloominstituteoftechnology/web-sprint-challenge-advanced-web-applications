@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import EditMenu from './EditMenu';
-import axios from 'axios'; 
+// import axios from 'axios'; 
 
 const initialColor = {
   color: "",
