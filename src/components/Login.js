@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {useHistory} from 'react-router-dom';
 import axios from "axios";
 
@@ -27,7 +27,8 @@ const loginUser = (e) => {
   e.preventDefault(); 
   axios.post('http://localhost:5000/api/login', credentials)
 .then(res => {
-  localStorage.setItem('token', res.data)
+  localStorage.setItem('token', res.data.payload)
+  // console.log(res.data.payload)
   history.push('/bubblepage')
 })
 .catch(err => {

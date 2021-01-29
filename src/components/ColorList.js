@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
 import EditMenu from './EditMenu';
+import axios from 'axios'; 
 
 const initialColor = {
   color: "",
@@ -17,11 +17,18 @@ const ColorList = ({ colors, updateColors }) => {
   };
 
   const saveEdit = e => {
-    e.preventDefault();
+    // e.preventDefault();
 
   };
 
   const deleteColor = color => {
+    // DELETE request to http://localhost:5000/api/colors/123, using dynamic id at the end 
+    //preventDefault? 
+    // axios.delete('http://localhost:5000/api/colors/${id}')
+    // .then(res => {
+    //   console.log(res.data)
+      // setColo
+    // })
   };
 
   return (
