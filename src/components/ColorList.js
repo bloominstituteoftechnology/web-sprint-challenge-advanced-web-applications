@@ -22,7 +22,7 @@ const ColorList = ({ colors, updateColors }) => {
 
   const saveEdit = e => {
     e.preventDefault();
-    axiosWithAuth().put(`http://localhost:5000/api/colors/${colorToEdit.id}`, colorToEdit)
+    axiosWithAuth().put(`/colors/${colorToEdit.id}`, colorToEdit)
     .then((res) =>{
 
       push('/')
@@ -33,7 +33,7 @@ const ColorList = ({ colors, updateColors }) => {
   };
 
   const deleteColor = color => {
-    axiosWithAuth().delete(`http://localhost:5000/api/colors/${color.id}`, color)
+    axiosWithAuth().delete(`/colors/${color.id}`, color)
     .then((res) =>{
       updateColors(res.data);
       push('/bubble-page');
