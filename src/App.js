@@ -12,7 +12,7 @@ function App() {
       <div className="App">
       <Switch>
         <Route exact path="/" component={Login} />
-        <PrivateRoute exact path='/bubble-page' component={BubblePage} ></PrivateRoute>
+        <PrivateRoute exact path='/protected' component={BubblePage} ></PrivateRoute>
       </Switch>
         
       </div>
