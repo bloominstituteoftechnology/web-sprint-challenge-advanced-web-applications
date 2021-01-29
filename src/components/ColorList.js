@@ -10,6 +10,7 @@ const initialColor = {
 const ColorList = ({ colors, updateColors }) => {
 	const [editing, setEditing] = useState(false);
 	const [colorToEdit, setColorToEdit] = useState(initialColor);
+	//This id const is purely for aesthetics in the HTTP requests.
 	const id = `${colorToEdit.id}`;
 
 	const editColor = (color) => {
@@ -23,16 +24,17 @@ const ColorList = ({ colors, updateColors }) => {
 			.put(`colors/${id}`, colorToEdit)
 			.then((res) => {
 				updateColors(
-					colors.map((color) => (color.id === res.data.id ? res.data : color))
+					colors.filter((color) =>
+						color.id === res.data.id ? res.data : color
+					)
 				);
 			})
 			.catch((err) => console.log("ERROR: ", err));
 	};
 
-	const deleteColor = () => {
-		// make a delete request to delete this color
+	const deleteColor = (color) => {
 		axiosWithAuth()
-			.delete(`colors/${id}`)
+			.delete(`/colors/${id}`)
 			.then((res) => {
 				updateColors(
 					colors.filter((color) => {
