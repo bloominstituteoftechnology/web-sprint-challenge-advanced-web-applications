@@ -10,7 +10,6 @@ const initialColor = {
 
 const ColorList = ({ colors, updateColors }) => {
 
-  console.log('Byeee', colors)
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
 
@@ -25,9 +24,18 @@ const ColorList = ({ colors, updateColors }) => {
     e.preventDefault();
     axiosWithAuth().put(`/colors/${colorToEdit.id}`, colorToEdit)
     .then((res) =>{
-      push('/')
+      setEditing(false)
+      axiosWithAuth()
+          .get('/colors')
+          .then((res) => {
+            updateColors(res.data);
+          })
+          .catch((err) =>{
+            console.log(err)
+          })
     })
     .catch((err) =>{
+      push('/bubble-page')
       console.log(err);
     })
   };
@@ -35,10 +43,17 @@ const ColorList = ({ colors, updateColors }) => {
   const deleteColor = color => {
     axiosWithAuth().delete(`/colors/${color.id}`, color)
     .then((res) =>{
-      updateColors(res.data);
-      push('/protected')
+      setEditing(false);
+      axiosWithAuth().get('/colors')
+      .then((res) =>{
+        updateColors(res.data)
+      })
+      .catch((err) =>{
+        console.log(err)
+      })
     })
     .catch((err) =>{
+      push('/bubble-page')
       console.log(err);
     })
   };
