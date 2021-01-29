@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import EditMenu from './EditMenu';
 import {axiosWithAuth} from '../helpers/axiosWithAuth';
-import { useParams } from 'react-router-dom'; 
 
 const initialColor = {
   color: "",
@@ -56,7 +55,7 @@ const ColorList = ({ colors, setColorList }) => {
       <p>colors</p>
       <ul>
         {colors.map(color => (
-          <li key={color.color} onClick={() => editColor(color)}>
+          <li data-testid="color" key={color.color} onClick={() => editColor(color)}>
             <span>
               <span className="delete" onClick={e => {
                     e.stopPropagation();
