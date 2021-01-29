@@ -1,10 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+const initialValue = {
+  username: "",
+  password: "",
+};
+
 const Login = () => {
+  const [login, setLogin] = useState(initialValue);
   // make a post request to retrieve a token from the api
   // when you have handled the token, navigate to the BubblePage route
-  const onChange = () => {};
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setLogin({
+      ...login,
+      [name]: value,
+    });
+  };
 
   return (
     <>
