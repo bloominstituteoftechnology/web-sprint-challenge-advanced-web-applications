@@ -10,7 +10,6 @@
     "@testing-library/user-event": "^12.1.1",
     "axios": "^0.19.2",
     "jest-environment-jsdom-sixteen": "^1.0.3",
-    "node-sass": "^4.13.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.2.0",
@@ -38,6 +37,7 @@
     ]
   },
   "devDependencies": {
-    "msw": "^0.21.3"
+    "msw": "^0.21.3",
+    "sass": "^1.32.5"
   }
 }
