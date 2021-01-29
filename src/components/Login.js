@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { axiosWithAuth } from "./../utils/axiosWithAuth";
 
 const initialValue = {
   username: "",
@@ -18,9 +19,22 @@ const Login = () => {
     });
   };
 
+  const loginSubmit = (e) => {
+    e.preventDefault();
+    axiosWithAuth()
+      .post("/api/login", login)
+      .then((res) => {
+        console.log(res.data.payload);
+        localStorage.setItem("token", res.data.payload);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <>
-      <form action="">
+      <form onSubmit={loginSubmit}>
         <label htmlFor="username">Username</label>
         <input
           type="text"
@@ -37,6 +51,7 @@ const Login = () => {
           onChange={onChange}
           placeholder="password"
         />
+        <button>Login</button>
       </form>
     </>
   );
