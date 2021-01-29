@@ -6,7 +6,7 @@ const initialState = {
 	password: "",
 };
 
-const Login = () => {
+const Login = (props) => {
 	const [formValues, setFormValues] = useState(initialState);
 
 	// make a post request to retrieve a token from the api
@@ -24,7 +24,7 @@ const Login = () => {
 			.post("login", formValues)
 			.then((res) => {
 				localStorage.setItem("token", res.data.payload);
-				// props.history.push("/bubble-page");
+				props.history.push("/bubble-page");
 			});
 	}, [formValues]);
 
