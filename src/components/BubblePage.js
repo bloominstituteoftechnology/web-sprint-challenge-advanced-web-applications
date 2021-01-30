@@ -8,34 +8,36 @@ import { fetchBubbles } from '../api/fetchBubbles'
 const BubblePage = () => {
   const [colorList, setColorList] = useState([]);
 
-  useEffect(() => {
-    fetchBubbles()
-    .then( res => {
-      fetchBubbles()
-      .then(() => {
-        setColorList(res.data);
-      });
-    })
-    .catch(err => {
-      console.log('error from BubblePage api', err)
-    })
-  }, [])
+  //for testing?
+  // useEffect(() => {
+  //   fetchBubbles()
+  //   .then( res => {
+  //     fetchBubbles()
+  //     .then(() => {
+  //       setColorList(res.data);
+  //       console.log(res.data)
+  //     });
+  //   })
+  //   .catch(err => {
+  //     console.log('error from BubblePage api', err)
+  //   })
+  // }, [])
 
-// useEffect(()=> {
-  //get request 
-  //use auth
-  //set colorlist to state 
-  //catch errors
-// axiosWithAuth()
-// .get('http://localhost:5000/api')
-// .then(res => {
-//   console.log(res.data)
-//   setColorList(res.data)
-// })
-// .catch(err => {
-//   console.log('useEffect', err)
-// })
-// }, [])
+useEffect(()=> {
+  // get request 
+  // use auth
+  // set colorlist to state 
+  // catch errors
+axiosWithAuth()
+.get('http://localhost:5000/api')
+.then(res => {
+  console.log(res.data)
+  setColorList(res.data)
+})
+.catch(err => {
+  console.log('useEffect', err)
+})
+}, [])
 
   return (
     <>
