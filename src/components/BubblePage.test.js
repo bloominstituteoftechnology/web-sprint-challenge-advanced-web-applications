@@ -33,4 +33,4 @@ test("Fetches data and renders the bubbles on mounting", () => {
 
 // data-testid="color"
 // expect(screen.getAllByTestId('color')).toHaveLength(2);
-};
+});
