@@ -39,6 +39,9 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
  - [ ] **RUN** npm start to fire up your React application.
 
 ### Task 2: Setting up the CodeGrade webhook**
+- [ ] Ensure that your projects are complete on your <firstName-lastName> branch.
+- [ ] Merge your <firstName-lastName> branch into your main branch.
+- [ ] Push your main branch to github and check that it is registers within codegrade.
 - [ ] Go [here](./CodeGrade-webhook.md) to setup the CodeGrade webhook before you begin.
 
 
