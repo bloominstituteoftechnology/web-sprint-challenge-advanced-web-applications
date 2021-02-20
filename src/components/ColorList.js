@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
-
+import {axiosWithAuth} from "../api/axiosWithAuth";
+import EditMenu from "./EditMenu"
 const initialColor = {
   color: "",
   code: { hex: "" }
