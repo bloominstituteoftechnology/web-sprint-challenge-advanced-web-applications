@@ -104,6 +104,18 @@ These goals may or may not be things you have learned in this module but they bu
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. Add your answers to the questions within `interview_answers.md` file. These will not be counted as a part of your sprint score but will be helpful for preparing you for your endorsement interview, and enhancing overall understanding.
 
 1. Explain what a token is used for.
+    Tokens are used for security. They tell the server that the user is 
+    authorized to recieve certain data. If there is no token, the data is 
+    not given to the user.
 2. What steps can you take in your web apps to keep your data secure?
+    The best way to keep your data secure is to store it on a server 
+    instead of the front-end. The use of tokens to authorize the fetching
+    of data on the server is a way you can keep data secure in addition to 
+    storing it on the server.
 3. Describe how web servers work.
+    Web servers store and recieve data. The data on them is used by the front-end and displayed on webpages. Using the HTTP methods, a webpage can send requests to the server to get data, add new data, update existing data, or delete data. 
 4. Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
+    The C in CRUD stands for Create, and the POST method is used for that.
+    the R in CRUD stands for Read, and the GET method is what we use.
+    the U in CRUD stands for Update, and we use the PUT method.
+    Finally, the D in CRUD stands for Delete, and we use the DELETE method to do that.
