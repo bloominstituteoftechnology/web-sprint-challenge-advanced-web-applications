@@ -19,7 +19,7 @@ const BubblePage = () => {
   return (
     <>
       <ColorList colors={colorList} updateColors={setColorList} />
-      <Bubbles colors={colorList} />
+      <Bubbles data-testid='bubbles' colors={colorList} />
     </>
   );
 };

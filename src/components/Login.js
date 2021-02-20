@@ -5,6 +5,7 @@ import axios from "axios";
 const Login = () => {
   const { push } = useHistory();
 
+  const [error, setError] = useState('');
   const [cred, setCred] = useState({
     username: '',
     password: ''
@@ -18,12 +19,11 @@ const Login = () => {
     e.preventDefault();
     axios.post('http://localhost:5000/api/login', cred)
     .then(res => {
-      console.log(res);
       localStorage.setItem('token', res.data.payload);
       push('./bubblepage');
     })
     .catch(err => {
-      console.log(err);
+      setError('Username or Password not valid.')
     });
   };
 
@@ -73,6 +73,7 @@ const Login = () => {
           </label>
           <button>Log In</button>
         </form>
+        {error && <h2>{error}</h2>}
       </h1>
     </>
   );
