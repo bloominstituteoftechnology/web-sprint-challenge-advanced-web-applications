@@ -11,8 +11,6 @@ function App() {
     <Router>
       <div className="App">
         <nav className="links">
-          <Link to="/"> Login</Link>
-          <Link to="/bubblespage">Bubbles</Link>
         </nav>
 
         <Switch>
