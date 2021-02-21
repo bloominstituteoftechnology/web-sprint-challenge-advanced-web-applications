@@ -1,38 +1,63 @@
-import React, { useEffect } from "react";
+import React from "react";
 import axios from "axios";
-
-const Login = () => {
+import { axiosWithAuth } from "../helpers/axiosWithAuth";
+class Login extends React.Component  {
   // make a post request to retrieve a token from the api
   // when you have handled the token, navigate to the BubblePage route
+  state = {
+    credentials: {
+      username: '',
+      password: ''
+    },
+    isFetching: false
+  };
 
-  useEffect(()=>{
-    axios
-      .delete(`http://localhost:5000/api/colors/1`, {
-        headers:{
-          'authorization': "ahuBHejkJJiMDhmODZhZi0zaeLTQ4ZfeaseOGZgesai1jZWYgrTA07i73Gebhu98"
-        }
-      })
-      .then(res=>{
-        axios.get(`http://localhost:5000/api/colors`, {
-          headers:{
-            'authorization': ""
-          }
-        })
-        .then(res=> {
-          console.log(res);
-        });
+  handleChange = e => {
+    this.setState({
+      credentials: {
+        ...this.state.credentials,[e.target.name]:e.target.value
+      }
+    });
+  }  
+
+  login = e => {
+    e.preventDefault();
+    this.setState({
+      isFetching: true
+    });
+    axiosWithAuth().post('/api/login', this.state.credentials)
+      .then((res) => {
         console.log(res);
+        localStorage.setItem('token',  res.data.payload);
+        this.props.history.push('/protected')
       })
-  });
-
+      .catch((err) => {
+        console.error(err.message);
+        localStorage.removeItem('token')
+      });
+  }
+ render(){   
   return (
-    <>
-      <h1>
-        Welcome to the Bubble App!
-        <p>Build a login page here</p>
-      </h1>
-    </>
+    <div>
+    <form onSubmit={this.login}>
+      <input
+        type="text"
+        name="username"
+        value={this.state.credentials.username}
+        onChange={this.handleChange}
+      />
+      <input
+        type="password"
+        name="password"
+        value={this.state.credentials.password}
+        onChange={this.handleChange}
+      />
+      <button>Log in</button>
+      {this.state.isFetching && "logging in"}
+    </form>
+  </div>
   );
+ }   
 };
 
 export default Login;
