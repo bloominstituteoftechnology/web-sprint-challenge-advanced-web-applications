@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { axiosWithAuth } from "../helpers/axiosWithAuth";
 import EditMenu from "./EditMenu";
+import NewColor from "./NewColor";
 
 
 const initialColor = {
@@ -71,8 +72,9 @@ const ColorList = ({ colors, updateColors }) => {
           </li>
         ))}
       </ul>
-      { editing && <EditMenu colorToEdit={colorToEdit} saveEdit={saveEdit} setColorToEdit={setColorToEdit} setEditing={setEditing}/> }
-
+      { editing && <EditMenu colorToEdit={colorToEdit} saveEdit={saveEdit} setColorToEdit={setColorToEdit} setEditing={setEditing}/>}
+      <NewColor updateColorList={updateColors}/>
+           
     </div>
   );
 };
