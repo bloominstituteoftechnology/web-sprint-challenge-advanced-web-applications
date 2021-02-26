@@ -3,9 +3,11 @@ import { Pack } from "@potion/layout";
 import { Svg, Circle } from "@potion/element";
 
 const Bubbles = ({ colors }) => {
+
+  console.log(colors)
   const [bubbleData, setBubbleData] = useState([]);
   useEffect(() => {
-    const generateBubbleData = colors.map((_, i) => ({
+    const generateBubbleData =colors.map((_, i) => ({
       value: Math.floor(Math.random() * (colors.length * 2)) + 1,
       key: `${i + 1}`
     }));
@@ -27,7 +29,7 @@ const Bubbles = ({ colors }) => {
           animate
         >
           {nodes =>
-           [ nodes]
+             nodes
               .map(({ x, y, r, key }, i) => {
                 if (i < colors.length) {
                   return (

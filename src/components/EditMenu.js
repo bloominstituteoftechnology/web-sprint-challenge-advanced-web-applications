@@ -32,5 +32,4 @@ const EditMenu = ({colorToEdit, saveEdit, setColorToEdit, setEditing}) => {
         </div>
     </form>);
 }
-
 export default EditMenu;

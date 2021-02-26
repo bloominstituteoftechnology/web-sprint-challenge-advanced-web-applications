@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { axiosWithAuth } from "../Axios/AxiosWithAuth"
 import EditMenu from "./EditMenu";
 
+
 const initialColor = {
   color: "",
   code: { hex: "" },
@@ -22,6 +23,7 @@ export const ColorList = ({ colors, updateColors }) => {
     axiosWithAuth()
       .put(`/colors/${colorToEdit.id}`,colorToEdit )
       .then((res) => {
+        console.log(res)
         const newState = colors.map(color =>{
           if (color.id ===res.data.id){
             return colorToEdit
@@ -43,6 +45,7 @@ export const ColorList = ({ colors, updateColors }) => {
     axiosWithAuth()
       .delete(`/colors/${color.id}`)
       .then((res) => {
+        console.log(res)
         const filteredColor = colors.filter(color =>Number(color.id) !==Number(res.data));
         updateColors(filteredColor)
         
@@ -57,7 +60,7 @@ export const ColorList = ({ colors, updateColors }) => {
       <p>colors</p>
       <ul>
         {
-        colors && colors.map((color) => (
+          colors.map((color) => (
             <li key={color.color} onClick={() => setColorToEdit(color)}>
               <span>
                 <span
@@ -89,8 +92,6 @@ export const ColorList = ({ colors, updateColors }) => {
     </div>
   );
 };
-
-export default ColorList
 
 //Task List:
 //1. Complete the saveEdit functions by making a put request for saving colors. (Think about where will you get the id from...)
