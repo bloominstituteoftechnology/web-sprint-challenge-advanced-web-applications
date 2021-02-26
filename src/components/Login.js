@@ -3,8 +3,8 @@ import axios from "axios";
 import { axiosWithAuth } from "./../utils/axiosWithAuth";
 
 const initialValue = {
-  username: "",
-  password: "",
+  username: "Lambda School",
+  password: "i<3Lambd4",
 };
 
 const Login = () => {
@@ -42,6 +42,7 @@ const Login = () => {
           name="username"
           onChange={onChange}
           placeholder="username"
+          value={login.username}
         />
         <label htmlFor="password">Password</label>
         <input
@@ -50,6 +51,7 @@ const Login = () => {
           id="password"
           onChange={onChange}
           placeholder="password"
+          value={login.password}
         />
         <button>Login</button>
       </form>
