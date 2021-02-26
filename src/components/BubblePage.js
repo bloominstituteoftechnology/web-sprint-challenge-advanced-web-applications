@@ -5,10 +5,9 @@ import ColorList from "./ColorList";
 import {axiosWithAuth } from "../Axios/AxiosWithAuth";
 
 
-const BubblePage = () => {
+const BubblePage = (props) => {
 	const [colorList, setColorList] = useState([]);
-
-  
+    
   useEffect(() => {
 
     const getBubbles = () => {
