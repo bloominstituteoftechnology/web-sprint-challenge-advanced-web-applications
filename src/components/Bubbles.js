@@ -27,7 +27,7 @@ const Bubbles = ({ colors }) => {
           animate
         >
           {nodes =>
-            nodes
+           [ nodes]
               .map(({ x, y, r, key }, i) => {
                 if (i < colors.length) {
                   return (
