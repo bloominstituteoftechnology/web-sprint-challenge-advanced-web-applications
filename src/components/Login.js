@@ -14,7 +14,25 @@ const Login = () => {
     <>
       <h1>
         Welcome to the Bubble App!
-        <p>Build a login page here</p>
+    
+        export const worker = setupWorker(...handlers); 
+            <form> 
+            <div className="login">
+              <input type="text" placeholder="Phone number, username, or email" />
+            </div>
+            <div className="login">
+              <input type="text" placeholder="Password" />
+            </div>
+            <div className="login2">
+              <button className="login loginBtn">Log In</button>
+            </div>
+            </form>
+        <p>Get the app.</p>
+   <div className= "buttons">
+      <img className="appBtn" src="https://i.ibb.co/bsscvkC/pngwing-com-8.png" alt="apple" />
+      <img className= "googleBtn" src="https://i.ibb.co/5TRnkjQ/pngwing-com-7.png" alt="google"/>
+      </div>
+     
       </h1>
     </>
   );
