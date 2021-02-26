@@ -1,6 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import BubblePage from "./BubblePage";
+import { fetchColors as mockFetchColors } from "./../utils/fetchColors";
 
 test("Renders BubblePage without errors", () => {
   // Finish this test
