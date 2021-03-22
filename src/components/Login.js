@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useHistory } from 'react-router-dom';
 import axios from "axios";
 import Loader from 'react-loader-spinner';
 
 const Login = () => {
 
   const initialState = {
-    credentials: {
       username: '',
       password: '',
       isLoading: false
-    }
   }
 
   const [credentials, setCredentials] = useState(initialState);
@@ -21,14 +20,25 @@ const Login = () => {
     })
   };
 
+  const { push } = useHistory();
+
   const login = e => {
     e.preventDefault();
     axios.post('http://localhost:5000/api/login', credentials)
       .then(res => {
-        console.log(res);
+        localStorage.setItem('authToken', res.data.payload);
       })
       .catch(err => console.log(err));
+      push('/protected')
   };
+
+  const loading = e => {
+    setCredentials({
+      ...credentials,
+      isLoading: !credentials.isLoading
+    })
+    
+  }
   // make a post request to retrieve a token from the api
   // when you have handled the token, navigate to the BubblePage route
 
@@ -56,9 +66,11 @@ const Login = () => {
           onChange={handleChange}
         />
 
-        <button onClick={credentials.isLoading === true && <Loader />}> 
+        <button onClick={loading}> 
           Login
         </button>
+
+        {credentials.isLoading === true && <Loader />}
 
       </form>
     </>
