@@ -5,6 +5,8 @@ import Loader from 'react-loader-spinner';
 
 const Login = () => {
 
+  const { push } = useHistory();
+
   const initialState = {
       username: '',
       password: '',
@@ -19,8 +21,6 @@ const Login = () => {
       [e.target.name]: e.target.value,
     })
   };
-
-  const { push } = useHistory();
 
   const login = e => {
     e.preventDefault();

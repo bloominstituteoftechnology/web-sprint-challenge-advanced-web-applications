@@ -1,13 +1,20 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
+import userEvent from '@testing-library/user-event'
+import Login from './Login';
 import BubblePage from "./BubblePage";
 
 test("Renders BubblePage without errors", () => {
-  // Finish this test
+  render(<BubblePage />);
 });
 
 test("Fetches data and renders the bubbles on mounting", () => {
-  // Finish this test
+  render(<Login />);
+  userEvent.type(screen.getByLabelText(/username:/i), 'Lambda School');
+  userEvent.type(screen.getByLabelText(/password:/i), 'i<3Lambd4');
+  userEvent.click(screen.getByRole('button', { name: /login/i }));
+  render(<BubblePage />);
+  expect(screen.getByText(/colors/i).toBeInTheDocument());
 });
 
 //Task List
