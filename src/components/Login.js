@@ -1,20 +1,66 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Loader from 'react-loader-spinner';
 
 const Login = () => {
+
+  const initialState = {
+    credentials: {
+      username: '',
+      password: '',
+      isLoading: false
+    }
+  }
+
+  const [credentials, setCredentials] = useState(initialState);
+
+  const handleChange = e => {
+    setCredentials({
+      ...credentials,
+      [e.target.name]: e.target.value,
+    })
+  };
+
+  const login = e => {
+    e.preventDefault();
+    axios.post('http://localhost:5000/api/login', credentials)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => console.log(err));
+  };
   // make a post request to retrieve a token from the api
   // when you have handled the token, navigate to the BubblePage route
 
-  useEffect(()=>{
-    // make a post request to retrieve a token from the api
-    // when you have handled the token, navigate to the BubblePage route
-  });
   return (
     <>
       <h1>
         Welcome to the Bubble App!
-        <p>Build a login page here</p>
       </h1>
+
+      <form onSubmit={login}>
+
+        <label>Username:</label>
+        <input
+          type='text'
+          name='username'
+          value={credentials.username}
+          onChange={handleChange}
+        />
+
+        <label>Password:</label>
+        <input
+          type='text'
+          name='password'
+          value={credentials.password}
+          onChange={handleChange}
+        />
+
+        <button onClick={credentials.isLoading === true && <Loader />}> 
+          Login
+        </button>
+
+      </form>
     </>
   );
 };
