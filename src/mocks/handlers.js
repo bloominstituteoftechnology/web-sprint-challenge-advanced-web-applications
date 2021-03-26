@@ -201,3 +201,12 @@ export const handlers = [
     );
   }),
 ];
+rest.post(`${urlBase}/logout`, (req, res) => {
+  //remove token from database
+
+      res.status(200).json({
+        payload: token
+      
+  })
+
+});

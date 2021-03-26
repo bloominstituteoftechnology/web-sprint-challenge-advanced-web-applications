@@ -17,7 +17,7 @@ function App() {
               <Link to="/">Login</Link>
             </li>
             <li className='main-menu'>
-              {localStorage.getItem('token') && <Link to="/colors">Access Bubbles</Link>}
+              {localStorage.getItem('token') && <Link to="/colors">Bubbles</Link>}
             </li>
             </ul>
           </nav>

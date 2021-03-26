@@ -9,7 +9,7 @@ const Login = () => {
     username: '',
     password: ''
   });
-  const { push } = useHistory();
+  // const { push } = useHistory();
   const urlBase = 'http://localhost:5000/api';
   
   const handleChange = e => {
@@ -21,13 +21,13 @@ const Login = () => {
 
   const login = e => {
     e.preventDefault();
-    axios
+    axiosWithAuth()
     .post(`${urlBase}/login`, credentials)
     .then(res => {
       //3. If request is successful, console.log our result
       console.log(res.data);
       localStorage.setItem('token', res.data.payload);
-      push('/colors');
+      this.props.history.push('/colors');
     })
     //4. If request fails show our error
       .catch(err=>{
