@@ -1,0 +1,234 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+
+html,
+body
+// #root,
+ {
+  // width: 100%;
+  // height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  padding-bottom: 3px;
+    svg {
+    height: 100%;
+  }
+}
+
+.spacer {
+  height: 100%;
+}
+
+.bubble-wrap {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.colors-wrap {
+  height: 100%;
+  width: 300px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+
+  ul {
+    list-style: none;
+    text-align: start;
+
+    li {
+      cursor: pointer;
+      padding: 6px 0;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+}
+
+.delete {
+  color: rgb(216, 87, 87);
+}
+
+.color-box {
+  height: 16px;
+  width: 16px;
+  border: 1px lightgray solid;
+  margin-right: 36px;
+}
+
+form {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+
+  legend {
+    padding-left: 40px;
+    font-weight: bold;
+    text-align: left;
+    text-decoration: underline;
+    margin-bottom: 16px;
+  }
+
+  label {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 36px 4px 40px;
+  }
+
+  input {
+    width: 100px;
+  }
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 36px 0 41px;
+}
+button {
+  border: none;
+  background-color: black;
+  color: white;
+  padding: 3px 8px;
+  margin-top: 16px;
+}
+
+.error {
+  color: red;
+}
+
+.login-form {
+  align-self: center;
+  margin: 0 auto;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 36px;
+
+  form {
+    display: flex;
+    flex-direction: row;
+    width: 85%;
+    
+    input {
+      flex: 2;
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+
+    button {
+      flex: 2;
+      margin-right: 15px;
+      background-color: #061e2c;
+      color: white;
+      border: 2px solid #061e2c;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    
+      &:hover {
+        color: #061e2c;
+        background-color: white; 
+      }
+    }
+  }
+}
+nav {
+  
+}
+ul.menu {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 36px;
+  padding: 12px;
+  background-color:#204963;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+li.main-menu  {
+  list-style: none;
+  margin-right: 3px;
+  color: white;
+}
+.main-menu a {
+  text-decoration: none;
+  padding: 6px;
+  color: white;
+}
+.friends-form {
+  background-color: #061e2c;
+  color: white;
+  display: flex;
+  width: fit-content;
+  flex-flow: column nowrap;
+  margin: 0 auto;
+  padding: 24px 58px;
+  
+  button {
+    background-color: white;
+    border: 3px solid #26cc50;
+    padding: 2px 55px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    
+    &:hover {
+      background-color: #26cc50;
+    }
+  }
+}
+
+div.friends-list {
+  margin-top: 30px;
+  padding: 2px;
+  
+  button{
+    background-color: #8eb9a7;
+    border: none;
+    width: 7rem;
+    padding: 5px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 10px;
+    border: 2px solid #26cc50;
+
+    &:hover {
+      background-color: white;
+    }
+  }
+}
+
+.title-wrapper {
+  background-color: #d0c5bb;
+  padding: 24px 58px;
+  width: 539px;
+  margin: 0 auto;
+}
+
+.title {
+  background-color: #204963;
+  width: 300px;
+  padding: 6px;
+  margin: 0 auto;
+  border-radius: 4px;
+}
+
+.inner-wrapper {
+  background-color: #ffffff;
+  padding: 4px;
+}
+
+.top-title {
+  font-family: 'Prompt', sans-serif;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.62);
+  font-size: 32px;
+  background-color: #ea7158;
+  color: #ffffff;
+}
+
+.bottom-title {
+  font-family: 'Kaushan Script', cursive;
+  color: #204963;
+  font-size: 22px;
+}
+
