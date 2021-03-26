@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { axiosWithAuth } from '../helpers/axiosWithAuth';
+import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
 const Login = () => {
@@ -9,7 +10,7 @@ const Login = () => {
     username: '',
     password: ''
   });
-  // const { push } = useHistory();
+  const { push } = useHistory();
   const urlBase = 'http://localhost:5000/api';
   
   const handleChange = e => {
@@ -21,13 +22,13 @@ const Login = () => {
 
   const login = e => {
     e.preventDefault();
-    axiosWithAuth()
+    axios
     .post(`${urlBase}/login`, credentials)
     .then(res => {
       //3. If request is successful, console.log our result
       console.log(res.data);
       localStorage.setItem('token', res.data.payload);
-      this.props.history.push('/colors');
+      push('/colors');
     })
     //4. If request fails show our error
       .catch(err=>{

@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
 import PrivateRoute from './components/PrivateRoute';
 import BubblePage from './components/BubblePage';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -14,7 +14,7 @@ function App() {
         <nav>
           <ul className='menu'>
             <li className='main-menu'>
-              <Link to="/">Login</Link>
+              <Link to="login/">Login</Link>
             </li>
             <li className='main-menu'>
               {localStorage.getItem('token') && <Link to="/colors">Bubbles</Link>}
@@ -23,8 +23,10 @@ function App() {
           </nav>
         <Switch>
           <PrivateRoute exact path='/colors' component={BubblePage}/>
-          <Route exact path="/" component={Login} />
-          <Route component={Login} />
+          <Route exact path="/login" component={Login} />
+          <Route path="/">
+              <Redirect to="/login"/>
+            </Route>
         </Switch>
       </div>
     </Router>
