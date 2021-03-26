@@ -1,44 +1,24 @@
 {
-  "name": "bubbles",
-  "version": "0.1.0",
-  "private": true,
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
   "dependencies": {
-    "@potion/element": "^1.0.0-next.0",
-    "@potion/layout": "^1.0.0-next.0",
-    "@testing-library/jest-dom": "^5.11.3",
-    "@testing-library/react": "^10.4.8",
-    "@testing-library/user-event": "^12.1.1",
-    "axios": "^0.21.1",
-    "jest-environment-jsdom-sixteen": "^1.0.3",
-    "mutationobserver-shim": "^0.3.7",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.3"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "prop-types": "^15.7.2",
+    "react-logger": "^1.1.0",
+    "react-redux": "^7.2.3",
+    "redux": "^4.0.5"
   },
   "devDependencies": {
-    "msw": "^0.21.3",
+    "nodemon": "^2.0.2",
     "sass": "^1.32.5"
-  }
+  },
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Lambda School",
+  "license": "ISC"
 }
