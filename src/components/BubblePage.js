@@ -5,14 +5,22 @@ import Bubbles from "./Bubbles";
 import ColorList from "./ColorList";
 
 const BubblePage = () => {
-  const [colorList, setColorList] = useState([]);
+	const [colorList, setColorList] = useState([]);
 
-  return (
-    <>
-      <ColorList colors={colorList} updateColors={setColorList} />
-      <Bubbles colors={colorList} />
-    </>
-  );
+	useEffect(() => {
+		axios
+			.get("http://localhost:5000/api/colors")
+
+			.catch((err) => console.log("this is the prob", err));
+	}, []);
+	console.log("colors", colorList);
+
+	return (
+		<>
+			<ColorList colors={colorList} updateColors={setColorList} />
+			<Bubbles colors={colorList} />
+		</>
+	);
 };
 
 export default BubblePage;
