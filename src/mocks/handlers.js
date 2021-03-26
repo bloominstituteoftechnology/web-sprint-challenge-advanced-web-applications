@@ -87,7 +87,7 @@ let nextId = 12;
 
 function authenticator(req) {
   const { authorization } = req.headers.map;
-  console.log(req);
+  // console.log(req);
   return (authorization === token);
 }
 
