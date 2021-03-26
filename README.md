@@ -20,19 +20,19 @@ In this project you will create a login page and request a token from the server
 
 ### Task 1: Project Setup
 
-* [ ] Fork and clone this repository.
-* [ ] Create a new branch: git checkout -b `<firstName-lastName>`.
-* [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly.
-* [ ] Push commits: git push origin `<firstName-lastName>`.
-* [ ] **RUN** `npm install` to install your dependencies.
-* [ ] **RUN** `npm start` to start your application.
+* [x] Fork and clone this repository.
+* [x] Create a new branch: git checkout -b `<firstName-lastName>`.
+* [x] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly.
+* [x] Push commits: git push origin `<firstName-lastName>`.
+* [x] **RUN** `npm install` to install your dependencies.
+* [x] **RUN** `npm start` to start your application.
 
 ### Task 2: CodeGrade Setup
 
-* [ ] Open the assignment in Canvas and following along with the attached document [here.](https://www.notion.so/lambdaschool/Submitting-an-assignment-via-Code-Grade-A-Step-by-Step-Walkthrough-07bd65f5f8364e709ecb5064735ce374).
-* [ ] Follow instructions to set up Codegrade's Webhook and Deploy Key, making sure your deployment is set to your `<firstName-lastName>`.
-* [ ] Push your first commit: `git commit --allow-empty -m "first commit" && git push`
-* [ ] Check to see that Codegrade has accepted your git submssion.
+* [x] Open the assignment in Canvas and following along with the attached document [here.](https://www.notion.so/lambdaschool/Submitting-an-assignment-via-Code-Grade-A-Step-by-Step-Walkthrough-07bd65f5f8364e709ecb5064735ce374).
+* [x] Follow instructions to set up Codegrade's Webhook and Deploy Key, making sure your deployment is set to your `<firstName-lastName>`.
+* [x] Push your first commit: `git commit --allow-empty -m "first commit" && git push`
+* [x] Check to see that Codegrade has accepted your git submssion.
 
 ### Task 3: Project Requirements
 
@@ -42,16 +42,16 @@ Your finished project must include all of the following requirements. **Unlike o
 
 Build a login form to authenticate your users.
 
-* [ ] Construct an AXIOS request to retrieve a token from the server. You'll use this token to interact with the API
-* [ ] Save the token to localStorage
-* [ ] Build a `axiosWithAuth` module to create an instance of axios with the authentication header
-* [ ] Build a `PrivateRoute` component and use it to protect a route that renders the `BubblesPage` component
+* [x] Construct an AXIOS request to retrieve a token from the server. You'll use this token to interact with the API
+* [x] Save the token to localStorage
+* [x] Build a `axiosWithAuth` module to create an instance of axios with the authentication header
+* [x] Build a `PrivateRoute` component and use it to protect a route that renders the `BubblesPage` component
 
 #### Consuming the API
 
-* [ ] When `BubblePages` renders, make a GET request to fetch the color data for your bubbles.
-* [ ] In `ColorList.js`, complete the `saveEdit` and `deleteColor` functions to make AJAX requests to the API to edit/delete data
-* [ ] Watch and enjoy as your app responds to updates in the data. Check out `Bubbles.js` to see how this is built.
+* [x] When `BubblePages` renders, make a GET request to fetch the color data for your bubbles.
+* [x] In `ColorList.js`, complete the `saveEdit` and `deleteColor` functions to make AJAX requests to the API to edit/delete data
+* [x] Watch and enjoy as your app responds to updates in the data. Check out `Bubbles.js` to see how this is built.
 
 #### Testing
 

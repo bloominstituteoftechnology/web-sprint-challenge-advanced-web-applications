@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const Color = ({color, editing, editColor, deleteColor}) => {
     const handleClick = (e) => {
         e.stopPropagation();
