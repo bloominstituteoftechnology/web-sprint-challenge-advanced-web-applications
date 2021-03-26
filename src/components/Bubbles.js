@@ -22,6 +22,7 @@ const Bubbles = ({ colors }) => {
           }}
           sum={datum => datum.value}
           size={[400, 400]}
+
           includeRoot={false}
           nodeEnter={d => ({ ...d, r: 0 })}
           animate

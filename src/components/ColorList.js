@@ -48,6 +48,7 @@ const ColorList = ({ colors, updateColors }) => {
     .delete(`http://localhost:5000/api/colors/${id}`)
     .then(res => {
       console.log('del: ', Number(id))
+      //filters out only the color that was deleted
       updateColors(colors.filter(newColor => newColor.id !== color.id))
     })
     .catch(err => {

@@ -21,12 +21,16 @@ const Login = () => {
     e.preventDefault();
     axios.post(`http://localhost:5000/api/login`, state.credientials)
     .then(res => {
+      //only they who habe a token may enter
+      //this ensures that
       localStorage.setItem('token', res.data.payload)
       push('/protected')
     })
     .catch(err => {
       console.log(err)
-    })
+    })  
+    //only they who fill out both username and password may enter
+    //shows the error message if left blank
     if (state.credientials.username === "" || state.credientials.password === "" ) {
       setError("Username or Password not valid.")
     }
@@ -41,6 +45,8 @@ const Login = () => {
     })
   }
 
+
+  //this was here when I got here.  I don't feel I need it though so I didn't use it.  Page seems to work fine without it
   useEffect(()=>{
     // make a post request to retrieve a token from the api
     // when you have handled the token, navigate to the BubblePage route
