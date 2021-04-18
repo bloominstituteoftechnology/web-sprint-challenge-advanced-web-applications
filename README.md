@@ -21,7 +21,7 @@ In this project you will create a login page and request a token from the server
 ### Task 1: Project Setup
 
 * [ ] Fork and clone this repository.
-* [ ] Create a new branch with the 
+* [ ] Create a new branch with the
 - [ ] Create a new branch: git checkout -b `<firstName-lastName>`.
 - [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly.
 - [ ] Push commits: git push origin `<firstName-lastName>`.
@@ -109,3 +109,5 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 2. What steps can you take in your web apps to keep your data secure?
 3. Describe how web servers work.
 4. Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
+
+test
