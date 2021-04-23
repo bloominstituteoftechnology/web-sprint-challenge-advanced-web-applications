@@ -1,12 +1,14 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState } from "react"
+import EditMenu from "./EditMenu"
+import Color from "./Color"
+import axios from 'axios';
 
 const initialColor = {
   color: "",
   code: { hex: "" }
 };
 
-const ColorList = ({ colors, updateColors }) => {
+const ColorList = ({ colors, updateColors, props }) => {
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
 
@@ -17,10 +19,33 @@ const ColorList = ({ colors, updateColors }) => {
 
   const saveEdit = e => {
     e.preventDefault();
+    axios
+    .put(`http://localhost:5000/api/colors/${colorToEdit.id}`,colorToEdit)
+    .then((res) =>{
+      setEditing(false);
+      updateColors(
+        colors.map(color =>{
+          return color.id === colorToEdit.id ? res.data :color;
+        })
+      )
+    })
+
 
   };
 
   const deleteColor = color => {
+    axios
+    .delete(`http://localhost:5000/api/colors/${color.id}`)
+    .then((res) =>{
+      updateColors(
+        colors.filter((colorItem) =>{
+          return colorItem.id !== color.id
+        })
+      )
+    })
+    .catch((err) =>{
+      console.log(err.message, "deleteColor error")
+    })
   };
 
   return (
@@ -37,7 +62,3 @@ const ColorList = ({ colors, updateColors }) => {
 };
 
 export default ColorList;
-
-//Task List:
-//1. Complete the saveEdit functions by making a put request for saving colors. (Think about where will you get the id from...)
-//2. Complete the deleteColor functions by making a delete request for deleting colors.
