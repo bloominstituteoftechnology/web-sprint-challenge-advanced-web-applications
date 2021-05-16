@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
-export const PrivateRoute = (props) => {
+const PrivateRoute = (props) => {
   const { component: Component, ...rest } = props;
 
   return (
@@ -17,6 +17,8 @@ export const PrivateRoute = (props) => {
     />
   );
 };
+
+export default PrivateRoute;
 
 //Task List:
 //1. Build a PrivateRoute component that redirects if user is not logged in

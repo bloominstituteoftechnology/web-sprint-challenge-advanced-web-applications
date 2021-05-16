@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { axiosWithAuth } from "../helpers/axiosWithAuth";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
   // make a post request to retrieve a token from the api
@@ -12,10 +13,12 @@ const Login = () => {
 
   const [error, setError] = useState("");
 
-  useEffect(() => {
+  const { push } = useHistory();
+
+  // useEffect(() => {
     // make a post request to retrieve a token from the api
     // when you have handled the token, navigate to the BubblePage route
-  });
+  // });
 
   // const error = "";
   //replace with error state
@@ -34,10 +37,9 @@ const Login = () => {
       .then((res) => {
         console.log(res);
         localStorage.setItem("token", res.data.payload);
+        push("./members");
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => setError(err.response.data.error));
   };
   return (
     <div>
