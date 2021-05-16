@@ -11,6 +11,7 @@ function App() {
         <header>
           Color Picker Sprint Challenge
           <a data-testid="logoutButton" href="#">logout</a>
+          <Login />
         </header> 
 
         <Route exact path="/" component={Login} />
