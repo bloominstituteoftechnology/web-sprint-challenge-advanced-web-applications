@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router'
-import axios from 'axios';
+//import axios from 'axios';
+import createAxiosClientWithAuth from './../helpers/axiosWithAuth' 
 
 const Login = () => {
   const [state, setState] = useState({
@@ -26,7 +27,7 @@ const Login = () => {
     if (state.username === "" || state.password === "") {
        setError("Username and password fields are required.");
     } else {
-      axios.post(`http://localhost:5000/api/login`, {
+      createAxiosClientWithAuth().post(`http://localhost:5000/api/login`, {
         username: state.username, // Lambda School
         password: state.password, // i<3Lambd4
       }) 
