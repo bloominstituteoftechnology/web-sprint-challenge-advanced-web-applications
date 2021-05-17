@@ -5,7 +5,7 @@ import axios from "axios";
 
 function createAxiosClientWithAuth() {
     // authHeader
-    const authToken = localStorage.getItem('whateverMyKeyIs');
+    const authToken = localStorage.getItem('token');
     
     const axiosInstanceWithAuthorizationHeaders = axios.create({
         baseURL: 'http://localhost:5000/api',
@@ -15,4 +15,4 @@ function createAxiosClientWithAuth() {
     return axiosInstanceWithAuthorizationHeaders;
 }
 
-export default createAxiosClientWithAuth();
+export default createAxiosClientWithAuth;

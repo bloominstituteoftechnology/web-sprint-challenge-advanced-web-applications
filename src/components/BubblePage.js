@@ -8,14 +8,16 @@ const BubblePage = () => {
   const [colorList, setColorList] = useState([]);
 
   useEffect(() => {
-    createAxiosClientWithAuth().get("/colors")
-        .then( res => {
-            console.log(res)
-            setColorList(res.data)
-        
-        })
-        .catch(err => console.log(err))
-}, [] ) 
+    const axiosClient = createAxiosClientWithAuth();
+    
+    axiosClient
+      .get("/colors")
+      .then( res => {
+          console.log(res)
+          setColorList(res.data)   
+      })
+      .catch(err => console.log(err))
+  }, []) 
 
   return (
     <div className="container">

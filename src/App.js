@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useHistory } from 'react-router';
+import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Login from "./components/Login";
 import "./styles.scss";
@@ -8,12 +7,10 @@ import PrivateRoute from "./components/PrivateRoute"
 
 
 function App() {
-
-  const history = useHistory();
   const logoutClick = (e) => {
     e.preventDefault();
     localStorage.clear();
-    history.push('/');
+    window.location = '/'
   }
   
   return (
