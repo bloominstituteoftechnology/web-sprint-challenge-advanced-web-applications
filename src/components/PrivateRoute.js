@@ -1,5 +1,5 @@
 import React from 'react'
-import {Router, Redirect} from 'react-router-dom'
+import {BrowserRouter as Route, Redirect} from 'react-router-dom'
 
 
 export const PrivateRoute =(props)=> {
@@ -10,7 +10,9 @@ export const PrivateRoute =(props)=> {
         <Route {...rest}
             render= {(renderProps) => {
                 if(localStorage.getItem('token')){
-                    return <Component />
+                    return <Component {...renderProps} />
+                } else {
+                   return  <Redirect to= '/' />
                 }
             }}
         />

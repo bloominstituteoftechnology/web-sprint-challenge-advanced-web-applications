@@ -1,10 +1,21 @@
 import React, { useEffect, useState } from "react";
+import { fetchBubbles } from "../helpers/fetchBubbles";
 
 import Bubbles from "./Bubbles";
 import ColorList from "./ColorList";
 
 const BubblePage = () => {
   const [colorList, setColorList] = useState([]);
+
+
+  useEffect(() =>{
+    fetchBubbles()
+    .then(res => {
+      console.log(res)
+      
+    })
+    .catch( err => console.log(err))
+  }, [])
 
   return (
     <div className="container">
