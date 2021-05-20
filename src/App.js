@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Route, useHistory, Switch } from "react-router-dom";
 import BubblePage from "./components/BubblePage";
 
 import Login from "./components/Login";
@@ -7,19 +7,29 @@ import { PrivateRoute } from "./components/PrivateRoute";
 import "./styles.scss";
 
 function App() {
+
+  let { push } = useHistory()
+
+   const logOutHandle = (e) => {
+     e.preventDefault()
+      localStorage.clear()
+      push('/')
+
+   }
   return (
-    <Router>
+    <>
       <div className="App">
         <header>
           Color Picker Sprint Challenge
-          <a data-testid="logoutButton" href="#">logout</a>
+          <button data-testid="logoutButton" onClick ={logOutHandle}>logout</button>
         </header> 
+        <Switch>
         <Route exact path="/" component={Login} />
 
         <PrivateRoute path='/bubblePage' component={BubblePage} />
-
+        </Switch>
       </div>
-    </Router>
+    </>
   );
 }
 

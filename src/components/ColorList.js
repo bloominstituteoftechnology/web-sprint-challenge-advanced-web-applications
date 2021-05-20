@@ -25,10 +25,22 @@ const ColorList = ({ colors, updateColors }) => {
     .then( res => {
       console.log(res)
     })
+    .catch( err =>{
+      console.log({err})
+    })
 
   };
 
   const deleteColor = color => {
+    color.preventDefault();
+    axiosWithAuth()
+    .delete('/colors/:id', colorToEdit)
+    .then( res => {
+      console.log(res)
+    })
+    .catch( err =>{
+      console.log({err})
+    })
   };
 
   return (

@@ -16,23 +16,22 @@ const { push } = useHistory()
  }
 
  const handleSubmit = (e) =>{
-   e.preventdefault()
-   axiosWithAuth().post('/login', form.payload)
+   e.preventDefault()
+   axiosWithAuth().post('/login', form)
    .then(res => {
      console.log(res)
-     localStorage.setItem('token', res.data)
-     push('/members');
+     localStorage.setItem('token', res.data.payload)
+     push('/bubblePage');
    })
    .catch(err => {
-     setError(err.rsponse)
-     console.log({err})
+     setError(err.error)
+     console.log(err.data)
      
 
    })
 
  }
 
-  
   // const error = "";
   //replace with error state
 

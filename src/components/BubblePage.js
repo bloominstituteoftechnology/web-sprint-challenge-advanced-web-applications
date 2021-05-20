@@ -6,12 +6,14 @@ import ColorList from "./ColorList";
 
 const BubblePage = () => {
   const [colorList, setColorList] = useState([]);
+  console.log('in bubblepage')
 
 
   useEffect(() =>{
     fetchBubbles()
     .then(res => {
       console.log(res)
+      setColorList(res.data)
       
     })
     .catch( err => console.log(err))
@@ -19,6 +21,7 @@ const BubblePage = () => {
 
   return (
     <div className="container">
+
       <ColorList colors={colorList} updateColors={setColorList} />
       <Bubbles colors={colorList} />
     </div>
