@@ -1,7 +1,7 @@
 # Advanced Web Applications Sprint Challenge
 
 **Read these instructions carefully. Understand exactly what is expected _before_ starting this Sprint Challenge.**
-
+jlfdskrjfo
 This challenge allows you to practice the concepts and techniques learned over the past sprint and apply them in a concrete project. This sprint explored **advanced web applications**. During this sprint, you studied **React testing, client-side auth, HTTP methods, and Vercel**.
 
 In your challenge this week, you will demonstrate your mastery of these skills by creating **a login page** and **basic CRUD application.**
@@ -42,19 +42,19 @@ Your finished project must include all of the following requirements. **Unlike o
 #### Authentication
 > *Build a login form to authenticate your users along with all the components and utilities needed to support authentication.*
 
-* [ ] In `Login.js`, build all UI and state functionality needed to capture a username and password.
-* [ ] **Make sure that the input for your username and password includes the data-testid="username" and data-testid="password" attributes. These are needed for codegrade testing.**
-* [ ] Build in functionality that would allow an error to be displayed in the provided p tag if either the username or password is incorrect.
-* [ ] Construct an AXIOS request that retrieves an auth token from the server when the username `Lambda` and the password `i<3Lambd4` is passed into the request.
-* [ ] Save the token to localStorage.
-* [ ] Build a `axiosWithAuth` module to create an instance of axios with the authentication header.
-* [ ] Build a `PrivateRoute` component and use it to protect the route that renders the `BubblesPage` component.
-* [ ] In `App.js`, build the backend to the logout button. When pressed, the authentication token within localStorage should be removed.
+* [x ] In `Login.js`, build all UI and state functionality needed to capture a username and password.
+* [x ] **Make sure that the input for your username and password includes the data-testid="username" and data-testid="password" attributes. These are needed for codegrade testing.**
+* [ x] Build in functionality that would allow an error to be displayed in the provided p tag if either the username or password is incorrect.
+* [ x] Construct an AXIOS request that retrieves an auth token from the server when the username `Lambda` and the password `i<3Lambd4` is passed into the request.
+* [ x] Save the token to localStorage.
+* [ x] Build a `axiosWithAuth` module to create an instance of axios with the authentication header.
+* [x ] Build a `PrivateRoute` component and use it to protect the route that renders the `BubblesPage` component.
+* [x ] In `App.js`, build the backend to the logout button. When pressed, the authentication token within localStorage should be removed.
 
 #### Consuming the API
 > *Add in the axios requests and state changes needed to connect our api to the web application. Consider the effect of authentication on your api requests.*
 
-* [ ] When `BubblePages` mounts, make a GET request to fetch the color data for your bubbles.
+* [x ] When `BubblePages` mounts, make a GET request to fetch the color data for your bubbles.
 * [ ] In `ColorList.js`, complete the `saveEdit` and `deleteColor` functions to make API requests for to editing and delete data.
 * [ ] Watch and enjoy as your app responds to updates in the data. Check out `Bubbles.js` to see how this is built.
 

@@ -1,9 +1,13 @@
 import React, { useState } from "react";
-import axios from "axios";
+//import axios from "axios";
+import EditMenu from './EditMenu';
+import Color from './Color';
+import createAxiosClientWithAuth from './../helpers/axiosWithAuth';
 
 const initialColor = {
   color: "",
-  code: { hex: "" }
+  code: { hex: "" },
+  id: 0
 };
 
 const ColorList = ({ colors, updateColors }) => {
@@ -16,8 +20,20 @@ const ColorList = ({ colors, updateColors }) => {
   };
 
   const saveEdit = e => {
+    // Prevent normal form submission
     e.preventDefault();
-
+    // Create an instance of our auth'd client
+    const axiosClient = createAxiosClientWithAuth();
+    
+    // axiosClient.put(`/colors/${id}`, {
+    //   color: colorToEdit.color,
+    //   code: colorToEdit.code,
+    // });
+    
+      // axiosWithAuth().get(`/colors/${id}`)
+      //     .then(res => setColorToEdit(res.data))
+      //     .catch(err => console.log(err))
+  
   };
 
   const deleteColor = color => {
