@@ -105,7 +105,9 @@ These goals may or may not be things you have learned in this module but they bu
 
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. Add your answers to the questions within `interview_answers.md` file. These will not be counted as a part of your sprint score but will be helpful for preparing you for your endorsement interview, and enhancing overall understanding.
 
-1. Explain what a token is used for.
-2. What steps can you take in your web apps to keep your data secure?
-3. Describe how web servers work.
-4. Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
+1. Explain what a token is used for. Tokens are used for securely transmitting information.
+2. What steps can you take in your web apps to keep your data secure? You can use a PrivateRoute, encrypt your login page, and implement tests to test your security.
+3. Describe how web servers work. Information is taken from a computer and is sent to a server where it is stored to be seen/accessed.
+4. Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers. .put(), .post(), .delete()
+
+//test for codegrade123

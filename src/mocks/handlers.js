@@ -94,7 +94,6 @@ function authenticator(req) {
 const urlBase = 'http://localhost:5000/api';
 
 export const handlers = [
-  // Handles a POST /login request
   rest.post(`${urlBase}/login`, (req, res, ctx) => {
     const { username, password } = req.body;
     if (username === "Lambda" && password === "i<3Lambd4") {
