@@ -1,30 +1,56 @@
-import React, { useEffect } from "react";
+import React, { useState } from 'react'
+import axios from 'axios'
 
-const Login = () => {
-  // make a post request to retrieve a token from the api
-  // when you have handled the token, navigate to the BubblePage route
+const initialState = {
+  username: 'Lambda School',
+  password: 'i<3Lambd4',
+}
 
-  useEffect(()=>{
-    // make a post request to retrieve a token from the api
-    // when you have handled the token, navigate to the BubblePage route
-  });
-  
-  const error = "";
-  //replace with error state
+const Login = (props) => {
+  const [state, setState] = useState(initialState)
+
+  const handleChange = e => {
+    setState({
+      ...state,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const login = e => {
+    e.preventDefault()
+
+    axios.post('http://localhost:5000/api/login', state)
+      .then( res => {
+        localStorage.setItem('token', res.data.payload)
+        props.history.push('/friendslist')
+      })
+      .catch( err => {
+        console.log(err)
+      })
+  }
 
   return (
     <div>
-      <h1>Welcome to the Bubble App!</h1>
-      <div data-testid="loginForm" className="login-form">
-        <h2>Build login form here</h2>
-      </div>
-
-      <p data-testid="errorMessage" className="error">{error}</p>
+      <form onSubmit={login}>
+        <input
+          type='text'
+          name='username'
+          value={state.username}
+          onChange={handleChange}
+        />
+        <input
+          type='password'
+          name='password'
+          value={state.password}
+          onChange={handleChange}
+        />
+        <button>Login</button>
+      </form>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
 
 //Task List:
 //1. Build a form containing a username and password field.

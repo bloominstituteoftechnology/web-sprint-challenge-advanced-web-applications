@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import axios from "axios";
+import  {axiosWithAuth}  from './utlis/axiosWithAuth'
+import Color from "./Color"
+import EditMenu from "./EditMenu"
 
 const initialColor = {
   color: "",
@@ -18,10 +20,25 @@ const ColorList = ({ colors, updateColors }) => {
   const saveEdit = e => {
     e.preventDefault();
 
+ 
+
+
   };
 
   const deleteColor = color => {
+
+    axiosWithAuth()
+    .delete(`/color/${color}`)
+    .then( res => {
+      console.log(res)
+    })
+    .catch( err => {
+      console.log(err)
+    })
+
+    
   };
+
 
   return (
     <div className="colors-wrap">
@@ -38,6 +55,6 @@ const ColorList = ({ colors, updateColors }) => {
 
 export default ColorList;
 
-//Task List:
-//1. Complete the saveEdit functions by making a put request for saving colors. (Think about where will you get the id from...)
-//2. Complete the deleteColor functions by making a delete request for deleting colors.
+// Task List:
+// 1. Complete the saveEdit functions by making a put request for saving colors. (Think about where will you get the id from...)
+// 2. Complete the deleteColor functions by making a delete request for deleting colors.
