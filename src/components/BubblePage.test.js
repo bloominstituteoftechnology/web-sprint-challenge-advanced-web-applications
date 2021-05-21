@@ -4,6 +4,8 @@ import BubblePage from "./BubblePage";
 
 test("Renders BubblePage without errors", () => {
   // Finish this test
+  render(<BubblePage />)
+  screen.debug()
 });
 
 test("Fetches data and renders the bubbles on mounting", () => {
