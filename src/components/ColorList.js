@@ -17,11 +17,28 @@ const ColorList = ({ colors, updateColors }) => {
 
   const saveEdit = e => {
     e.preventDefault();
+    axios
+    .get("http://localhost:5000/api/colors", formValues)
+    .then((res) => {
+      window.localStorage.setItem('token', res.data.payload);
+      // push("/bubblepage");
+    })
+    .catch((err) => console.log(err.message));
+};
 
   };
 
   const deleteColor = color => {
-  };
+    axios.delete(`http://localhost:5000/api/colors/123}`)
+		.then(res=>{
+				setBubblePage(res.data);
+		})
+		.catch(err=>{
+				console.log(err.response);
+		})
+	};
+    
+  
 
   return (
     <div className="colors-wrap">
@@ -34,7 +51,7 @@ const ColorList = ({ colors, updateColors }) => {
 
     </div>
   );
-};
+
 
 export default ColorList;
 
