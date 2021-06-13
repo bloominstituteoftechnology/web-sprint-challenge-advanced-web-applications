@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { fetchColors } from "../helpers/fetchColors";
+import fetchColorService from '../services/fetchColorService';
 
 import Color from './Color';
 import EditMenu from './EditMenu';
@@ -7,9 +7,10 @@ import EditMenu from './EditMenu';
 const ColorList = (props) => {
   const { colors, editing, toggleEdit, saveEdit, deleteColor } = props;
   const [ editColor, setEditColor] = useState({ color: "", code: { hex: "" }});
+  const [addColor, setAddColor] = useState(false);
 
   useEffect(() => {
-    fetchColors()
+    fetchColorService()
     .then(res => {
       setEditColor(res.data)
     })
@@ -17,11 +18,13 @@ const ColorList = (props) => {
   }, []);
   console.log(colors);
 
+
   return (
     <div className="colors-wrap">
       <p>colors</p>
+      <button onClick={() => setAddColor(!addColor)}>Add Color</button>
       <ul>
-        {/* {colors.map(color => <Color key={color.id} setEditColor={setEditColor} color={color} toggleEdit={toggleEdit} deleteColor={deleteColor}/>)} */}
+        {colors.map(color => <Color key={color.id} setEditColor={setEditColor} color={color} toggleEdit={toggleEdit} deleteColor={deleteColor}/>)}
       </ul>
       
       {editing && <EditMenu editColor={editColor} setEditColor={setEditColor} toggleEdit={toggleEdit} saveEdit={saveEdit}/>}
