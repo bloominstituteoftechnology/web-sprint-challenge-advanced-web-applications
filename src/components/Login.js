@@ -3,8 +3,8 @@ import { axiosWithAuth } from '../helpers/axiosWithAuth';
 import { useHistory } from 'react-router-dom';
 
 const Login = () => {
-  const [form, setForm] = useState({username: '', password: ''});
-  const push = useHistory();
+  const [form, setForm] = useState({username: "", password: "" });
+  const {push} = useHistory();
   // make a post request to retrieve a token from the api
   // when you have handled the token, navigate to the BubblePage route
 const handleChange = (e) => {
