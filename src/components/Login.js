@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { axiosWithAuth } from '../helpers/axiosWithAuth';
+import { useHistory } from 'react-router-dom';
 
 const Login = () => {
   const [form, setForm] = useState({username: '', password: ''});
-
+  const push = useHistory();
   // make a post request to retrieve a token from the api
   // when you have handled the token, navigate to the BubblePage route
 const handleChange = (e) => {
@@ -18,7 +19,8 @@ const handleSubmit = (e) => {
 axiosWithAuth().post('/login', form)
 .then(res => {
   localStorage.setItem('token', res.data.payload)
-  console.log(res)
+  push('/colors');
+  // console.log(res)
 })
 .catch((err) => console.log(err));
 }
