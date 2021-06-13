@@ -4,7 +4,7 @@ import Bubbles from "./Bubbles";
 import ColorList from "./ColorList";
 
 import { editColorService, deleteColorService } from '../services/colorServices';
-import fetchColorService from '../services/fetchColorService';
+import { axiosWithAuth } from "../helpers/axiosWithAuth";
 
 const BubblePage = () => {
   const [colors, setColors] = useState([]);
@@ -17,8 +17,6 @@ const BubblePage = () => {
   const saveEdit = (editColor) => {
   };
 
-  const deleteColor = (colorToDelete) => {
-  };
 
   return (
     <div className="container">

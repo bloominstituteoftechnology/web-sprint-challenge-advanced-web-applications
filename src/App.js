@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { PrivateRoute } from "./components/PrivateRoute";
 import ColorList from "./components/ColorList";
 import Login from "./components/Login";
@@ -24,8 +24,10 @@ function App() {
           Color Picker Sprint Challenge
           <a data-testid="logoutButton" onClick={logout} href="/login">logout</a>
         </header>
+        <Switch>
         <PrivateRoute path='/colors' component={ColorList} />
         <Route exact path="/" component={Login} />
+        </Switch>
       </div>
     </Router>
   );
