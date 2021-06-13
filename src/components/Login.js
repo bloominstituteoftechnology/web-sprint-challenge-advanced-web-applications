@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { axiosWithAuth } from '../helpers/axiosWithAuth';
 
 const Login = () => {
   const [form, setForm] = useState({username: '', password: ''});
@@ -14,7 +15,12 @@ const handleChange = (e) => {
 
 const handleSubmit = (e) => {
   e.preventDefault()
-
+axiosWithAuth().post('/login', form)
+.then(res => {
+  localStorage.setItem('token', res.data.payload)
+  console.log(res)
+})
+.catch((err) => console.log(err));
 }
 
 useEffect(() => {});
@@ -26,7 +32,7 @@ useEffect(() => {});
     <div>
       <h1>Welcome to the Bubble App!</h1>
       <div data-testid='loginForm' className='login-form'>
-        <h2>Build login form here</h2>
+        {/* <h2>Build login form here</h2> */}
         <form onSubmit={handleSubmit}>
           <label htmlFor='username'> User Name: </label>
           <input id='usernane' name='username' value={form.username} onChange={handleChange} />
