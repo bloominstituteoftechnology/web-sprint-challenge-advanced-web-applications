@@ -40,14 +40,14 @@ Your finished project must include all of the following requirements. **Unlike o
 #### Authentication
 > *Build a login form to authenticate your users along with all the components and utilities needed to support authentication.*
 
-* [ ] In `Login.js`, build all UI and state functionality needed to capture a username and password.
-* [ ] **Make sure that the input for your username and password includes the data-testid="username" and data-testid="password" attributes. These are needed for codegrade testing and codegrade autotests will fail without them.**
+* [x] In `Login.js`, build all UI and state functionality needed to capture a username and password.
+* [x] **Make sure that the input for your username and password includes the data-testid="username" and data-testid="password" attributes. These are needed for codegrade testing and codegrade autotests will fail without them.**
 * [ ] Build in functionality that would allow an error to be displayed in the provided p tag if either the username or password is incorrect.
-* [ ] Construct an http request that retrieves an auth token from the server when the username `Lambda` and the password `School` is passed into the request.
-* [ ] Save the token to localStorage.
+* [x] Construct an http request that retrieves an auth token from the server when the username `Lambda` and the password `School` is passed into the request.
+* [x] Save the token to localStorage.
 * [x] Build a `axiosWithAuth` module within the helpers folder to create an instance of axios with the authentication header.
-* [-] Build a `PrivateRoute` component within the components folder and use it to protect the route that renders the `BubblesPage` component.
-* [ ] In `App.js`, build the backend to the logout button. When pressed, send an http request to the logout endpoint and remove the authentication token from localStorage.
+* [x] Build a `PrivateRoute` component within the components folder and use it to protect the route that renders the `BubblesPage` component.
+* [x] In `App.js`, build the backend to the logout button. When pressed, send an http request to the logout endpoint and remove the authentication token from localStorage.
 
 #### Consuming the API
 > *Add in the http requests and state changes needed to connect our api to the web application. Consider the effect of authentication on your api requests.*

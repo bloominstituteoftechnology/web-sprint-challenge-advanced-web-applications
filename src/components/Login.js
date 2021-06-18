@@ -7,6 +7,7 @@ const initialValues = {username: 'Lambda', password: 'School'};
 const Login = () => {
   const { push } = useHistory();
   const [formValues, setFormValues] = useState(initialValues);
+  // const [error, setError] = useState();
 
   const handleChanges = (e) => {
     setFormValues({
@@ -32,8 +33,12 @@ const Login = () => {
         })
   }
 
-  
-  const error = "Username or Password not valid.";
+  const error = ''
+  // const [error, setError] = useState((formValues) => {
+  //   if (formValues.username !== "Lambda" || formValues.password !== "School") {
+  //     setError("Username or Password not valid.")
+  //   } 
+  // });
   //replace with error state
 
   console.log("Form Values ", formValues)
@@ -74,7 +79,7 @@ export default Login;
 
 //Task List:
 //+++1. Build a form containing a username and password field.
-//2. Add whatever state necessary for form functioning.
+//+++2. Add whatever state necessary for form functioning.
 //+++3. MAKE SURE YOUR USERNAME AND PASSWORD INPUTS INCLUDE data-testid="username" and data-testid="password"
 //4. If either the username or password is not entered, display the following words with the p tag provided: Username or Password not valid.
-//5. If the username / password is equal to Lambda / i<3Lambd4, save that token to localStorage.
+//+++5. If the username / password is equal to Lambda / i<3Lambd4, save that token to localStorage.
