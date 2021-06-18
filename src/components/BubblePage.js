@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Bubbles from "./Bubbles";
 import ColorList from "./ColorList";
 
-import { editColorService, deleteColorService } from '../services/colorServices';
+// import { editColorService, deleteColorService } from '../services/colorServices';
 import fetchColorService from '../services/fetchColorService';
 
 const BubblePage = () => {
@@ -19,6 +19,10 @@ const BubblePage = () => {
 
   const deleteColor = (colorToDelete) => {
   };
+
+  useEffect(() => {
+    fetchColorService()
+  }, []);
 
   return (
     <div className="container">
