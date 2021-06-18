@@ -42,7 +42,7 @@ Your finished project must include all of the following requirements. **Unlike o
 
 * [x] In `Login.js`, build all UI and state functionality needed to capture a username and password.
 * [x] **Make sure that the input for your username and password includes the data-testid="username" and data-testid="password" attributes. These are needed for codegrade testing and codegrade autotests will fail without them.**
-* [ ] Build in functionality that would allow an error to be displayed in the provided p tag if either the username or password is incorrect.
+* [x] Build in functionality that would allow an error to be displayed in the provided p tag if either the username or password is incorrect.
 * [x] Construct an http request that retrieves an auth token from the server when the username `Lambda` and the password `School` is passed into the request.
 * [x] Save the token to localStorage.
 * [x] Build a `axiosWithAuth` module within the helpers folder to create an instance of axios with the authentication header.

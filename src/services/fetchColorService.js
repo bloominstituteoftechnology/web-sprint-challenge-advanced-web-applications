@@ -15,5 +15,3 @@ const fetchColorService = () => {
 export default fetchColorService;
 
 
-// In `services/fetchColorServices.js`, build out fetchColorService function 
-// to make a GET request to fetch the color data for your bubbles.

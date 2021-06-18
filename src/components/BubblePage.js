@@ -4,7 +4,7 @@ import axiosWithAuth from "../helpers/axiosWithAuth";
 import Bubbles from "./Bubbles";
 import ColorList from "./ColorList";
 
-import { editColorService, deleteColorService } from '../services/colorServices';
+// import { editColorService, deleteColorService } from '../services/colorServices';
 import fetchColorService from '../services/fetchColorService';
 
 const BubblePage = () => {
@@ -16,15 +16,18 @@ const BubblePage = () => {
   };
 
   const saveEdit = (editColor) => {
-    // editColorService(editColor)
-    // setEditing(false)
-    // let newTest = setColors(colors.filter(color => color.id !== editColor))
-    // console.log(newTest)
-    axiosWithAuth()
+      axiosWithAuth()
         .put(`/api/colors/${editColor.id}`, editColor)
             .then((res) => {
                 console.log(res)
-                setColors(colors, res.data)
+                // setColors([...colors, res.data])
+
+                console.log("COLORS", colors)
+                setColors([
+                  ...colors,
+                  res.data
+                ])
+
             })
             .catch((err) => {
                 console.log(err)
@@ -67,6 +70,3 @@ const BubblePage = () => {
 
 export default BubblePage;
 
-//Task List:
-//1. When the component mounts, make an axios call to retrieve all color data and push to state.
-//2. Complete saveEdit, deleteColor functions

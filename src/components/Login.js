@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axiosWithAuth from "../helpers/axiosWithAuth";
 import { useHistory } from 'react-router';
 
@@ -7,7 +7,7 @@ const initialValues = {username: 'Lambda', password: 'School'};
 const Login = () => {
   const { push } = useHistory();
   const [formValues, setFormValues] = useState(initialValues);
-  // const [error, setError] = useState();
+  const [error, setError] = useState();
 
   const handleChanges = (e) => {
     setFormValues({
@@ -16,11 +16,19 @@ const Login = () => {
     });
   };
 
-  // make a post request to retrieve a token from the api
-  // when you have handled the token, navigate to the BubblePage route
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(formValues)
+
+    // Code to use if we wanted to make sure a value is entered for username and password
+    // if (formValues.username.length <1 || formValues.password.length < 1) {
+    //   setError("Username or Password not valid.")
+    // } 
+
+    // Code to validate that username ("Lambda") and password ("School") match testing scenario for this sprint
+    if (formValues.username !== "Lambda" || formValues.password !== "School") {
+      setError("Username or Password not valid.")
+    } 
+
     axiosWithAuth()
     .post('/api/login', formValues)
         .then((res) =>{
@@ -31,17 +39,8 @@ const Login = () => {
         .catch((err) => {
           console.log({err})
         })
+      
   }
-
-  const error = ''
-  // const [error, setError] = useState((formValues) => {
-  //   if (formValues.username !== "Lambda" || formValues.password !== "School") {
-  //     setError("Username or Password not valid.")
-  //   } 
-  // });
-  //replace with error state
-
-  console.log("Form Values ", formValues)
 
   return (
     <div>
@@ -63,7 +62,7 @@ const Login = () => {
           id="password"
           data-testid="password"
           name="password"
-          // type="password"
+          type="password"
           value={formValues.password}
           onChange={handleChanges}
         />
@@ -76,10 +75,3 @@ const Login = () => {
 };
 
 export default Login;
-
-//Task List:
-//+++1. Build a form containing a username and password field.
-//+++2. Add whatever state necessary for form functioning.
-//+++3. MAKE SURE YOUR USERNAME AND PASSWORD INPUTS INCLUDE data-testid="username" and data-testid="password"
-//4. If either the username or password is not entered, display the following words with the p tag provided: Username or Password not valid.
-//+++5. If the username / password is equal to Lambda / i<3Lambd4, save that token to localStorage.
