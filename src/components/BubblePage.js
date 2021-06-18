@@ -20,13 +20,19 @@ const BubblePage = () => {
         .put(`/api/colors/${editColor.id}`, editColor)
             .then((res) => {
                 console.log(res)
-                // setColors([...colors, res.data])
+                
+                let index = colors.findIndex((color) => color.id === editColor.id);
+                // colors = [...colors]
+                colors[index] = editColor
+                setColors([
+                  ...colors
+                ])
 
                 console.log("COLORS", colors)
-                setColors([
-                  ...colors,
-                  res.data
-                ])
+                // setColors([
+                //   ...colors,
+                //   res.data
+                // ])
 
             })
             .catch((err) => {
