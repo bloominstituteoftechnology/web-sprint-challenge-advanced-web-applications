@@ -4,7 +4,6 @@ import axiosWithAuth from "../helpers/axiosWithAuth";
 import Bubbles from "./Bubbles";
 import ColorList from "./ColorList";
 
-// import { editColorService, deleteColorService } from '../services/colorServices';
 import fetchColorService from '../services/fetchColorService';
 
 const BubblePage = () => {
@@ -22,18 +21,10 @@ const BubblePage = () => {
                 console.log(res)
                 
                 let index = colors.findIndex((color) => color.id === editColor.id);
-                // colors = [...colors]
                 colors[index] = editColor
                 setColors([
                   ...colors
                 ])
-
-                console.log("COLORS", colors)
-                // setColors([
-                //   ...colors,
-                //   res.data
-                // ])
-
             })
             .catch((err) => {
                 console.log(err)
@@ -50,15 +41,6 @@ const BubblePage = () => {
           console.log(err)
         })
   };
-
-  // useEffect(() => {
-  //   const newColors = async() => {
-  //     const result = await fetchColorService()
-  //     setColors(result)
-  //   }
-  //   newColors() 
-  //   console.log("COLORS", newColors())
-  // }, []);
 
   useEffect(() => {
     fetchColorService().then((res) => {
