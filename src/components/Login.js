@@ -16,7 +16,7 @@ const Login = () => {
     });
   };
 
-  const handelSubmit = e => {
+  const submitHandler = e => {
     e.preventDefault();
     if (formValues.username !== 'Lambda' || formValues.password !== 'School') {
       setError('Username or Password incorrect')
@@ -41,7 +41,7 @@ const Login = () => {
         <h2>Build login form here</h2>
       </div>
       <div>
-        <form onSubmit={handelSubmit}>
+        <form onSubmit={submitHandler}>
           <label htmlFor="username">
             Username
           </label><br/>

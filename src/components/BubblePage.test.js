@@ -29,6 +29,4 @@ test("Renders appropriate number of colors passed in through mock", async () => 
     await waitFor(() => {
         expect(colors).toHaveLength(1);
     })
-
-
 });
