@@ -12,7 +12,7 @@ const Login = () => {
         e.preventDefault();
         axiosWithAuth().post('/login', form )
             .then( res => console.log(res) )
-            .catch( err => console.log(err) )
+            .catch( err => console.log({ err }) )
     }
 
     useEffect(() => {}, []);
