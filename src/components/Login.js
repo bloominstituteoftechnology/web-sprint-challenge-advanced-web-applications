@@ -1,21 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { useHistory } from 'react-router-dom';
 import { axiosWithAuth } from "../helpers/axiosWithAuth";
 
 const Login = () => {
   // make a post request to retrieve a token from the api
   // when you have handled the token, navigate to the BubblePage route
     const [ form, setForm ] = useState({ username: '', password: '' })
+    const { push } = useHistory();
 
     const handleChange = e => setForm({ ...form, [ e.target.name ]: e.target.value });
 
     const handleSubmit = e => {
         e.preventDefault();
         axiosWithAuth().post('/login', form )
-            .then( res => console.log(res) )
-            .catch( err => console.log({ err }) )
+            .then( res => {
+                localStorage.setItem('token', res.data.payload)
+                push('/bubbles')
+            }
+        )
+            .catch( err => console.log(err) )
     }
-
-    useEffect(() => {}, []);
 
   const error = "";
   //replace with error state
