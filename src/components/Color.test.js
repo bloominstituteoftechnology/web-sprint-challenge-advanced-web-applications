@@ -31,7 +31,6 @@ test("Executes handleDelete and toggleEdit property when the 'x' icon is clicked
     );
     const deleteButton = screen.getByTestId('delete');
     userEvent.click(deleteButton);
-    screen.debug();
 });
 
 test("Executes setEditColor and toggleEdit property when color div is clicked", () => {
