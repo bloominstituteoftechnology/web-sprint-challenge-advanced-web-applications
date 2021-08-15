@@ -13,9 +13,37 @@ const BubblePage = () => {
   };
 
   const saveEdit = (editColor) => {
+    axiosWithAuth()
+    .put(`/api/colors/${editColor.id}`, editColor)
+    .then((res) => {
+      console.log(res)
+
+      let index = colors.findIndex((color) => color.id === editColor.id);
+      colors[index] = editColor
+      setColors([
+        ...colors
+      ])
+    })
+    .catch((err) => {
+      console.log(err)
+    })
   };
 
+  useEffect(() => {
+    fetchColorService().then((res) => {
+    setColors(res)
+    })
+  }, []);
+
   const deleteColor = (colorToDelete) => {
+    axiosWithAuth()
+    .delete(`/api/colors/${colorToDelete.id}`)
+    .then((res) => {
+      setColors(colors.filter(color => color.id !== colorToDelete.id))
+    })
+    .catch((err) => {
+      console.log(err)
+    })
   };
 
   return (
