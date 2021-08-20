@@ -1,5 +1,24 @@
 # Advanced Web Applications Sprint Challenge
 
+- [Advanced Web Applications Sprint Challenge](#advanced-web-applications-sprint-challenge)
+  - [Overview](#overview)
+  - [Introduction](#introduction)
+  - [Instructions](#instructions)
+    - [Task 1: Project Setup](#task-1-project-setup)
+    - [Task 2: CodeGrade Setup](#task-2-codegrade-setup)
+    - [Task 3: Project Requirements](#task-3-project-requirements)
+      - [Authentication](#authentication)
+      - [Consuming the API](#consuming-the-api)
+      - [Testing](#testing)
+    - [Reference Materials](#reference-materials)
+      - [API Documentation](#api-documentation)
+      - [Hex Color Examples](#hex-color-examples)
+  - [Submission format](#submission-format)
+  - [Interview Questions](#interview-questions)
+  - [Rick Mansfield's push/pull trail for Advanced Web Apps Sprint](#rick-mansfields-pushpull-trail-for-advanced-web-apps-sprint)
+
+## Overview
+
 **Read these instructions carefully. Understand exactly what is expected _before_ starting this Sprint Challenge.**
 
 This challenge allows you to practice the concepts and techniques learned over the past sprint and apply them in a concrete project. This sprint explored **advanced web applications**. During this sprint, you studied **React testing, client-side auth, HTTP methods, and Vercel**.
@@ -101,3 +120,7 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 2. What steps can you take in your web apps to keep your data secure?
 3. Describe how web servers work.
 4. Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
+
+## Rick Mansfield's push/pull trail for Advanced Web Apps Sprint
+
+- [Link for convenience]()
