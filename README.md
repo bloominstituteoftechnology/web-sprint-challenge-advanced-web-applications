@@ -1,5 +1,24 @@
 # Advanced Web Applications Sprint Challenge
 
+- [Advanced Web Applications Sprint Challenge](#advanced-web-applications-sprint-challenge)
+  - [Overview](#overview)
+  - [Introduction](#introduction)
+  - [Instructions](#instructions)
+    - [Task 1: Project Setup](#task-1-project-setup)
+    - [Task 2: CodeGrade Setup](#task-2-codegrade-setup)
+    - [Task 3: Project Requirements](#task-3-project-requirements)
+      - [Authentication](#authentication)
+      - [Consuming the API](#consuming-the-api)
+      - [Testing](#testing)
+    - [Reference Materials](#reference-materials)
+      - [API Documentation](#api-documentation)
+      - [Hex Color Examples](#hex-color-examples)
+  - [Submission format](#submission-format)
+  - [Interview Questions](#interview-questions)
+  - [Rick Mansfield's push/pull trail for Advanced Web Apps Sprint](#rick-mansfields-pushpull-trail-for-advanced-web-apps-sprint)
+
+## Overview
+
 **Read these instructions carefully. Understand exactly what is expected _before_ starting this Sprint Challenge.**
 
 This challenge allows you to practice the concepts and techniques learned over the past sprint and apply them in a concrete project. This sprint explored **advanced web applications**. During this sprint, you studied **React testing, client-side auth, HTTP methods, and Vercel**.
@@ -48,21 +67,24 @@ Your finished project must include all of the following requirements. **Unlike o
 * [ ] Build in functionality that would allow an error to be displayed in the provided p tag if either the username or password is incorrect.
 * [ ] **Make sure your error p tag has an id="error" attribute attached. Codegrade autotests will fail without them.**
 * [ ] Construct an http request that retrieves an auth token from the server when the username `Lambda` and the password `School` is passed into the request.
-* [ ] Save the token to localStorage.
-* [ ] Build a `axiosWithAuth` module within the helpers folder to create an instance of axios with the authentication header.
-* [ ] Build a `PrivateRoute` component within the components folder and use it to protect the route that renders the `BubblesPage` component.
-* [ ] In `App.js`, build the backend to the logout button. When pressed, send an http request to the logout endpoint and remove the authentication token from localStorage. Use window.location.href to redirect to the login page.
+* [x] Save the token to localStorage.
+* [x] Build a `axiosWithAuth` module within the helpers folder to create an instance of axios with the authentication header.
+* [x] Build a `PrivateRoute` component within the components folder and use it to protect the route that renders the `BubblesPage` component.
+* [x] In `App.js`, build the backend to the logout button. When pressed, send an http request to the logout endpoint and remove the authentication token from localStorage. Use window.location.href to redirect to the login page.
 
 #### Consuming the API
 > *Add in the http requests and state changes needed to connect our api to the web application. Consider the effect of authentication on your api requests.*
 
-* [ ] In `services/fetchColorServices.js`, build out fetchColorService function to make a GET request to fetch the color data for your bubbles.
-* [ ] When `BubblePages` mounts, call fetchColorServices and save it's result in state.
-* [ ] In `BubblePage.js`, complete `saveEdit`, and `deleteColor` functions to make API requests for to editing and delete data.
-* [ ] Watch and enjoy as your app responds to updates in the data. Check out `Bubbles.js` to see how this is built.
+* [x] In `services/fetchColorServices.js`, build out fetchColorService function to make a GET request to fetch the color data for your bubbles.
+* [x] When `BubblePage` mounts, call fetchColorServices and save it's result in state.
+* [x] In `BubblePage.js`, complete `saveEdit`, and `deleteColor` functions to make API requests for to editing and delete data.
+* [x] Watch and enjoy as your app responds to updates in the data. Check out `Bubbles.js` to see how this is built.
 
 #### Testing
 * [ ] Finish the test in `Color.test.js`, `ColorList.test.js`, `BubblePage.test.js`. You will need to use rerendering, function mocking and spies in order to complete.
+* [ ] * [ ] Note to self ... I used this data 
+  ![res.data for colors](src\assets\Capture1.JPG)
+  view in readme.md preview mode to see pic
 
 **Notes:**
 * You are welcome to create additional files but **do not move or rename existing files** or folders.
@@ -101,3 +123,7 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 2. What steps can you take in your web apps to keep your data secure?
 3. Describe how web servers work.
 4. Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
+
+## Rick Mansfield's push/pull trail for Advanced Web Apps Sprint
+
+- [Link for convenience](https://github.com/LambdaSchool/web-sprint-challenge-advanced-web-applications/pull/141) 
