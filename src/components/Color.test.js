@@ -17,6 +17,7 @@ test("Renders without errors with blank color passed into component", () => {
         />
     );
 });
+
 test("Renders the color passed into component", () => {
     //Arrange - Usually Render/const/screen to prep for Action step
     render(
@@ -62,5 +63,21 @@ test("Executes handleDelete and toggleEdit property when the 'x' icon is clicked
 });
 
 test("Executes setEditColor and toggleEdit property when color div is clicked", () => {
-    
+    //Arrange - Usually Render/const/screen to prep for Action step
+    const mocksetEditColorFunc = jest.fn();
+    const mockToggleEditFunc = jest.fn();
+    //Act - Usually doing something to what you just const/screened/arranged
+    render(
+        <Color
+            color={{
+                code: { hex: "" },
+                color: "",
+                id: 1,
+            }}
+            setEditColor={mocksetEditColorFunc}
+            toggleEdit={mockToggleEditFunc}
+        />
+    );
+    let theColorDiv = 
+    //Assert - What's "expected"
 });

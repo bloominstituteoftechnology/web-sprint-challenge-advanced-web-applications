@@ -29,7 +29,7 @@ const Login = (props) => {
         //5. If the username / password is equal to "Lambda" / "School", save that token to localStorage and redirect to a BubblePage route. 
         localStorage.setItem("token", res.data.payload);
         // when you have handled the token, navigate to the BubblePage route
-        props.history.push('/bubble');
+        props.history.push('/bubbles');
       })
       .catch(err => {
         setError("Error logging in");

@@ -22,7 +22,7 @@ function App() {
         </header>
         <Switch>
         {/* //2. Render BubblePage as a PrivateRoute */}
-        <PrivateRoute exact path="/bubble" component={BubblePage} />
+        <PrivateRoute exact path="/bubbles" component={BubblePage} />
         {/* //1. Add in two routes that link to the Login Component, one for the default path '/' and one for the '/login'. */}
         <Route path="/login" component={Login} />
         <Route exact path="/" component={Login} />
