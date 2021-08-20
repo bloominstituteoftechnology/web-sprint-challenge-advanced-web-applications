@@ -15,6 +15,13 @@ const Login = () => {
     if (!credentials.username || !credentials.password) {
       return (setError("Username or Password not valid."));
     }
+    
+    const handleChange = e => {
+      setCredentials({
+        ...credentials,
+        [e.target.name]: e.target.value
+      });
+    };
 
   return (
     <div>
