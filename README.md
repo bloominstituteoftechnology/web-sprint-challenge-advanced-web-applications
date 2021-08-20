@@ -82,6 +82,9 @@ Your finished project must include all of the following requirements. **Unlike o
 
 #### Testing
 * [ ] Finish the test in `Color.test.js`, `ColorList.test.js`, `BubblePage.test.js`. You will need to use rerendering, function mocking and spies in order to complete.
+* [ ] * [ ] Note to self ... I used this data 
+  ![res.data for colors](src\assets\Capture1.JPG)
+  view in readme.md preview mode to see pic
 
 **Notes:**
 * You are welcome to create additional files but **do not move or rename existing files** or folders.

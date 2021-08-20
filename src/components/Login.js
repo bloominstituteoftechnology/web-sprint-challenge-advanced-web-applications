@@ -54,7 +54,7 @@ const Login = (props) => {
             onChange={handleChange}
           />
 
-          <label>Username:</label>
+          <label>Password:</label>
           <input
             id="password"
             data-testid="password"
