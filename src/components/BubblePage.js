@@ -26,7 +26,7 @@ const BubblePage = (props) => {
   const saveEdit = (editColor) => {
     editColorService(editColor);
     fetchColorService(setColors);
-    props.history.push('/bubble');
+    props.history.push('/bubbles');
     toggleEdit(false)
   };
 
