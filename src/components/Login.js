@@ -9,6 +9,13 @@ const Login = () => {
   const error = "";
   //replace with error state
 
+  const submit = e => {
+    e.preventDefault();
+    //4. If either the username or password is not entered, display the following words with the p tag provided: Username or Password not valid.
+    if (!credentials.username || !credentials.password) {
+      return (setError("Username or Password not valid."));
+    }
+
   return (
     <div>
       <h1>Welcome to the Bubble App!</h1>
