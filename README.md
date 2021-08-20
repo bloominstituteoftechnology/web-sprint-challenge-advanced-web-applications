@@ -123,4 +123,4 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 ## Rick Mansfield's push/pull trail for Advanced Web Apps Sprint
 
-- [Link for convenience]()
+- [Link for convenience]() 
