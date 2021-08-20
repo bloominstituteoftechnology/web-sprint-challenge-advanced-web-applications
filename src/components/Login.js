@@ -6,12 +6,12 @@ const Login = () => {
   // make a post request to retrieve a token from the api
   // when you have handled the token, navigate to the BubblePage route
 
-  const error = "";
-  //replace with error state
+  // const error = ""; //replace with error state //Part of #4B
+  const [error, setError] = useState("");
 
   const submit = e => {
     e.preventDefault();
-    //4. If either the username or password is not entered, display the following words with the p tag provided: Username or Password not valid.
+    //4.A If either the username or password is not entered, display the following words with the p tag provided: Username or Password not valid.
     if (!credentials.username || !credentials.password) {
       return (setError("Username or Password not valid."));
     }
