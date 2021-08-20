@@ -66,7 +66,7 @@ test("Executes setEditColor and toggleEdit property when color div is clicked", 
     //Arrange - Usually Render/const/screen to prep for Action step
     const mocksetEditColorFunc = jest.fn();
     const mockToggleEditFunc = jest.fn();
-    //Act - Usually doing something to what you just const/screened/arranged
+    
     render(
         <Color
             color={{
@@ -78,6 +78,17 @@ test("Executes setEditColor and toggleEdit property when color div is clicked", 
             toggleEdit={mockToggleEditFunc}
         />
     );
-    let theColorDiv = 
-    //Assert - What's "expected"
+    let theColorDiv = screen.getByTestId(/color/i);
+    // let theEditMenu = screen.findByTestId(/edit_menu/i)
+    
+    //Act - Usually doing something to what you just const/screened/arranged
+    userEvent.click(theColorDiv);
+
+    // //Assert - What's "expected"
+    expect(mockToggleEditFunc).toHaveBeenCalled();
+    // // expect(mockToggleEditFunc).toHaveLength(1);
+    // // expect(theEditMenu).toBeTruthy();
+    expect(mocksetEditColorFunc).toHaveBeenCalled();
+    // expect(mocksetEditColorFunc).toHaveLength(1);
+    
 });
