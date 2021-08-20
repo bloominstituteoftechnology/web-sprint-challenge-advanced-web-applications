@@ -26,8 +26,7 @@ const Login = (props) => {
     // make a post request to retrieve a token from the api
     axios.post('http://localhost:5000/api/login', credentials)
       .then(res => {
-        //5. If the username / password is equal to Lambda / i<3Lambd4, save that token to localStorage.
-        // ABOVE CREDENTIALS DO NOT RETURN A TOKEN; ONLY A 403 ERROR! I have to use Lambda School per the readme. Looks like these are outdated tasks. 
+        //5. If the username / password is equal to "Lambda" / "School", save that token to localStorage and redirect to a BubblePage route. 
         localStorage.setItem("token", res.data.payload);
         // when you have handled the token, navigate to the BubblePage route
         props.history.push('/bubble');
