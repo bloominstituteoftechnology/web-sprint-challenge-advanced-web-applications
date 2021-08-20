@@ -18,8 +18,22 @@ test("Renders without errors with blank color passed into component", () => {
     );
 });
 test("Renders the color passed into component", () => {
-});
+    //Arrange - Usually Render/const/screen to prep for Action step
+    render(
+        <Color
+            color={{
+                code: { hex: "99ddbc" },
+                color: "limegreen",
+                id: 1,
+            }}
+        />
+    );
+    //Act - Usually const/screen for something
+    let testColor = screen.getByText(/limegreen/i)
+    //Assert - What's "expected"
+    expect(testColor).toBeInTheDocument();
 
+});
 test("Executes handleDelete and toggleEdit property when the 'x' icon is clicked", () => {
 });
 
