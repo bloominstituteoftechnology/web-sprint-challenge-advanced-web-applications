@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axiosWithAuth from '../helpers/axiosWithAuth'
 import { useHistory } from 'react-router'
 
@@ -9,7 +9,7 @@ const Login = () => {
   // when you have handled the token, navigate to the BubblePage route
   const {push} = useHistory()
   const [formValues, setFormValues] = useState(initialValues)
-  const [err, setErr] = useState()
+  const [error, setError] = useState()
 
   const handleChange = (e) => {
     setFormValues({...formValues, [e.target.name]: e.target.value})
