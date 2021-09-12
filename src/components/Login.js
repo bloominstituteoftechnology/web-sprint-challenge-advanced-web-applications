@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Login = () => {
+  // adding state
+  const [form, setForm] = useState({ username: "", password: ""});
+
   // make a post request to retrieve a token from the api
   // when you have handled the token, navigate to the BubblePage route
+
+  // added to handle input changes
+  const handleChange = (evt) => {
+    setForm({
+      ...form,
+      [evt.target.name]: evt.target.value
+    })
+  }
+  // testing
+  console.log (handleChange)
 
   const error = "";
   //replace with error state
@@ -13,6 +26,32 @@ const Login = () => {
       <div data-testid="loginForm" className="login-form">
         <h2>Build login form here</h2>
       </div>
+
+      {/*adding form */}
+      <form>
+        <label>Username:
+          <input 
+            id="username"
+            onChange={handleChange}
+            name="username"
+            value={form.username}
+          />
+        </label>
+        <label>Password:
+          <input 
+            id="password"
+            onChange={handleChange}
+            name="password"
+            value={form.password}
+          />
+        </label>
+        <button 
+          id="submit" 
+          type="submit">
+            Login
+        </button>
+
+      </form>
 
       <p id="error" className="error">{error}</p>
     </div>
