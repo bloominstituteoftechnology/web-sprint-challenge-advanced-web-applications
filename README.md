@@ -45,13 +45,13 @@ Your finished project must include all of the following requirements. **Unlike o
 #### Consuming the API
 > *Add in the http requests and state changes needed to connect our api to the web application. Consider the effect of authentication on your api requests.*
 
-* [ ] In `services/fetchColorServices.js`, build out fetchColorService function to make a GET request to fetch the color data for your bubbles.
-* [ ] When `BubblePages` mounts, call fetchColorServices and save it's result in state.
-* [ ] In `BubblePage.js`, complete `saveEdit`, and `deleteColor` functions to make API requests for to editing and delete data.
-* [ ] Watch and enjoy as your app responds to updates in the data. Check out `Bubbles.js` to see how this is built.
+* [x] In `services/fetchColorServices.js`, build out fetchColorService function to make a GET request to fetch the color data for your bubbles.
+* [x] When `BubblePages` mounts, call fetchColorServices and save it's result in state.
+* [x] In `BubblePage.js`, complete `saveEdit`, and `deleteColor` functions to make API requests for to editing and delete data.
+* [x] Watch and enjoy as your app responds to updates in the data. Check out `Bubbles.js` to see how this is built.
 
 #### Testing
-* [ ] Finish the test in `Color.test.js`, `ColorList.test.js`, `BubblePage.test.js`. You will need to use rerendering, function mocking and spies in order to complete.
+* [x] Finish the test in `Color.test.js`, `ColorList.test.js`, `BubblePage.test.js`. You will need to use rerendering, function mocking and spies in order to complete.
 
 **Notes:**
 * You are welcome to create additional files but **do not move or rename existing files** or folders.
@@ -76,10 +76,10 @@ Your finished project must include all of the following requirements. **Unlike o
 
 ## Submission format
 
-* [ ] Submit via Codegrade by committing and pushing any new changes.
-* [ ] Check codegrade for automated feedback.
-* [ ] Check codegrade on Monday following the Sprint Challenge for reviewer feedback.
-* [ ] Any changes pushed to your "main" branch will resubmitted to codegrade if pushed before the sprint challenge deadline. Changes after the deadline will not be reviewed.
+* [x] Submit via Codegrade by committing and pushing any new changes.
+* [x] Check codegrade for automated feedback.
+* [x] Check codegrade on Monday following the Sprint Challenge for reviewer feedback.
+* [x] Any changes pushed to your "main" branch will resubmitted to codegrade if pushed before the sprint challenge deadline. Changes after the deadline will not be reviewed.
 
 ## Interview Questions
 
