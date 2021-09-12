@@ -31,21 +31,23 @@ Your finished project must include all of the following requirements. **Unlike o
 #### Authentication
 > *Build a login form to authenticate your users along with all the components and utilities needed to support authentication.*
 
-* [ ] In `Login.js`, build all UI and state functionality needed to capture a username and password.
+* [x] In `Login.js`, build all UI and state functionality needed to capture a username and password.
 
-* [ ] Add in two routes that display the login component, one for the default path '/' and one for the login path '/login'.
+* [x] Add in two routes that display the login component, one for the default path '/' and one for the login path '/login'.
 
 * [x] **Make sure that the input for your username and password includes the id="username" and id="password" attributes and an id="submit" on the login button. Codegrade autotests will fail without them.**
 
-* [ ] Build in functionality that would allow an error to be displayed in the provided p tag if either the username or password is incorrect.
+* [] Build in functionality that would allow an error to be displayed in the provided p tag if either the username or password is incorrect.
+- ??? Ok I think (see Line 9 in Login.js) - actually I'm confused about this
 
 * [x] **Make sure your error p tag has an id="error" attribute attached. Codegrade autotests will fail without them.**
 
-* [ ] Construct an http request that retrieves an auth token from the server when the username `Lambda` and the password `School` is passed into the request.
+* [x] Construct an http request that retrieves an auth token from the server when the username `Lambda` and the password `School` is passed into the request.
 
-* [ ] Save the token to localStorage.
+* [x] Save the token to localStorage.
+-??? Where do I find Token in data???
 
-* [ ] Build a `axiosWithAuth` module within the helpers folder to create an instance of axios with the authentication header.
+* [x] Build a `axiosWithAuth` module within the helpers folder to create an instance of axios with the authentication header.
 
 * [ ] Build a `PrivateRoute` component within the components folder and use it to protect the route that renders the `BubblesPage` component.
 
