@@ -1,24 +1,45 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom"; // look up what this does
+import { axiosWithAuth } from "../helpers/axiosWithAuth";
 
 const Login = () => {
   // adding state
   const [form, setForm] = useState({ username: "", password: ""});
+  const [error, setError] = useState("");
+  const { push } = useHistory();
 
   // make a post request to retrieve a token from the api
+  const handleSubmit = (evt) => {
+    evt.preventDefault()
+    axios
+      .post(`http://localhost:5000/api/login`, form)
+      .then(res => {
+        localStorage.setItem("token", res.data.payload)
+        console.log(res)
+      })
+      .catch(err => setError(err.response.data.error))
+    
+     
+  }
+
   // when you have handled the token, navigate to the BubblePage route
 
-  // added to handle input changes
+  // adding functionality to handle input changes
   const handleChange = (evt) => {
     setForm({
       ...form,
       [evt.target.name]: evt.target.value
     })
   }
-  // testing
-  console.log (handleChange)
+  // testing - it works!!
+  // console.log (handleChange)
 
-  const error = "";
-  //replace with error state
+ 
+  
+
+  //const error = " ";
+  //replace with error state ??? IDK what to do with this
 
   return (
     <div>
@@ -28,7 +49,7 @@ const Login = () => {
       </div>
 
       {/*adding form */}
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>Username:
           <input 
             id="username"
