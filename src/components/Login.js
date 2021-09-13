@@ -12,12 +12,13 @@ const Login = () => {
   // make a post request to retrieve a token from the api
   const handleSubmit = (evt) => {
     evt.preventDefault()
-    axios
+    axiosWithAuth()
       .post(`http://localhost:5000/api/login`, form)
       .then(res => {
         localStorage.setItem("token", res.data.payload)
         console.log(res)
       })
+        
       .catch(err => setError(err.response.data.error))
     
      

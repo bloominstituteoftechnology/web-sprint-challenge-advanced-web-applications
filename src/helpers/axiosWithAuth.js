@@ -13,3 +13,6 @@ export const axiosWithAuth = () => {
         }
     })
 }
+
+export default axiosWithAuth;
+//??? I'm not sure why I need this export default???
