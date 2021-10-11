@@ -1,25 +1,72 @@
 import React from 'react';
-import { Route, Redirect } from "react-router-dom";
+import  {BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import PrivateRoute from './PrivateRoute';
 import styled from 'styled-components';
-
+import { axiosWithAuth } from '../utils'
 import Header from './Header';
 import LambdaHeader from './LambdaHeader';
 import View from './View';
 import Login from './Login';
 import Logout from './Logout';
 
+
+const initialLoginValues = {
+  username: '',
+  password: '',
+};
 const App = () => {
+  const logout = ()=> {
+    axiosWithAuth().post('/logout')
+    .then(res => {
+      localStorage.removeItem('token')
+      window.location.pathname = '/login'
+  })
+  .catch(err => console.log(err))
+  }
+  const view = ()=> {
+    axiosWithAuth().post('/data')
+    .then(res => {
+      localStorage.removeItem('token')
+      window.location.pathname = '/login'
+  })
+  .catch(err => console.log(err))
+  }
+
   return (
     <AppContainer>
       <LambdaHeader/>
       <Header/>
       <RouteContainer>
-        <Route exact path="/">
-          <Login/>
-        </Route>          
+          <div className="App">
+              <ul>
+                  <li>
+                    <Link to="/login">Login</Link>
+                  </li>
+                  <li>
+                    <Link to="/logout">Logout</Link>
+                  </li>
+                  <li>
+                    <Link to="/view">View</Link>
+                  </li>
+                </ul>
+
+              
+              <Switch> 
+                  <Route exact path="/">
+                    <Login/>
+                  </Route>
+                  <PrivateRoute path="/view">
+                    <View/>
+                  </PrivateRoute>
+                  <PrivateRoute path="/logout">
+                    <Logout/>
+                  </PrivateRoute>
+              </Switch>
+                </div>
+                
       </RouteContainer>
-    </AppContainer>
+
+     </AppContainer>
   )
 }
 
