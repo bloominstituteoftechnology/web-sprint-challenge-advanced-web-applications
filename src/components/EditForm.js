@@ -31,6 +31,12 @@ const EditForm = (props)=> {
         handleEditCancel();
     }
 
+    componentDidMount() {
+        // Simple GET request using axios
+        axios.get('http://localhost:5000/api/articles/editId')
+            .then(response => this.setState({ totalReactPackages: response.data.total }));
+    }
+
     return(<FormContainer onSubmit={handleSubmit}>
         <h3>Edit Article</h3>
         <div>
