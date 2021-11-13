@@ -10,17 +10,24 @@ import Login from './Login';
 import Logout from './Logout';
 
 const App = () => {
-  return (
-    <AppContainer>
-      <LambdaHeader/>
-      <Header/>
-      <RouteContainer>
-        <Route exact path="/">
-          <Login/>
-        </Route>          
-      </RouteContainer>
-    </AppContainer>
-  )
+    return (
+        <AppContainer>
+            <LambdaHeader/>
+            <Header />
+            <RouteContainer>
+                <Route exact path="/">
+                    <Login />
+                </Route>
+                <Route path="/login">
+                    <Login />
+                </Route>
+                <PrivateRoute path="/view">
+                    <View />
+                </PrivateRoute>
+                <PrivateRoute path="/logout" component={Logout} />
+            </RouteContainer>
+        </AppContainer>
+    )
 }
 
 export default App;
