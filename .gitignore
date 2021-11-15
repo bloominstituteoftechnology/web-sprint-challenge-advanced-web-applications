@@ -23,4 +23,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+<<<<<<< HEAD
+=======
+# Ignore .idea files
+.idea/
+
+>>>>>>> dca548f (first and final push)
 .vercel
