@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { axiosWithAuth } from '../utils'
+import {axiosWithAuth} from '../utils';
 
 const Login = () => {
     const [credentials, setCredentials] = useState(state);

@@ -2,7 +2,7 @@ import React from 'react';
 import { Router, Route, Link, Switch } from "react-router-dom";
 import styled from 'styled-components';
 import PrivateRoute from './PrivateRoute';
-import { axiosWithAuth } from '../utils';
+//import { axiosWithAuth } from '../utils';
 import Header from './Header';
 import BloomHeader from './BloomHeader';
 import Logout from './Logout';
