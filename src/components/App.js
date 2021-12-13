@@ -1,20 +1,52 @@
 import React from 'react';
-import { Route } from "react-router-dom";
+import { Router, Route, Link, Switch } from "react-router-dom";
 import styled from 'styled-components';
-
+import PrivateRoute from './PrivateRoute';
+import { axiosWithAuth } from '../utils';
 import Header from './Header';
 import BloomHeader from './BloomHeader';
+import Logout from './Logout';
 import Login from './Login';
+import View from './View';
+
 
 const App = () => {
+  
+
   return (
     <AppContainer>
       <BloomHeader/>
       <Header/>
       <RouteContainer>
-        <Route exact path="/">
-          <Login/>
-        </Route>          
+      <div className="App">
+              <ul>
+                  <li>
+                    <Link to="/login">Login</Link>
+                  </li>
+                  <li>
+                    <Link to="/logout">Logout</Link>
+                  </li>
+                  <li>
+                    <Link to="/view">View</Link>
+                  </li>
+                </ul>
+
+              
+              <Switch> 
+                  <Route exact path="/">
+                    <Login/>
+                  </Route>
+                  <Route path="/login">
+                    <Login/>
+                  </Route>
+                  <PrivateRoute path="/view">
+                    <View/>
+                  </PrivateRoute>
+                  <PrivateRoute path="/logout">
+                    <Logout/>
+                  </PrivateRoute>
+              </Switch>
+                </div>
       </RouteContainer>
     </AppContainer>
   )
