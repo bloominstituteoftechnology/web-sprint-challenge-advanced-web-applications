@@ -1,21 +1,33 @@
 import React from 'react';
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import styled from 'styled-components';
 
 import Header from './Header';
 import BloomHeader from './BloomHeader';
 import Login from './Login';
+import Logout from './Logout';
+import ProtectedRoute from './PrivateRoute';
 
 const App = () => {
   return (
     <AppContainer>
       <BloomHeader/>
       <Header/>
+      <Switch> 
       <RouteContainer>
-        <Route exact path="/">
-          <Login/>
-        </Route>          
+      <ProtectedRoute path='/logout'>
+        <Logout /> 
+      </ProtectedRoute> 
+
+      <ProtectedRoute path='/view'>
+        <View /> 
+      </ProtectedRoute>
+                 
       </RouteContainer>
+      <Route exact path="/">
+          <Login/>
+        </Route> 
+      </Switch>
     </AppContainer>
   )
 }
