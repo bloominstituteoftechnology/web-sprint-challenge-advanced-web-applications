@@ -1,15 +1,70 @@
 import React from 'react';
 import styled from 'styled-components';
+import React, { useState } from 'react';
+import {useHistory} from 'react-router';
 
 const Login = () => {
-    
+  const [credentials, setCredentials] = useState(state);
+  const {push} = useHistory();
+  const state = {
+
+    credentials: {
+      username: "", 
+      password: ""
+    },
+      errorMessage : ""
+    }
+
+    axios.post("http://localhost:5000/api/login", this.state.credentials)
+    .then{resp => {
+      console.log(resp); 
+      localStorage.setItem("token", resp.data.token); 
+      push("/view");
+    })
+    .catch(err=> {
+     console.log(err); 
+     setCredentials({
+       ...state,
+       errorMessage: err.response.data.error; 
+     })
+     })
+
     return(<ComponentContainer>
         <ModalContainer>
             <h1>Welcome to Blogger Pro</h1>
             <h2>Please enter your account information.</h2>
+
+            <FormGroup>
+        <label>
+          username: 
+          <input 
+            name="username"
+            type="text"
+            id="username"
+            value={state.credentials.username}
+            onChange={handleInputChange}
+            />
+        </label>
+        
+        <label>
+          password:
+          <input
+            name="password"
+            type="password"
+            id="password"
+            value={state.credentials.password}
+            onChange={handleInputChange} />
+        </label>
+    </FormGroup>
+     
         </ModalContainer>
     </ComponentContainer>);
+    
 }
+
+<p id="error">
+{state.errorMessage}
+</p>
 
 export default Login;
 
