@@ -31,6 +31,17 @@ const EditForm = (props)=> {
         handleEditCancel();
     }
 
+    useEffect(() => {
+        console.log(editId);
+        axiosWithAuth()
+          .get(`http://localhost:5000/api/articles/${editId}`)
+          .then((res) => {
+            setArticle(res.data);
+            // console.log(res.data);
+          })
+          .catch((e) => console.log(e));
+      }, [editId]);
+
     return(<FormContainer onSubmit={handleSubmit}>
         <h3>Edit Article</h3>
         <div>
