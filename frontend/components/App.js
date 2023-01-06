@@ -102,7 +102,7 @@ export default function App() {
     setSpinnerOn(true)
     return axiosWithAuth().put(`${articlesUrl}/${article_id}`, article)
       .then(({data}) => {
-        getArticles();
+        getArticles(mess);
         setMessage(data.message)
         setCurrentArticleId()
         setSpinnerOn(false)
@@ -120,7 +120,7 @@ export default function App() {
     setSpinnerOn(true)
     return axiosWithAuth().delete(`${articlesUrl}/${article_id}`)
       .then(({data}) => {
-        getArticles();
+        getArticles(mess);
         setMessage(data.message)
         setSpinnerOn(false)
       })
