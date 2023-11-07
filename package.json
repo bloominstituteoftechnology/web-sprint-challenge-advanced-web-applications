@@ -2,7 +2,7 @@
   "name": "web-sprint-challenge-advanced-web-applications",
   "version": "0.0.1",
   "scripts": {
-    "dev": "fkill :9000 :3000 -s && concurrently \"npm:backend\" \"npm:frontend\"",
+    "dev": "fkill :9000 :3000 -f -s && concurrently \"npm:backend\" \"npm:frontend\"",
     "test": "cross-env NODE_ENV=testing jest --watch",
     "webpack": "cross-env NODE_ENV=production webpack",
     "heroku-postbuild": "npm run webpack",
@@ -53,7 +53,7 @@
     "yup": "0.32.11"
   },
   "engines": {
-    "node": "16.x",
+    "node": ">=18.x",
     "npm": "8.x"
   },
   "repository": {
