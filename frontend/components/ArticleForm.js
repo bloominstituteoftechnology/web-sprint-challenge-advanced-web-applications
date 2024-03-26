@@ -64,7 +64,7 @@ export default function ArticleForm(props) {
   )
 }
 
-// 🔥 No touchy: LoginForm expects the following props exactly:
+// 🔥 No touchy: ArticleForm expects the following props exactly:
 ArticleForm.propTypes = {
   postArticle: PT.func.isRequired,
   updateArticle: PT.func.isRequired,
