@@ -86,7 +86,7 @@ export default function App() {
             </>
           } />
         </Routes>
-        <footer>Bloom Institute of Technology 2022</footer>
+        <footer>Bloom Institute of Technology 2024</footer>
       </div>
     </>
   )
