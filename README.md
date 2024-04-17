@@ -4,10 +4,9 @@ In this challenge, you will write the logic for [THIS APP](https://advanced-apps
 
 ## Tools
 
-- Node 16.x
-- NPM 8.x (update NPM executing `npm i -g npm`)
+- Node >=18.x
+- NPM >=10.x (update NPM executing `npm i -g npm`)
 - Unix-like shell (Gitbash/bash/zsh)
-- Chrome >= 100.x
 
 ❗ Other configurations might work but haven't been tested.
 
