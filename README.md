@@ -58,6 +58,8 @@ The endpoints needed for this project are the following:
 
 ❗ Test drive all these endpoints with [Postman](https://www.postman.com/downloads/) before starting with the project.
 
+❗ You can use Axios or the native Fetch, to interact with the endpoints from your JavaScript.
+
 ## MVP
 
 In order to complete this project, you must fix the following modules:
