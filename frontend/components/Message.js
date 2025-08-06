@@ -12,12 +12,9 @@ const StyledMessage = styled.div`
 `
 
 export default function Message({ message }) {
-  return (
-    <StyledMessage key={message} id="message">
-      {message}
-    </StyledMessage>
-  )
+  return message ? <StyledMessage id="message">{message}</StyledMessage> : null;
 }
+
 
 Message.propTypes = {
   message: PT.string.isRequired,
